@@ -1,0 +1,3 @@
+# Preserve exact provenance and frozen-snapshot bytes across operating systems.
+# Hash manifests refer to raw bytes, so implicit CRLF/LF conversion is forbidden.
+* -text

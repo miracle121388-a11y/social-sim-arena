@@ -27,3 +27,7 @@
 ## 2026-10-09：保留失败与不支持项
 
 pilot-v1的metrics(Simulator)错误修为metrics(sim.records)，用新batch重跑，不改旧日志。记录审计遍历过宽/PowerShell展开/GBK读取的失败。无完整真实数据和基线时仍完成工程，同时将B0/B2和validated_real保持缺失。
+
+## 2026-10-09：Git保留原始字节
+
+首次新仓库提交提示Windows自动换行转换，可能使冻结副本与raw SHA256在后续checkout时不一致。增加仅本新仓库的.gitattributes `* -text`并重新记录索引内容，保留工作区原始字节；没有修改冻结文件或原项目Git配置。随后核对已提交Git blob与受控源码/复用清单哈希。
