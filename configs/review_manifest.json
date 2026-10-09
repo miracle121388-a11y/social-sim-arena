@@ -1,0 +1,7 @@
+{
+  "provenance": "synthetic",
+  "S1_S2_S3_status": "generated engineering fixtures, schema checked and frozen by run input/hash",
+  "human_scientific_review": "pending",
+  "main_real_experiment_eligible": false,
+  "note": "Before main research, obtain human review and freeze event specifications without test outcomes. These smoke configurations are not real events."
+}

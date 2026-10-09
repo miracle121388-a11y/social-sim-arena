@@ -1,0 +1,76 @@
+[
+  {
+    "scenario": "S1",
+    "agents": 30,
+    "records": 293,
+    "counts": {
+      "message_sent": 30,
+      "message_delivered": 30,
+      "message_viewed": 26,
+      "join_success": 20,
+      "reason:admitted": 20,
+      "attend_success": 19,
+      "reason:attended": 19,
+      "release_success": 20,
+      "reason:completed_slot_release": 20
+    },
+    "replay": {
+      "state_reduction": true,
+      "cached_response_reexecution": true,
+      "tail_hash": "88dac60172b2e9221b0f219be7ed4a0acf9ee1658b8a503df0a3f6adbfb3dcaa"
+    }
+  },
+  {
+    "scenario": "S2",
+    "agents": 30,
+    "records": 275,
+    "counts": {
+      "message_sent": 30,
+      "message_delivered": 30,
+      "message_viewed": 23,
+      "join_success": 5,
+      "reason:admitted": 8,
+      "join_failure": 16,
+      "reason:capacity_waiting": 16,
+      "cancel_success": 4,
+      "reason:cancelled": 4,
+      "promote_success": 3,
+      "attend_success": 5,
+      "reason:attended": 5,
+      "expire_failure": 12,
+      "reason:registration_closed": 12,
+      "release_success": 5,
+      "reason:completed_slot_release": 5
+    },
+    "replay": {
+      "state_reduction": true,
+      "cached_response_reexecution": true,
+      "tail_hash": "f2ff99d2da5ec66b729b774d98daf04cc696b1b1bbf6075917b50b76c13a961a"
+    }
+  },
+  {
+    "scenario": "S3",
+    "agents": 30,
+    "records": 128,
+    "counts": {
+      "message_sent": 15,
+      "message_delivered": 15,
+      "message_viewed": 12,
+      "join_success": 5,
+      "reason:admitted": 5,
+      "share_success": 2,
+      "reason:sent_to_existing_contacts": 2,
+      "cancel_success": 2,
+      "reason:cancelled": 2,
+      "attend_success": 3,
+      "reason:attended": 3,
+      "release_success": 3,
+      "reason:completed_slot_release": 3
+    },
+    "replay": {
+      "state_reduction": true,
+      "cached_response_reexecution": true,
+      "tail_hash": "fa57e156aaae48f47a1ab7d03cbf0362238084b7fc94fe71c354a5db93ada96d"
+    }
+  }
+]

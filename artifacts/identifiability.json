@@ -1,0 +1,297 @@
+{
+  "provenance": "synthetic",
+  "criterion": "same single aggregate attendance but differing process attempts; not equality of full trajectories",
+  "grid": [
+    {
+      "parameters": {
+        "join": -1.0,
+        "cancel": -1.0
+      },
+      "train_attended": 1,
+      "train_attempts": 11,
+      "heldout_attended": 9,
+      "heldout_join_attempts": 20
+    },
+    {
+      "parameters": {
+        "join": -1.0,
+        "cancel": 0.0
+      },
+      "train_attended": 1,
+      "train_attempts": 11,
+      "heldout_attended": 9,
+      "heldout_join_attempts": 20
+    },
+    {
+      "parameters": {
+        "join": -1.0,
+        "cancel": 1.0
+      },
+      "train_attended": 2,
+      "train_attempts": 11,
+      "heldout_attended": 8,
+      "heldout_join_attempts": 20
+    },
+    {
+      "parameters": {
+        "join": 0.0,
+        "cancel": -1.0
+      },
+      "train_attended": 1,
+      "train_attempts": 16,
+      "heldout_attended": 8,
+      "heldout_join_attempts": 24
+    },
+    {
+      "parameters": {
+        "join": 0.0,
+        "cancel": 0.0
+      },
+      "train_attended": 1,
+      "train_attempts": 16,
+      "heldout_attended": 9,
+      "heldout_join_attempts": 24
+    },
+    {
+      "parameters": {
+        "join": 0.0,
+        "cancel": 1.0
+      },
+      "train_attended": 2,
+      "train_attempts": 16,
+      "heldout_attended": 8,
+      "heldout_join_attempts": 24
+    },
+    {
+      "parameters": {
+        "join": 1.0,
+        "cancel": -1.0
+      },
+      "train_attended": 3,
+      "train_attempts": 23,
+      "heldout_attended": 7,
+      "heldout_join_attempts": 27
+    },
+    {
+      "parameters": {
+        "join": 1.0,
+        "cancel": 0.0
+      },
+      "train_attended": 2,
+      "train_attempts": 23,
+      "heldout_attended": 8,
+      "heldout_join_attempts": 27
+    },
+    {
+      "parameters": {
+        "join": 1.0,
+        "cancel": 1.0
+      },
+      "train_attended": 2,
+      "train_attempts": 23,
+      "heldout_attended": 8,
+      "heldout_join_attempts": 27
+    }
+  ],
+  "ambiguous_pairs": [
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": -1.0
+        },
+        "train_attended": 1,
+        "train_attempts": 11,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": -1.0
+        },
+        "train_attended": 1,
+        "train_attempts": 16,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 24
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": -1.0
+        },
+        "train_attended": 1,
+        "train_attempts": 11,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": 0.0
+        },
+        "train_attended": 1,
+        "train_attempts": 16,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 24
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": 0.0
+        },
+        "train_attended": 1,
+        "train_attempts": 11,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": -1.0
+        },
+        "train_attended": 1,
+        "train_attempts": 16,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 24
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": 0.0
+        },
+        "train_attended": 1,
+        "train_attempts": 11,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": 0.0
+        },
+        "train_attended": 1,
+        "train_attempts": 16,
+        "heldout_attended": 9,
+        "heldout_join_attempts": 24
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 11,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 16,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 24
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 11,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 1.0,
+          "cancel": 0.0
+        },
+        "train_attended": 2,
+        "train_attempts": 23,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 27
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": -1.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 11,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 20
+      },
+      "right": {
+        "parameters": {
+          "join": 1.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 23,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 27
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 16,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 24
+      },
+      "right": {
+        "parameters": {
+          "join": 1.0,
+          "cancel": 0.0
+        },
+        "train_attended": 2,
+        "train_attempts": 23,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 27
+      }
+    },
+    {
+      "left": {
+        "parameters": {
+          "join": 0.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 16,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 24
+      },
+      "right": {
+        "parameters": {
+          "join": 1.0,
+          "cancel": 1.0
+        },
+        "train_attended": 2,
+        "train_attempts": 23,
+        "heldout_attended": 8,
+        "heldout_join_attempts": 27
+      }
+    }
+  ],
+  "interpretation": "An aggregate alone does not identify the behavioral process; illustrative finite fixture only, not real mechanism recovery"
+}

@@ -1,0 +1,12 @@
+.venv*/
+.cache/
+.tmp/
+__pycache__/
+*.pyc
+vendor/
+runtime/
+# Artifacts stay on disk; curated verification files are committed explicitly.
+artifacts/
+.env*
+*.key
+*.pem

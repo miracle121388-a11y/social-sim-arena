@@ -1,0 +1,12 @@
+{
+  "study_id": "nju_compositional_simulation",
+  "layers": [],
+  "scheduled_events": [],
+  "information_program": {
+    "broadcasts": []
+  },
+  "provider_ref": "nju.env",
+  "provider_args": {
+    "event_spec": "environment/event_spec.json"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "cases": 1200,
+  "passed": true,
+  "scope": "Frozen sampling module vs pass-through seam only; full B0 NOT reproduced"
+}

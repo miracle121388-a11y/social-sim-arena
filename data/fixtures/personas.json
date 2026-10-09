@@ -1,0 +1,272 @@
+[
+  {
+    "id": "syn-00",
+    "interest": 0.125,
+    "contacts": [
+      "syn-01",
+      "syn-03"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-01",
+    "interest": 0.25,
+    "contacts": [
+      "syn-02",
+      "syn-04"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-02",
+    "interest": 0.375,
+    "contacts": [
+      "syn-03",
+      "syn-05"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-03",
+    "interest": 0.5,
+    "contacts": [
+      "syn-04",
+      "syn-06"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-04",
+    "interest": 0.625,
+    "contacts": [
+      "syn-05",
+      "syn-07"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-05",
+    "interest": 0.75,
+    "contacts": [
+      "syn-06",
+      "syn-08"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-06",
+    "interest": 0.875,
+    "contacts": [
+      "syn-07",
+      "syn-09"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-07",
+    "interest": 0.125,
+    "contacts": [
+      "syn-08",
+      "syn-10"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-08",
+    "interest": 0.25,
+    "contacts": [
+      "syn-09",
+      "syn-11"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-09",
+    "interest": 0.375,
+    "contacts": [
+      "syn-10",
+      "syn-12"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-10",
+    "interest": 0.5,
+    "contacts": [
+      "syn-11",
+      "syn-13"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-11",
+    "interest": 0.625,
+    "contacts": [
+      "syn-12",
+      "syn-14"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-12",
+    "interest": 0.75,
+    "contacts": [
+      "syn-13",
+      "syn-15"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-13",
+    "interest": 0.875,
+    "contacts": [
+      "syn-14",
+      "syn-16"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-14",
+    "interest": 0.125,
+    "contacts": [
+      "syn-15",
+      "syn-17"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-15",
+    "interest": 0.25,
+    "contacts": [
+      "syn-16",
+      "syn-18"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-16",
+    "interest": 0.375,
+    "contacts": [
+      "syn-17",
+      "syn-19"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-17",
+    "interest": 0.5,
+    "contacts": [
+      "syn-18",
+      "syn-20"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-18",
+    "interest": 0.625,
+    "contacts": [
+      "syn-19",
+      "syn-21"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-19",
+    "interest": 0.75,
+    "contacts": [
+      "syn-20",
+      "syn-22"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-20",
+    "interest": 0.875,
+    "contacts": [
+      "syn-21",
+      "syn-23"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-21",
+    "interest": 0.125,
+    "contacts": [
+      "syn-22",
+      "syn-24"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-22",
+    "interest": 0.25,
+    "contacts": [
+      "syn-23",
+      "syn-25"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-23",
+    "interest": 0.375,
+    "contacts": [
+      "syn-24",
+      "syn-26"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-24",
+    "interest": 0.5,
+    "contacts": [
+      "syn-25",
+      "syn-27"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-25",
+    "interest": 0.625,
+    "contacts": [
+      "syn-26",
+      "syn-28"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-26",
+    "interest": 0.75,
+    "contacts": [
+      "syn-27",
+      "syn-29"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-27",
+    "interest": 0.875,
+    "contacts": [
+      "syn-28",
+      "syn-00"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-28",
+    "interest": 0.125,
+    "contacts": [
+      "syn-29",
+      "syn-01"
+    ],
+    "provenance": "synthetic"
+  },
+  {
+    "id": "syn-29",
+    "interest": 0.25,
+    "contacts": [
+      "syn-00",
+      "syn-02"
+    ],
+    "provenance": "synthetic"
+  }
+]

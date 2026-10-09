@@ -1,0 +1,106 @@
+{
+  "batch": "acceptance-v1",
+  "python": "3.13.9",
+  "dependencies": "Python standard library only; copied legacy sampler has no third-party dependencies",
+  "source_hashes": {
+    "src\\njusim\\backends.py": "6772d68c3439464acde8a458d86a5e0c069effb432bfd4fee936a3e1a94f5eb9",
+    "src\\njusim\\calibration.py": "516c88b4a02c7ce2443e30bbcca9a4450c1dd7c3a8cf2f8003390c6375045788",
+    "src\\njusim\\contracts.py": "4af929b7153ef05ee9481985c54c3a78fd146012018092eaa67377d4e65c788d",
+    "src\\njusim\\data_protocol.py": "a758021365187a105919b1d796be736ab197503871db07fffbba6c08fc23400d",
+    "src\\njusim\\experiments.py": "a7a4b865e82d1619b2754536408ac84f488f4125b5595f656827f15f74b7501b",
+    "src\\njusim\\fixtures.py": "aa1842f482c828e4c75f0ce651c2d37ab113ef44a98cc7b41153fa023456f23a",
+    "src\\njusim\\guard.py": "9711c516a0a8014ddb562061c6ec57c837e7cc1ae7ae67d186b43626ebc30ab4",
+    "src\\njusim\\io.py": "388beaaf8fee13c00c5ebcb8d3400f13a66398d16f5e542d422a801f3d6633e5",
+    "src\\njusim\\kernel.py": "eb634f9a601811a0d2db7513405d708b4145d5b2092fdd182316435d10052a1a",
+    "src\\njusim\\legacy.py": "e5d88da3f0e3862887d3ba74ae84e89167b965724388e28f6315e5b2adcae215",
+    "src\\njusim\\metrics.py": "7277481a083086e51f46162b6c0800114ece5da9bccf4dc61efbbdbd608f2e61",
+    "src\\njusim\\__init__.py": "fb8013b29154ce1b43ee4ab967956252cb904ddb5adf9999efc1cb89c8ade347"
+  },
+  "external_calls": 0,
+  "cost_usd": 0,
+  "summary": {
+    "smoke": [
+      {
+        "scenario": "S1",
+        "agents": 30,
+        "records": 293,
+        "counts": {
+          "message_sent": 30,
+          "message_delivered": 30,
+          "message_viewed": 26,
+          "join_success": 20,
+          "reason:admitted": 20,
+          "attend_success": 19,
+          "reason:attended": 19,
+          "release_success": 20,
+          "reason:completed_slot_release": 20
+        },
+        "replay": {
+          "state_reduction": true,
+          "cached_response_reexecution": true,
+          "tail_hash": "88dac60172b2e9221b0f219be7ed4a0acf9ee1658b8a503df0a3f6adbfb3dcaa"
+        }
+      },
+      {
+        "scenario": "S2",
+        "agents": 30,
+        "records": 275,
+        "counts": {
+          "message_sent": 30,
+          "message_delivered": 30,
+          "message_viewed": 23,
+          "join_success": 5,
+          "reason:admitted": 8,
+          "join_failure": 16,
+          "reason:capacity_waiting": 16,
+          "cancel_success": 4,
+          "reason:cancelled": 4,
+          "promote_success": 3,
+          "attend_success": 5,
+          "reason:attended": 5,
+          "expire_failure": 12,
+          "reason:registration_closed": 12,
+          "release_success": 5,
+          "reason:completed_slot_release": 5
+        },
+        "replay": {
+          "state_reduction": true,
+          "cached_response_reexecution": true,
+          "tail_hash": "f2ff99d2da5ec66b729b774d98daf04cc696b1b1bbf6075917b50b76c13a961a"
+        }
+      },
+      {
+        "scenario": "S3",
+        "agents": 30,
+        "records": 128,
+        "counts": {
+          "message_sent": 15,
+          "message_delivered": 15,
+          "message_viewed": 12,
+          "join_success": 5,
+          "reason:admitted": 5,
+          "share_success": 2,
+          "reason:sent_to_existing_contacts": 2,
+          "cancel_success": 2,
+          "reason:cancelled": 2,
+          "attend_success": 3,
+          "reason:attended": 3,
+          "release_success": 3,
+          "reason:completed_slot_release": 3
+        },
+        "replay": {
+          "state_reduction": true,
+          "cached_response_reexecution": true,
+          "tail_hash": "fa57e156aaae48f47a1ab7d03cbf0362238084b7fc94fe71c354a5db93ada96d"
+        }
+      }
+    ],
+    "pilot": {
+      "rows": 32,
+      "synthetic_events": 7,
+      "test_events": 4,
+      "real_events": 0,
+      "external_calls": 0
+    }
+  }
+}

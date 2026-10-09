@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "D:\Users\Lenovo\Desktop\njusim-contest\run.py", line 47, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\run.py", line 37, in main
+    if args.command in ('pilot','all'):summary['pilot']=research_pilot(folder/'pilot')
+                                                        ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\src\njusim\experiments.py", line 92, in research_pilot
+    dev_score=statistics.mean(probability_scores(backend_rows[s.event_id],c)['nll']+macro_loss(c,[s]) for s in dev)
+  File "D:\Miniconda\Lib\statistics.py", line 488, in mean
+    T, total, n = _sum(data)
+                  ~~~~^^^^^^
+  File "D:\Miniconda\Lib\statistics.py", line 195, in _sum
+    for typ, values in groupby(data, type):
+                       ~~~~~~~^^^^^^^^^^^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\src\njusim\experiments.py", line 92, in <genexpr>
+    dev_score=statistics.mean(probability_scores(backend_rows[s.event_id],c)['nll']+macro_loss(c,[s]) for s in dev)
+                                                                                    ~~~~~~~~~~^^^^^^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\src\njusim\experiments.py", line 86, in macro_loss
+    return statistics.mean(trajectory_mae(metrics(simulate(s,backend,c,seed=11))['trajectory'],targets[s.event_id],30) for s in events)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Miniconda\Lib\statistics.py", line 488, in mean
+    T, total, n = _sum(data)
+                  ~~~~^^^^^^
+  File "D:\Miniconda\Lib\statistics.py", line 195, in _sum
+    for typ, values in groupby(data, type):
+                       ~~~~~~~^^^^^^^^^^^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\src\njusim\experiments.py", line 86, in <genexpr>
+    return statistics.mean(trajectory_mae(metrics(simulate(s,backend,c,seed=11))['trajectory'],targets[s.event_id],30) for s in events)
+                                          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Users\Lenovo\Desktop\njusim-contest\src\njusim\metrics.py", line 19, in metrics
+    for r in records:
+             ^^^^^^^
+TypeError: 'Simulator' object is not iterable

@@ -1,0 +1,11 @@
+[project]
+name = "njusim-contest"
+version = "0.1.0"
+description = "Independent calibrated compositional social simulation research prototype"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.njusim]
+provenance = "synthetic"
+live_calls_enabled = false
+official_commit = "9c3ac774816511c121184ca11f539dc398ba1544"

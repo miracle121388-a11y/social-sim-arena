@@ -1,0 +1,14 @@
+{
+  "study_id": "nju_compositional_simulation",
+  "n_steps": 10,
+  "seed": 7,
+  "warm_start": null,
+  "decision_ref": "nju.decision",
+  "decision_args": {},
+  "collector_ref": "nju.collector",
+  "collector_args": {},
+  "interaction_rounds": 1,
+  "engine_args": {},
+  "store_ref": "duckdb",
+  "store_args": {}
+}

@@ -1,0 +1,34 @@
+{
+  "upstream_commit": "9c3ac774816511c121184ca11f539dc398ba1544",
+  "results": [
+    {
+      "scenario": "S1",
+      "panel_rows": 330,
+      "official_steps": 11,
+      "native_records": 293,
+      "exact_trace_parity": true,
+      "duplicate_apply_rejected": true,
+      "unsupported_modes_rejected": true
+    },
+    {
+      "scenario": "S2",
+      "panel_rows": 330,
+      "official_steps": 11,
+      "native_records": 275,
+      "exact_trace_parity": true,
+      "duplicate_apply_rejected": true,
+      "unsupported_modes_rejected": true
+    },
+    {
+      "scenario": "S3",
+      "panel_rows": 330,
+      "official_steps": 11,
+      "native_records": 128,
+      "exact_trace_parity": true,
+      "duplicate_apply_rejected": true,
+      "unsupported_modes_rejected": true
+    }
+  ],
+  "schemas_validated": true,
+  "full_original_baseline_reproduced": false
+}

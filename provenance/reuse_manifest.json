@@ -1,0 +1,29 @@
+[
+  {
+    "source_path": "D:\\Users\\Lenovo\\Desktop\\NJU-xianlinSWM\\src\\echo_swm\\core\\ids.py",
+    "snapshot_path": "legacy_snapshot\\src\\echo_swm\\core\\ids.py",
+    "sha256": "192648329b8036eb2cedb752b877043e3718d2bcc4c6ec92fd4020b658833af2",
+    "source_head": "b01975506de3a36b1bdcbc15ac188b6357e39582",
+    "license": "Apache-2.0 declared by source pyproject.toml; bundled license retained",
+    "purpose": "Frozen deterministic sampling seam; NOT full legacy engine",
+    "modified": false
+  },
+  {
+    "source_path": "D:\\Users\\Lenovo\\Desktop\\NJU-xianlinSWM\\src\\echo_swm\\concordia_backend\\choice_sampling.py",
+    "snapshot_path": "legacy_snapshot\\src\\echo_swm\\concordia_backend\\choice_sampling.py",
+    "sha256": "538f8d70a632314f91114ee6d1c223bbaac71051f3816bcf0af9aa914ef9faf6",
+    "source_head": "b01975506de3a36b1bdcbc15ac188b6357e39582",
+    "license": "Apache-2.0 declared by source pyproject.toml; bundled license retained",
+    "purpose": "Frozen deterministic sampling seam; NOT full legacy engine",
+    "modified": false
+  },
+  {
+    "source_path": "D:\\Users\\Lenovo\\Desktop\\NJU-xianlinSWM\\licenses\\swm-LICENSE.txt",
+    "snapshot_path": "legacy_snapshot\\licenses\\swm-LICENSE.txt",
+    "sha256": "3415784bbabd20cc3ff8729be91ce11a0cdeea5175812815cd94b58ac584ff11",
+    "source_head": "b01975506de3a36b1bdcbc15ac188b6357e39582",
+    "license": "Apache-2.0 declared by source pyproject.toml; bundled license retained",
+    "purpose": "Frozen deterministic sampling seam; NOT full legacy engine",
+    "modified": false
+  }
+]

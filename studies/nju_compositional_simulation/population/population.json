@@ -1,0 +1,13 @@
+{
+  "study_id": "nju_compositional_simulation",
+  "personas": [],
+  "interaction": {
+    "kind": "none",
+    "edges": null,
+    "adjacency_ref": null
+  },
+  "propagation": "independent",
+  "provider_ref": "nju.pop",
+  "provider_args": {},
+  "materialized_count": 30
+}

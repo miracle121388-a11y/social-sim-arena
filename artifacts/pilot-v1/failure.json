@@ -1,0 +1,5 @@
+{
+  "type": "TypeError",
+  "message": "'Simulator' object is not iterable",
+  "status": "failed"
+}

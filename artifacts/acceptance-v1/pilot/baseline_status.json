@@ -1,0 +1,28 @@
+{
+  "B0": {
+    "status": "missing",
+    "reason": "Only frozen sampling module parity, no full legacy engine/population/services reproduced"
+  },
+  "B1": {
+    "status": "tested_synthetic",
+    "backend": "simple_statistical",
+    "fitted_on_real_data": false
+  },
+  "B2": {
+    "status": "missing",
+    "reason": "Jev/LLM plugin exists, but no API authorization or real model execution"
+  },
+  "B3_B4_Ours": {
+    "status": "tested_synthetic",
+    "mapping": {
+      "local": "B3",
+      "macro": "B4",
+      "joint": "Ours candidate"
+    },
+    "backends": [
+      "offline_fixture",
+      "simple_statistical"
+    ],
+    "limitation": "Engineering stand-ins, not live-model evidence"
+  }
+}

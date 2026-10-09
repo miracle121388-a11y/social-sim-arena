@@ -1,0 +1,6 @@
+{
+  "authoritative_replay": "sidecar/trace.jsonl",
+  "panel": "one agent per minute",
+  "microtrace_preserved": true,
+  "core_warm_start_supported": false
+}

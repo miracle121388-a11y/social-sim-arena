@@ -1,0 +1,25 @@
+{
+  "socioverse": {
+    "url": "https://github.com/sii-research/SocioVerse2",
+    "commit": "9c3ac774816511c121184ca11f539dc398ba1544",
+    "version": "0.2.0",
+    "license": "Apache-2.0",
+    "local_path": "vendor/socioverse2",
+    "modified_core": false
+  },
+  "typesafe_sdk": [
+    {
+      "filename": "typesafe_sdk-0.7.1-py3-none-any.whl",
+      "sha256": "9d04eee13b5f64bbbe6f8e96cf40e3f39ca4efc934a1f4f39490cb9a43e9d2ad",
+      "inspected_members": {
+        "typesafe_sdk/_core/client/sync/client.py": "bf8f7633fff1a525106fc178f319448ba30748db2e27f2d9b431d439725cd933",
+        "typesafe_sdk/_core/question_types.py": "55b212d7a3bc9277fd9961ad4ea69bac754deb9ae0b9a76b2bc02b120452a109",
+        "typesafe_sdk/_core/response_types.py": "cf06ac0dffa02b3fd1abcf26f962c4bed13b146064b56b11b19dfbef87dfe0df"
+      },
+      "verified": "system_one(state,questions,model), Choice(instructions,criteria), SystemOneResponse.model/answers; choices is typed cached-property alias",
+      "executed": false
+    }
+  ],
+  "access_date": "2026-10-09",
+  "timezone": "Asia/Shanghai"
+}

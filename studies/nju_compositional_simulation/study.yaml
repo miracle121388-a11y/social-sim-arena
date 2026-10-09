@@ -1,0 +1,47 @@
+{
+  "study_id": "nju_compositional_simulation",
+  "title": "Calibrated Compositional Social Simulation",
+  "research_question": "Can shared process and trajectory calibration transfer to independent events and unseen compositions?",
+  "hypothesis": "Falsifiable; no assumed gain",
+  "title_i18n": {},
+  "research_question_i18n": {},
+  "hypothesis_i18n": {},
+  "study_type": "longitudinal",
+  "n_steps": 10,
+  "seed": 7,
+  "time_unit": "minute",
+  "step_meaning": "One native logical minute, one outer round",
+  "key_attributes": [],
+  "metrics": [
+    "registered",
+    "waiting",
+    "attended"
+  ],
+  "metric_descriptions": {},
+  "display_metrics": [],
+  "run_note": {
+    "en": "Use scripts/verify_adapter.py; Path-C shared-session factory, not generic Path-B builder."
+  },
+  "environment_ref": "environment/environment.json",
+  "population_ref": "population/population.json",
+  "simulation_ref": "simulation/simulation.json",
+  "resources_ref": null,
+  "domain": "",
+  "tags": [],
+  "legacy_simulator": "njusim-contest native kernel (NOT original campus simulator)",
+  "provider_refs": [
+    "nju.env",
+    "nju.pop",
+    "nju.decision",
+    "nju.collector"
+  ],
+  "adjustable_params": [],
+  "status": "parity-tested-synthetic",
+  "maintainer": "",
+  "demonstrates": [],
+  "teaches": "",
+  "reference": false,
+  "requires": null,
+  "rerunnable": true,
+  "created_by": "sv-init"
+}

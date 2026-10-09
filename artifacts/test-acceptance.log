@@ -1,0 +1,37 @@
+test_future_feature_rejected (test_data.DataProtocolTests.test_future_feature_rejected) ... ok
+test_missing_cannot_be_silently_zero (test_data.DataProtocolTests.test_missing_cannot_be_silently_zero) ... ok
+test_missing_realistic_row_stays_missing (test_data.DataProtocolTests.test_missing_realistic_row_stays_missing) ... ok
+test_real_requires_explicit_authorization (test_data.DataProtocolTests.test_real_requires_explicit_authorization) ... ok
+test_agent_iteration_order_invariant (test_kernel.KernelTests.test_agent_iteration_order_invariant) ... ok
+test_all_metrics_from_trace (test_kernel.KernelTests.test_all_metrics_from_trace) ... ok
+test_branch_prefix_has_no_future_information (test_kernel.KernelTests.test_branch_prefix_has_no_future_information) ... ok
+test_budget_failure (test_kernel.KernelTests.test_budget_failure) ... ok
+test_cancellation_refund_and_waiting_promotion (test_kernel.KernelTests.test_cancellation_refund_and_waiting_promotion) ... ok
+test_capacity_budget_conservation_each_transition (test_kernel.KernelTests.test_capacity_budget_conservation_each_transition) ... ok
+test_chunk_size_does_not_change_attempts_or_trajectory (test_kernel.KernelTests.test_chunk_size_does_not_change_attempts_or_trajectory) ... ok
+test_conflicting_activities_settled_in_environment (test_kernel.KernelTests.test_conflicting_activities_settled_in_environment) ... ok
+test_duplicate_advance_rejected (test_kernel.KernelTests.test_duplicate_advance_rejected) ... ok
+test_duplicate_registration_rejected (test_kernel.KernelTests.test_duplicate_registration_rejected) ... ok
+test_external_models_disabled_by_default (test_kernel.KernelTests.test_external_models_disabled_by_default) ... ok
+test_frozen_snapshot_hashes (test_kernel.KernelTests.test_frozen_snapshot_hashes) ... ok
+test_hidden_full_capacity_does_not_remove_attempt (test_kernel.KernelTests.test_hidden_full_capacity_does_not_remove_attempt) ... ok
+test_invalid_dates_and_schedules_rejected (test_kernel.KernelTests.test_invalid_dates_and_schedules_rejected) ... ok
+test_jev_verified_call_shape_with_fake_client (test_kernel.KernelTests.test_jev_verified_call_shape_with_fake_client) ... ok
+test_lottery_no_persistent_first_agent_advantage (test_kernel.KernelTests.test_lottery_no_persistent_first_agent_advantage) ... ok
+test_missing_label_is_not_negative (test_kernel.KernelTests.test_missing_label_is_not_negative) ... ok
+test_mutually_exclusive_softmax (test_kernel.KernelTests.test_mutually_exclusive_softmax) ... ok
+test_no_original_modules_imported (test_kernel.KernelTests.test_no_original_modules_imported) ... ok
+test_offline_network_and_subprocess_forbidden (test_kernel.KernelTests.test_offline_network_and_subprocess_forbidden) ... ok
+test_output_escape_and_frozen_writes_rejected (test_kernel.KernelTests.test_output_escape_and_frozen_writes_rejected) ... ok
+test_replay_state_and_fixed_response_cache (test_kernel.KernelTests.test_replay_state_and_fixed_response_cache) ... ok
+test_response_cache_miss_is_error (test_kernel.KernelTests.test_response_cache_miss_is_error) ... ok
+test_sent_delivered_viewed_distinct (test_kernel.KernelTests.test_sent_delivered_viewed_distinct) ... ok
+test_split_guards (test_kernel.KernelTests.test_split_guards) ... ok
+test_tampering_detected (test_kernel.KernelTests.test_tampering_detected) ... ok
+test_test_event_or_future_feature_rejected_in_fit (test_kernel.KernelTests.test_test_event_or_future_feature_rejected_in_fit) ... ok
+test_unreceived_information_absent (test_kernel.KernelTests.test_unreceived_information_absent) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 1.500s
+
+OK

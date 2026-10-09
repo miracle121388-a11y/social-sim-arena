@@ -1,0 +1,6 @@
+{
+  "unchanged_within_scope": true,
+  "differences": {},
+  "controlled_file_count": 374,
+  "limitations": "No OS ACL changed. Text hashes exclude secrets, data, DBs, assets, caches, dependencies, hidden subtrees and files >=2MB. Metadata not content proof. Nested Git/link search uses same exclusions. Git objects/config not read. No source imports/execution."
+}

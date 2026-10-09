@@ -1,0 +1,7226 @@
+[
+  {
+    "backend": "offline_fixture",
+    "method": "uncalibrated",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.13217333333333334,
+      "nll": 0.4214323896323085,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7599999999999999,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.8,
+          "n": 48,
+          "prediction": 0.89125,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.23093333333333332,
+        "nll": 0.6586633490145554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 27,
+            "prediction": 0.7599999999999999,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.05365555555555555,
+        "nll": 0.22284595331460963,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 18,
+            "prediction": 0.9100000000000001,
+            "frequency": 0.9444444444444444
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.030976430976430977,
+    "attendance_seed_range": [
+      14,
+      21
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "4b46f2eb59b9ede4303e6ea051a5fd761947000e30ac50618266bc0301f7875e",
+      "938dde936c9073a437da05d1a263da02346609b9a5d1a4459ac029cd5ba6ada2",
+      "07e92f89db09d1718a4dea4632a95546851aa219c0994f5ecb8ef415e84e7090"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "uncalibrated",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 79,
+      "brier": 0.17936962025316455,
+      "nll": 0.5321114575725067,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 16,
+          "prediction": 0.22000000000000003,
+          "frequency": 0.375
+        },
+        {
+          "lower": 0.4,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7599999999999999,
+          "frequency": 0.5925925925925926
+        },
+        {
+          "lower": 0.8,
+          "n": 36,
+          "prediction": 0.885,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.26945185185185183,
+        "nll": 0.7440470164173988,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 27,
+            "prediction": 0.7599999999999999,
+            "frequency": 0.5925925925925926
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.2584,
+        "nll": 0.723086249297728,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 16,
+            "prediction": 0.22000000000000003,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 6,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.02222222222222222,
+    "attendance_seed_range": [
+      5,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "e2900c2434545b0645335549e3f2941d395e38e387d4367c71d5887bf96f313f",
+      "9b0c5be6a3e3738f30274c6becf1ad862e5a1e4fff95b53d7dc18c6a1621a3dc",
+      "8a2d6fdafa2f5f8bcdd33be1a70e8477f232080533855330576dd3591a74c289"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "uncalibrated",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.16397733333333334,
+      "nll": 0.4945989518216489,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 7,
+          "prediction": 0.22000000000000003,
+          "frequency": 0.0
+        },
+        {
+          "lower": 0.4,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.6,
+          "n": 34,
+          "prediction": 0.69,
+          "frequency": 0.5294117647058824
+        },
+        {
+          "lower": 0.8,
+          "n": 34,
+          "prediction": 0.8861764705882352,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.09884444444444444,
+        "nll": 0.3492145009199078,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 27,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8888888888888888
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.2717176470588235,
+        "nll": 0.7490695850881542,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 17,
+            "prediction": 0.7599999999999999,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.27145882352941175,
+        "nll": 0.7372083908176088,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 17,
+            "prediction": 0.62,
+            "frequency": 0.47058823529411764
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.04840000000000001,
+        "nll": 0.2484613592984996,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 7,
+            "prediction": 0.22000000000000003,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.03973063973063973,
+    "attendance_seed_range": [
+      4,
+      9
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "1d0850efaf80b10c82018f066fcc2e18ed6a2854c70db7ffa8043dd3df1fdfe2",
+      "9de662d7e8ed140f38db07bf193fa61678c7253703b6129daf080b57c92109c6",
+      "4079f89a5a67490362022ee0000b5d37137091fec0664e83aba6c8428712b7cc"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "uncalibrated",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 142,
+      "brier": 0.1571161971830986,
+      "nll": 0.48287190291042204,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 10,
+          "prediction": 0.22000000000000003,
+          "frequency": 0.4
+        },
+        {
+          "lower": 0.4,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.6,
+          "n": 64,
+          "prediction": 0.69,
+          "frequency": 0.703125
+        },
+        {
+          "lower": 0.8,
+          "n": 68,
+          "prediction": 0.883970588235294,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.09168813559322034,
+        "nll": 0.3304533882580415,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 59,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8983050847457628
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.23635,
+        "nll": 0.6706704272430802,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 32,
+            "prediction": 0.7599999999999999,
+            "frequency": 0.65625
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.2044,
+        "nll": 0.6004228572726762,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 32,
+            "prediction": 0.62,
+            "frequency": 0.75
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.27240000000000003,
+        "nll": 0.7547279086310099,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 10,
+            "prediction": 0.22000000000000003,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 9,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.028956228956228958,
+    "attendance_seed_range": [
+      6,
+      8
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "018e5b6feab973a9ce861f00cce2285ac771863dcf0830991464326ac3342a50",
+      "a2925380156e0b3fd66f969fcf54a03404d02b84bb45d7e94c5c924e680e9da5",
+      "df6f942a8858a801e76b4e42116617e7749828eee4b7f6a3a30b37fc8b018083"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "local",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.13498829231515677,
+      "nll": 0.42573377756397496,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.5380959016530903,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 48,
+          "prediction": 0.89125,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2387526638383985,
+        "nll": 0.6706116488247401,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.05365555555555555,
+        "nll": 0.22284595331460963,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 18,
+            "prediction": 0.9100000000000001,
+            "frequency": 0.9444444444444444
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04983164983164983,
+    "attendance_seed_range": [
+      7,
+      17
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "71ff600290fd35499487a105711d75e318ed6b78a132f0f2c656ea638796386f",
+      "862d2fa26fb723055c28c09fa7b71f2f42e5428ff2f1976cee1880338799d353",
+      "b0a9a7c1e4761cafe135915a9a27b3d4e24dac01d83a70560bf011f73820344f"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "local",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 79,
+      "brier": 0.16664490330717735,
+      "nll": 0.499870828752531,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 43,
+          "prediction": 0.499351864506754,
+          "frequency": 0.5116279069767442
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 36,
+          "prediction": 0.885,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2443965011203378,
+        "nll": 0.6819212421535094,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5925925925925926
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.23785261443861813,
+        "nll": 0.6687353885694118,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 16,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 6,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04781144781144781,
+    "attendance_seed_range": [
+      3,
+      4
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "3efcd901e54efe7babf3674ce3322e4243af992094f06e246e0418f1403a2e4e",
+      "423db298a181968f70ee636539e4626fd790d439b1f0031ee6ebcf761df188a9",
+      "62b7b067f73cf2d56c4d6cd47189c3f8ff6bcbd08e311ed5317cfe61d239a5ef"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "local",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.17092002655953525,
+      "nll": 0.5094567083328702,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 24,
+          "prediction": 0.5077262267024464,
+          "frequency": 0.4166666666666667
+        },
+        {
+          "lower": 0.6,
+          "n": 17,
+          "prediction": 0.62,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.8,
+          "n": 34,
+          "prediction": 0.8861764705882352,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.09884444444444444,
+        "nll": 0.3492145009199078,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 27,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8888888888888888
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.24472849154868714,
+        "nll": 0.6825865123493193,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.27145882352941175,
+        "nll": 0.7372083908176088,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 17,
+            "prediction": 0.62,
+            "frequency": 0.47058823529411764
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1883310908053517,
+        "nll": 0.5691104985701835,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 7,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.02693602693602694,
+    "attendance_seed_range": [
+      4,
+      9
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "83d3234ac4f1065ebedd7f797e55e4a678228dc86a17421ec8fb046758901f74",
+      "05e15d0390d67443746655fb90f4957229822d6d41abb02e9231af8aa6a65c86",
+      "f54057b5a102d12512e8548569c70d527a2ffed41ffb53d7366d6440f227c4ac"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "local",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 142,
+      "brier": 0.15563607749346833,
+      "nll": 0.47762897089147427,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 42,
+          "prediction": 0.5133043302648096,
+          "frequency": 0.5952380952380952
+        },
+        {
+          "lower": 0.6,
+          "n": 32,
+          "prediction": 0.62,
+          "frequency": 0.75
+        },
+        {
+          "lower": 0.8,
+          "n": 68,
+          "prediction": 0.883970588235294,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.09168813559322034,
+        "nll": 0.3304533882580415,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 59,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8983050847457628
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.23954632845617121,
+        "nll": 0.6722020603865982,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 32,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.65625
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.2044,
+        "nll": 0.6004228572726762,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 32,
+            "prediction": 0.62,
+            "frequency": 0.75
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24115404934750256,
+        "nll": 0.6753770479026937,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 10,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 9,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06700336700336701,
+    "attendance_seed_range": [
+      1,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "f6aa50d32676b9c78c9bbd963a88fccf29e5d9796be6efdee3eaef1c72dbc2ae",
+      "34c11b94001aa67e8e86fab4dd47dd95a8f14857625e180f16c8354fc41a2bb9",
+      "ea8478c76e629a9f699c2f3412ec785f1d796cb404ced085cd1c8f400d72d154"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "macro",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.13498829231515677,
+      "nll": 0.42573377756397496,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.5380959016530903,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 48,
+          "prediction": 0.89125,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2387526638383985,
+        "nll": 0.6706116488247401,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.05365555555555555,
+        "nll": 0.22284595331460963,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 18,
+            "prediction": 0.9100000000000001,
+            "frequency": 0.9444444444444444
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04983164983164983,
+    "attendance_seed_range": [
+      7,
+      17
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "71ff600290fd35499487a105711d75e318ed6b78a132f0f2c656ea638796386f",
+      "862d2fa26fb723055c28c09fa7b71f2f42e5428ff2f1976cee1880338799d353",
+      "b0a9a7c1e4761cafe135915a9a27b3d4e24dac01d83a70560bf011f73820344f"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "macro",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 79,
+      "brier": 0.16664490330717735,
+      "nll": 0.499870828752531,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 43,
+          "prediction": 0.499351864506754,
+          "frequency": 0.5116279069767442
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 36,
+          "prediction": 0.885,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2443965011203378,
+        "nll": 0.6819212421535094,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5925925925925926
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.23785261443861813,
+        "nll": 0.6687353885694118,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 16,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 6,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04781144781144781,
+    "attendance_seed_range": [
+      3,
+      4
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "3efcd901e54efe7babf3674ce3322e4243af992094f06e246e0418f1403a2e4e",
+      "423db298a181968f70ee636539e4626fd790d439b1f0031ee6ebcf761df188a9",
+      "62b7b067f73cf2d56c4d6cd47189c3f8ff6bcbd08e311ed5317cfe61d239a5ef"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "macro",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.17092002655953525,
+      "nll": 0.5094567083328702,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 24,
+          "prediction": 0.5077262267024464,
+          "frequency": 0.4166666666666667
+        },
+        {
+          "lower": 0.6,
+          "n": 17,
+          "prediction": 0.62,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.8,
+          "n": 34,
+          "prediction": 0.8861764705882352,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.09884444444444444,
+        "nll": 0.3492145009199078,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 27,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8888888888888888
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.24472849154868714,
+        "nll": 0.6825865123493193,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.27145882352941175,
+        "nll": 0.7372083908176088,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 17,
+            "prediction": 0.62,
+            "frequency": 0.47058823529411764
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1883310908053517,
+        "nll": 0.5691104985701835,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 7,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.02693602693602694,
+    "attendance_seed_range": [
+      4,
+      9
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "83d3234ac4f1065ebedd7f797e55e4a678228dc86a17421ec8fb046758901f74",
+      "05e15d0390d67443746655fb90f4957229822d6d41abb02e9231af8aa6a65c86",
+      "f54057b5a102d12512e8548569c70d527a2ffed41ffb53d7366d6440f227c4ac"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "macro",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 142,
+      "brier": 0.15563607749346833,
+      "nll": 0.47762897089147427,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 42,
+          "prediction": 0.5133043302648096,
+          "frequency": 0.5952380952380952
+        },
+        {
+          "lower": 0.6,
+          "n": 32,
+          "prediction": 0.62,
+          "frequency": 0.75
+        },
+        {
+          "lower": 0.8,
+          "n": 68,
+          "prediction": 0.883970588235294,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.09168813559322034,
+        "nll": 0.3304533882580415,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 59,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8983050847457628
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.23954632845617121,
+        "nll": 0.6722020603865982,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 32,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.65625
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.2044,
+        "nll": 0.6004228572726762,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 32,
+            "prediction": 0.62,
+            "frequency": 0.75
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24115404934750256,
+        "nll": 0.6753770479026937,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 10,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 9,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06700336700336701,
+    "attendance_seed_range": [
+      1,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "f6aa50d32676b9c78c9bbd963a88fccf29e5d9796be6efdee3eaef1c72dbc2ae",
+      "34c11b94001aa67e8e86fab4dd47dd95a8f14857625e180f16c8354fc41a2bb9",
+      "ea8478c76e629a9f699c2f3412ec785f1d796cb404ced085cd1c8f400d72d154"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "joint",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.13498829231515677,
+      "nll": 0.42573377756397496,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.5380959016530903,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 48,
+          "prediction": 0.89125,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2387526638383985,
+        "nll": 0.6706116488247401,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.05365555555555555,
+        "nll": 0.22284595331460963,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 18,
+            "prediction": 0.9100000000000001,
+            "frequency": 0.9444444444444444
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04983164983164983,
+    "attendance_seed_range": [
+      7,
+      17
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "71ff600290fd35499487a105711d75e318ed6b78a132f0f2c656ea638796386f",
+      "862d2fa26fb723055c28c09fa7b71f2f42e5428ff2f1976cee1880338799d353",
+      "b0a9a7c1e4761cafe135915a9a27b3d4e24dac01d83a70560bf011f73820344f"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "joint",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 79,
+      "brier": 0.16664490330717735,
+      "nll": 0.499870828752531,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 43,
+          "prediction": 0.499351864506754,
+          "frequency": 0.5116279069767442
+        },
+        {
+          "lower": 0.6,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.8,
+          "n": 36,
+          "prediction": 0.885,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.09040000000000001,
+        "nll": 0.32707638797890554,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 30,
+            "prediction": 0.88,
+            "frequency": 0.9
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.2443965011203378,
+        "nll": 0.6819212421535094,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 27,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5925925925925926
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.23785261443861813,
+        "nll": 0.6687353885694118,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 16,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 6,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.04781144781144781,
+    "attendance_seed_range": [
+      3,
+      4
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "3efcd901e54efe7babf3674ce3322e4243af992094f06e246e0418f1403a2e4e",
+      "423db298a181968f70ee636539e4626fd790d439b1f0031ee6ebcf761df188a9",
+      "62b7b067f73cf2d56c4d6cd47189c3f8ff6bcbd08e311ed5317cfe61d239a5ef"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "joint",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 75,
+      "brier": 0.17092002655953525,
+      "nll": 0.5094567083328702,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 24,
+          "prediction": 0.5077262267024464,
+          "frequency": 0.4166666666666667
+        },
+        {
+          "lower": 0.6,
+          "n": 17,
+          "prediction": 0.62,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.8,
+          "n": 34,
+          "prediction": 0.8861764705882352,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.09884444444444444,
+        "nll": 0.3492145009199078,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 27,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8888888888888888
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.24472849154868714,
+        "nll": 0.6825865123493193,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.27145882352941175,
+        "nll": 0.7372083908176088,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 17,
+            "prediction": 0.62,
+            "frequency": 0.47058823529411764
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1883310908053517,
+        "nll": 0.5691104985701835,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 7,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.02693602693602694,
+    "attendance_seed_range": [
+      4,
+      9
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "83d3234ac4f1065ebedd7f797e55e4a678228dc86a17421ec8fb046758901f74",
+      "05e15d0390d67443746655fb90f4957229822d6d41abb02e9231af8aa6a65c86",
+      "f54057b5a102d12512e8548569c70d527a2ffed41ffb53d7366d6440f227c4ac"
+    ]
+  },
+  {
+    "backend": "offline_fixture",
+    "method": "joint",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "0cb40993f83b3c951de95f5c513536601943ec30d26aa7b512e2a0eb6292eb53",
+    "one_step": {
+      "n": 142,
+      "brier": 0.15563607749346833,
+      "nll": 0.47762897089147427,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.4,
+          "n": 42,
+          "prediction": 0.5133043302648096,
+          "frequency": 0.5952380952380952
+        },
+        {
+          "lower": 0.6,
+          "n": 32,
+          "prediction": 0.62,
+          "frequency": 0.75
+        },
+        {
+          "lower": 0.8,
+          "n": 68,
+          "prediction": 0.883970588235294,
+          "frequency": 0.9117647058823529
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.09168813559322034,
+        "nll": 0.3304533882580415,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 59,
+            "prediction": 0.8799999999999999,
+            "frequency": 0.8983050847457628
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.23954632845617121,
+        "nll": 0.6722020603865982,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 32,
+            "prediction": 0.5380959016530903,
+            "frequency": 0.65625
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.2044,
+        "nll": 0.6004228572726762,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 32,
+            "prediction": 0.62,
+            "frequency": 0.75
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24115404934750256,
+        "nll": 0.6753770479026937,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 10,
+            "prediction": 0.4339713018223114,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.008099999999999975,
+        "nll": 0.09431067947124117,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 9,
+            "prediction": 0.9100000000000001,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06700336700336701,
+    "attendance_seed_range": [
+      1,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "f6aa50d32676b9c78c9bbd963a88fccf29e5d9796be6efdee3eaef1c72dbc2ae",
+      "34c11b94001aa67e8e86fab4dd47dd95a8f14857625e180f16c8354fc41a2bb9",
+      "ea8478c76e629a9f699c2f3412ec785f1d796cb404ced085cd1c8f400d72d154"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "uncalibrated",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.16784520969564432,
+      "nll": 0.5084113558503401,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 13,
+          "prediction": 0.36060577401430643,
+          "frequency": 0.6923076923076923
+        },
+        {
+          "lower": 0.4,
+          "n": 14,
+          "prediction": 0.4984517406990844,
+          "frequency": 0.6428571428571429
+        },
+        {
+          "lower": 0.6,
+          "n": 34,
+          "prediction": 0.7254827073086126,
+          "frequency": 0.8823529411764706
+        },
+        {
+          "lower": 0.8,
+          "n": 14,
+          "prediction": 0.8564374810899038,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.12728878653321613,
+        "nll": 0.43140604887541056,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.8846153846153846
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28513059556902426,
+        "nll": 0.7667537177065425,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 13,
+            "prediction": 0.36060577401430643,
+            "frequency": 0.6923076923076923
+          },
+          {
+            "lower": 0.4,
+            "n": 14,
+            "prediction": 0.4984517406990844,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.059511169489621346,
+        "nll": 0.24923999135758562,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 8,
+            "prediction": 0.7878946096995607,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.8,
+            "n": 10,
+            "prediction": 0.8727313776388123,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.09158249158249158,
+    "attendance_seed_range": [
+      7,
+      11
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "3fdc88beee0189b80a3aa017122b21374e77acfea02c4764865b05ff72678133",
+      "1dfc6482e338689ae415708d9292153b2b431e576ac65f71987e6312d2145e95",
+      "2dcf1adf2913858e264dd759cc5590df902ca0a170fa0bf44517d4a45efef158"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "uncalibrated",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 79,
+      "brier": 0.21112262078264238,
+      "nll": 0.6220170241201164,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 12,
+          "prediction": 0.13540537467830846,
+          "frequency": 0.4166666666666667
+        },
+        {
+          "lower": 0.2,
+          "n": 18,
+          "prediction": 0.33178022112734545,
+          "frequency": 0.5555555555555556
+        },
+        {
+          "lower": 0.4,
+          "n": 13,
+          "prediction": 0.5031123124279475,
+          "frequency": 0.5384615384615384
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7086665247109557,
+          "frequency": 0.9259259259259259
+        },
+        {
+          "lower": 0.8,
+          "n": 9,
+          "prediction": 0.843919725617296,
+          "frequency": 0.8888888888888888
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.13399735271884236,
+        "nll": 0.44765604887541055,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.9230769230769231
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.75
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28714749610185397,
+        "nll": 0.770986757551588,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 14,
+            "prediction": 0.3579590092026788,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.4,
+            "n": 13,
+            "prediction": 0.5031123124279475,
+            "frequency": 0.5384615384615384
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.2974782527589433,
+        "nll": 0.8695709424358063,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 12,
+            "prediction": 0.13540537467830846,
+            "frequency": 0.4166666666666667
+          },
+          {
+            "lower": 0.2,
+            "n": 4,
+            "prediction": 0.24015446286367856,
+            "frequency": 0.25
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.024355336895054983,
+        "nll": 0.1633143177268506,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 1,
+            "prediction": 0.77074099629946,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.05319865319865319,
+    "attendance_seed_range": [
+      3,
+      4
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "a0092157715aea50d9e04ec2b6d579f82550c66cd1660db0eee74b47069fd8f1",
+      "4836eca007638bf9343b4e465175d9614c072cc299f472b6a4a78e442fc539f5",
+      "3ab3be9562b484cca4a98d5c9433d857788cc4b1f3e196e95027f7b53812e5ce"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "uncalibrated",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.173059359350026,
+      "nll": 0.5201699991789807,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 5,
+          "prediction": 0.14066761523179747,
+          "frequency": 0.0
+        },
+        {
+          "lower": 0.2,
+          "n": 20,
+          "prediction": 0.3289005674800289,
+          "frequency": 0.5
+        },
+        {
+          "lower": 0.4,
+          "n": 16,
+          "prediction": 0.4838585057943996,
+          "frequency": 0.5
+        },
+        {
+          "lower": 0.6,
+          "n": 26,
+          "prediction": 0.7267078354843546,
+          "frequency": 0.8846153846153846
+        },
+        {
+          "lower": 0.8,
+          "n": 8,
+          "prediction": 0.8417523061510145,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.11597932357132548,
+        "nll": 0.40082022809262347,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 23,
+            "prediction": 0.7185777900354138,
+            "frequency": 0.8695652173913043
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.26447658207060426,
+        "nll": 0.7236201698221509,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 6,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.4,
+            "n": 11,
+            "prediction": 0.49660565299018644,
+            "frequency": 0.5454545454545454
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.2901748798108198,
+        "nll": 0.7833603607797024,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.32902567741017147,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.4,
+            "n": 5,
+            "prediction": 0.45581478196366854,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.030255135762490688,
+        "nll": 0.18448089694321196,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 5,
+            "prediction": 0.14066761523179747,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.2,
+            "n": 2,
+            "prediction": 0.23290382060833054,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.029592773214931135,
+        "nll": 0.18293835444124595,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 3,
+            "prediction": 0.7890381839262343,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8678018725843958,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.038047138047138045,
+    "attendance_seed_range": [
+      2,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "5d22e87daf6c9cfbf68680cb279d53d2d7f9d8a2bcfe3fa6100cebaa5a49593c",
+      "b9b838aa7c6c0c4f07a0680ed6ff386a9264e82b308b3266c6d2d9a562fef9f2",
+      "6d70a760ccc6b6531baf89b3452177486f035dd9e16e140e5d172ea20ed1b272"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "uncalibrated",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 142,
+      "brier": 0.2159629682053565,
+      "nll": 0.6203160511107998,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 8,
+          "prediction": 0.14101436307325874,
+          "frequency": 0.375
+        },
+        {
+          "lower": 0.2,
+          "n": 41,
+          "prediction": 0.32988468069631627,
+          "frequency": 0.7073170731707317
+        },
+        {
+          "lower": 0.4,
+          "n": 25,
+          "prediction": 0.4827072818470389,
+          "frequency": 0.68
+        },
+        {
+          "lower": 0.6,
+          "n": 56,
+          "prediction": 0.7199836352665596,
+          "frequency": 0.9107142857142857
+        },
+        {
+          "lower": 0.8,
+          "n": 12,
+          "prediction": 0.8368654791423803,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.12572350038411373,
+        "nll": 0.4272181948399212,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 52,
+            "prediction": 0.7150236159009457,
+            "frequency": 0.9038461538461539
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.8571428571428571
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.290534522822192,
+        "nll": 0.7772132579993085,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 15,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.7333333333333333
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.49725549868955954,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.33389158330899904,
+        "nll": 0.8700476920664086,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 24,
+            "prediction": 0.3187385549449024,
+            "frequency": 0.7083333333333334
+          },
+          {
+            "lower": 0.4,
+            "n": 8,
+            "prediction": 0.45179232105668243,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.29872707007934707,
+        "nll": 0.8475541256487503,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 8,
+            "prediction": 0.14101436307325874,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.2,
+            "n": 2,
+            "prediction": 0.23290382060833054,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.031127651722925358,
+        "nll": 0.18790156706530842,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 4,
+            "prediction": 0.7844638870195406,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.07542087542087542,
+    "attendance_seed_range": [
+      1,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "03fb51b3958f741a1e889fa7b5bef3125ac6a857dcb6201e1fa2380770512042",
+      "2ffdb0828d074839a4c1a82f8973d6ead2df01f944953d9fe8f1c10c755f986f",
+      "eb8d61ce3194da035c902cdf673e4844e33654cd6c54d4d4d1500e39302b7f58"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "local",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.16784520969564432,
+      "nll": 0.5084113558503401,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 13,
+          "prediction": 0.36060577401430643,
+          "frequency": 0.6923076923076923
+        },
+        {
+          "lower": 0.4,
+          "n": 14,
+          "prediction": 0.4984517406990844,
+          "frequency": 0.6428571428571429
+        },
+        {
+          "lower": 0.6,
+          "n": 34,
+          "prediction": 0.7254827073086126,
+          "frequency": 0.8823529411764706
+        },
+        {
+          "lower": 0.8,
+          "n": 14,
+          "prediction": 0.8564374810899038,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.12728878653321613,
+        "nll": 0.43140604887541056,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.8846153846153846
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28513059556902426,
+        "nll": 0.7667537177065425,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 13,
+            "prediction": 0.36060577401430643,
+            "frequency": 0.6923076923076923
+          },
+          {
+            "lower": 0.4,
+            "n": 14,
+            "prediction": 0.4984517406990844,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.059511169489621346,
+        "nll": 0.24923999135758562,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 8,
+            "prediction": 0.7878946096995607,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.8,
+            "n": 10,
+            "prediction": 0.8727313776388123,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.09158249158249158,
+    "attendance_seed_range": [
+      7,
+      11
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "6e9d4d72ce8812a4594d48db48870bca0cc1f9296f071f39ff8d049cf8b0f621",
+      "9973e24838a2758834fd2e3bc18199ddef3a6b77cb046c02bdcdda2b8084c9a6",
+      "b312ea9f844d4c6db8ac59953159a5dc11e14959108bc83ae868b7fa00fa36b4"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "local",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 79,
+      "brier": 0.20507060891907258,
+      "nll": 0.5952285721959486,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 26,
+          "prediction": 0.3297950867122323,
+          "frequency": 0.5384615384615384
+        },
+        {
+          "lower": 0.4,
+          "n": 17,
+          "prediction": 0.4934031738152887,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7086665247109557,
+          "frequency": 0.9259259259259259
+        },
+        {
+          "lower": 0.8,
+          "n": 9,
+          "prediction": 0.843919725617296,
+          "frequency": 0.8888888888888888
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.13399735271884236,
+        "nll": 0.44765604887541055,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.9230769230769231
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.75
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28714749610185397,
+        "nll": 0.770986757551588,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 14,
+            "prediction": 0.3579590092026788,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.4,
+            "n": 13,
+            "prediction": 0.5031123124279475,
+            "frequency": 0.5384615384615384
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.26759644418256723,
+        "nll": 0.7373029610602276,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.29693717714004464,
+            "frequency": 0.4166666666666667
+          },
+          {
+            "lower": 0.4,
+            "n": 4,
+            "prediction": 0.4618484733241476,
+            "frequency": 0.25
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.024355336895054983,
+        "nll": 0.1633143177268506,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 1,
+            "prediction": 0.77074099629946,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06666666666666667,
+    "attendance_seed_range": [
+      2,
+      3
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "e11147f319f10b8cf13112476f373061e26d9cbfd448b085d4cbd3608ccaf2ee",
+      "b108e85a1c698fe1d254655b6950a660100670484650de3c9d9a76f706dbad78",
+      "f590a8d4f28a7adfe1a14a0a396c3d13c14f86448b4b5315e71166a085e190e1"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "local",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.18208825204270893,
+      "nll": 0.5435253325658082,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 23,
+          "prediction": 0.3322875662297554,
+          "frequency": 0.43478260869565216
+        },
+        {
+          "lower": 0.4,
+          "n": 18,
+          "prediction": 0.48029559637909763,
+          "frequency": 0.4444444444444444
+        },
+        {
+          "lower": 0.6,
+          "n": 26,
+          "prediction": 0.7267078354843546,
+          "frequency": 0.8846153846153846
+        },
+        {
+          "lower": 0.8,
+          "n": 8,
+          "prediction": 0.8417523061510145,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.11597932357132548,
+        "nll": 0.40082022809262347,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 23,
+            "prediction": 0.7185777900354138,
+            "frequency": 0.8695652173913043
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.26447658207060426,
+        "nll": 0.7236201698221509,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 6,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.4,
+            "n": 11,
+            "prediction": 0.49660565299018644,
+            "frequency": 0.5454545454545454
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.2901748798108198,
+        "nll": 0.7833603607797024,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.32902567741017147,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.4,
+            "n": 5,
+            "prediction": 0.45581478196366854,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1269932717555219,
+        "nll": 0.4347166118020777,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 5,
+            "prediction": 0.30608206298009166,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.029592773214931135,
+        "nll": 0.18293835444124595,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 3,
+            "prediction": 0.7890381839262343,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8678018725843958,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.041077441077441074,
+    "attendance_seed_range": [
+      2,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "d0edc120f2614cbd0ee7295fd5093c7fbf070270ecc5dacd990a97f4579decee",
+      "4b833b01a209f71d238fc397ab2cdaece168f933c6eee70f0e6062148ad54577",
+      "050e0e3582d70fac756e274b2120ddbaf91662e3b5b198dc967daef2156ee3c6"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "local",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 142,
+      "brier": 0.21229780700662004,
+      "nll": 0.6090717726361485,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 47,
+          "prediction": 0.3300938584759944,
+          "frequency": 0.6595744680851063
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.4804172847514569,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 56,
+          "prediction": 0.7199836352665596,
+          "frequency": 0.9107142857142857
+        },
+        {
+          "lower": 0.8,
+          "n": 12,
+          "prediction": 0.8368654791423803,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.12572350038411373,
+        "nll": 0.4272181948399212,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 52,
+            "prediction": 0.7150236159009457,
+            "frequency": 0.9038461538461539
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.8571428571428571
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.290534522822192,
+        "nll": 0.7772132579993085,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 15,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.7333333333333333
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.49725549868955954,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.33389158330899904,
+        "nll": 0.8700476920664086,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 24,
+            "prediction": 0.3187385549449024,
+            "frequency": 0.7083333333333334
+          },
+          {
+            "lower": 0.4,
+            "n": 8,
+            "prediction": 0.45179232105668243,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24668178105728936,
+        "nll": 0.6878853713087026,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 8,
+            "prediction": 0.306868385129929,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.031127651722925358,
+        "nll": 0.18790156706530842,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 4,
+            "prediction": 0.7844638870195406,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.08451178451178451,
+    "attendance_seed_range": [
+      0,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "bfd499cbe87c348b33bf9e7d0b9afa07bf4d3ca8efeb3ef62bfa9c56c21dd77c",
+      "efa301a3a9df8f150897a0d67052f8487cd83267cf46c9ebefc9985d387302f9",
+      "312994aa8485fe604134024317a9acd7133c677450a77a06176b3c8ca9781998"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "macro",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.16784520969564432,
+      "nll": 0.5084113558503401,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 13,
+          "prediction": 0.36060577401430643,
+          "frequency": 0.6923076923076923
+        },
+        {
+          "lower": 0.4,
+          "n": 14,
+          "prediction": 0.4984517406990844,
+          "frequency": 0.6428571428571429
+        },
+        {
+          "lower": 0.6,
+          "n": 34,
+          "prediction": 0.7254827073086126,
+          "frequency": 0.8823529411764706
+        },
+        {
+          "lower": 0.8,
+          "n": 14,
+          "prediction": 0.8564374810899038,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.12728878653321613,
+        "nll": 0.43140604887541056,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.8846153846153846
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28513059556902426,
+        "nll": 0.7667537177065425,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 13,
+            "prediction": 0.36060577401430643,
+            "frequency": 0.6923076923076923
+          },
+          {
+            "lower": 0.4,
+            "n": 14,
+            "prediction": 0.4984517406990844,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.059511169489621346,
+        "nll": 0.24923999135758562,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 8,
+            "prediction": 0.7878946096995607,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.8,
+            "n": 10,
+            "prediction": 0.8727313776388123,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.09158249158249158,
+    "attendance_seed_range": [
+      7,
+      11
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "6e9d4d72ce8812a4594d48db48870bca0cc1f9296f071f39ff8d049cf8b0f621",
+      "9973e24838a2758834fd2e3bc18199ddef3a6b77cb046c02bdcdda2b8084c9a6",
+      "b312ea9f844d4c6db8ac59953159a5dc11e14959108bc83ae868b7fa00fa36b4"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "macro",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 79,
+      "brier": 0.20507060891907258,
+      "nll": 0.5952285721959486,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 26,
+          "prediction": 0.3297950867122323,
+          "frequency": 0.5384615384615384
+        },
+        {
+          "lower": 0.4,
+          "n": 17,
+          "prediction": 0.4934031738152887,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7086665247109557,
+          "frequency": 0.9259259259259259
+        },
+        {
+          "lower": 0.8,
+          "n": 9,
+          "prediction": 0.843919725617296,
+          "frequency": 0.8888888888888888
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.13399735271884236,
+        "nll": 0.44765604887541055,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.9230769230769231
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.75
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28714749610185397,
+        "nll": 0.770986757551588,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 14,
+            "prediction": 0.3579590092026788,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.4,
+            "n": 13,
+            "prediction": 0.5031123124279475,
+            "frequency": 0.5384615384615384
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.26759644418256723,
+        "nll": 0.7373029610602276,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.29693717714004464,
+            "frequency": 0.4166666666666667
+          },
+          {
+            "lower": 0.4,
+            "n": 4,
+            "prediction": 0.4618484733241476,
+            "frequency": 0.25
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.024355336895054983,
+        "nll": 0.1633143177268506,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 1,
+            "prediction": 0.77074099629946,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06666666666666667,
+    "attendance_seed_range": [
+      2,
+      3
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "e11147f319f10b8cf13112476f373061e26d9cbfd448b085d4cbd3608ccaf2ee",
+      "b108e85a1c698fe1d254655b6950a660100670484650de3c9d9a76f706dbad78",
+      "f590a8d4f28a7adfe1a14a0a396c3d13c14f86448b4b5315e71166a085e190e1"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "macro",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.18208825204270893,
+      "nll": 0.5435253325658082,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 23,
+          "prediction": 0.3322875662297554,
+          "frequency": 0.43478260869565216
+        },
+        {
+          "lower": 0.4,
+          "n": 18,
+          "prediction": 0.48029559637909763,
+          "frequency": 0.4444444444444444
+        },
+        {
+          "lower": 0.6,
+          "n": 26,
+          "prediction": 0.7267078354843546,
+          "frequency": 0.8846153846153846
+        },
+        {
+          "lower": 0.8,
+          "n": 8,
+          "prediction": 0.8417523061510145,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.11597932357132548,
+        "nll": 0.40082022809262347,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 23,
+            "prediction": 0.7185777900354138,
+            "frequency": 0.8695652173913043
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.26447658207060426,
+        "nll": 0.7236201698221509,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 6,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.4,
+            "n": 11,
+            "prediction": 0.49660565299018644,
+            "frequency": 0.5454545454545454
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.2901748798108198,
+        "nll": 0.7833603607797024,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.32902567741017147,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.4,
+            "n": 5,
+            "prediction": 0.45581478196366854,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1269932717555219,
+        "nll": 0.4347166118020777,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 5,
+            "prediction": 0.30608206298009166,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.029592773214931135,
+        "nll": 0.18293835444124595,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 3,
+            "prediction": 0.7890381839262343,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8678018725843958,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.041077441077441074,
+    "attendance_seed_range": [
+      2,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "d0edc120f2614cbd0ee7295fd5093c7fbf070270ecc5dacd990a97f4579decee",
+      "4b833b01a209f71d238fc397ab2cdaece168f933c6eee70f0e6062148ad54577",
+      "050e0e3582d70fac756e274b2120ddbaf91662e3b5b198dc967daef2156ee3c6"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "macro",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 142,
+      "brier": 0.21229780700662004,
+      "nll": 0.6090717726361485,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 47,
+          "prediction": 0.3300938584759944,
+          "frequency": 0.6595744680851063
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.4804172847514569,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 56,
+          "prediction": 0.7199836352665596,
+          "frequency": 0.9107142857142857
+        },
+        {
+          "lower": 0.8,
+          "n": 12,
+          "prediction": 0.8368654791423803,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.12572350038411373,
+        "nll": 0.4272181948399212,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 52,
+            "prediction": 0.7150236159009457,
+            "frequency": 0.9038461538461539
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.8571428571428571
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.290534522822192,
+        "nll": 0.7772132579993085,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 15,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.7333333333333333
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.49725549868955954,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.33389158330899904,
+        "nll": 0.8700476920664086,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 24,
+            "prediction": 0.3187385549449024,
+            "frequency": 0.7083333333333334
+          },
+          {
+            "lower": 0.4,
+            "n": 8,
+            "prediction": 0.45179232105668243,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24668178105728936,
+        "nll": 0.6878853713087026,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 8,
+            "prediction": 0.306868385129929,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.031127651722925358,
+        "nll": 0.18790156706530842,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 4,
+            "prediction": 0.7844638870195406,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.08451178451178451,
+    "attendance_seed_range": [
+      0,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "bfd499cbe87c348b33bf9e7d0b9afa07bf4d3ca8efeb3ef62bfa9c56c21dd77c",
+      "efa301a3a9df8f150897a0d67052f8487cd83267cf46c9ebefc9985d387302f9",
+      "312994aa8485fe604134024317a9acd7133c677450a77a06176b3c8ca9781998"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "joint",
+    "event_id": "test-04",
+    "scenario": "S1",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.16784520969564432,
+      "nll": 0.5084113558503401,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 13,
+          "prediction": 0.36060577401430643,
+          "frequency": 0.6923076923076923
+        },
+        {
+          "lower": 0.4,
+          "n": 14,
+          "prediction": 0.4984517406990844,
+          "frequency": 0.6428571428571429
+        },
+        {
+          "lower": 0.6,
+          "n": 34,
+          "prediction": 0.7254827073086126,
+          "frequency": 0.8823529411764706
+        },
+        {
+          "lower": 0.8,
+          "n": 14,
+          "prediction": 0.8564374810899038,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.12728878653321613,
+        "nll": 0.43140604887541056,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.8846153846153846
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28513059556902426,
+        "nll": 0.7667537177065425,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 13,
+            "prediction": 0.36060577401430643,
+            "frequency": 0.6923076923076923
+          },
+          {
+            "lower": 0.4,
+            "n": 14,
+            "prediction": 0.4984517406990844,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "attend": {
+        "n": 18,
+        "brier": 0.059511169489621346,
+        "nll": 0.24923999135758562,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 8,
+            "prediction": 0.7878946096995607,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.8,
+            "n": 10,
+            "prediction": 0.8727313776388123,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.09158249158249158,
+    "attendance_seed_range": [
+      7,
+      11
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "6e9d4d72ce8812a4594d48db48870bca0cc1f9296f071f39ff8d049cf8b0f621",
+      "9973e24838a2758834fd2e3bc18199ddef3a6b77cb046c02bdcdda2b8084c9a6",
+      "b312ea9f844d4c6db8ac59953159a5dc11e14959108bc83ae868b7fa00fa36b4"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "joint",
+    "event_id": "test-05",
+    "scenario": "S2",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 79,
+      "brier": 0.20507060891907258,
+      "nll": 0.5952285721959486,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 26,
+          "prediction": 0.3297950867122323,
+          "frequency": 0.5384615384615384
+        },
+        {
+          "lower": 0.4,
+          "n": 17,
+          "prediction": 0.4934031738152887,
+          "frequency": 0.47058823529411764
+        },
+        {
+          "lower": 0.6,
+          "n": 27,
+          "prediction": 0.7086665247109557,
+          "frequency": 0.9259259259259259
+        },
+        {
+          "lower": 0.8,
+          "n": 9,
+          "prediction": 0.843919725617296,
+          "frequency": 0.8888888888888888
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 30,
+        "brier": 0.13399735271884236,
+        "nll": 0.44765604887541055,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 26,
+            "prediction": 0.7062790450344748,
+            "frequency": 0.9230769230769231
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.75
+          }
+        ]
+      },
+      "join": {
+        "n": 27,
+        "brier": 0.28714749610185397,
+        "nll": 0.770986757551588,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 14,
+            "prediction": 0.3579590092026788,
+            "frequency": 0.6428571428571429
+          },
+          {
+            "lower": 0.4,
+            "n": 13,
+            "prediction": 0.5031123124279475,
+            "frequency": 0.5384615384615384
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 0,
+        "brier": null,
+        "nll": null,
+        "reliability_bins": []
+      },
+      "cancel": {
+        "n": 16,
+        "brier": 0.26759644418256723,
+        "nll": 0.7373029610602276,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.29693717714004464,
+            "frequency": 0.4166666666666667
+          },
+          {
+            "lower": 0.4,
+            "n": 4,
+            "prediction": 0.4618484733241476,
+            "frequency": 0.25
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 6,
+        "brier": 0.024355336895054983,
+        "nll": 0.1633143177268506,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 1,
+            "prediction": 0.77074099629946,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.06666666666666667,
+    "attendance_seed_range": [
+      2,
+      3
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "e11147f319f10b8cf13112476f373061e26d9cbfd448b085d4cbd3608ccaf2ee",
+      "b108e85a1c698fe1d254655b6950a660100670484650de3c9d9a76f706dbad78",
+      "f590a8d4f28a7adfe1a14a0a396c3d13c14f86448b4b5315e71166a085e190e1"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "joint",
+    "event_id": "test-comp-06",
+    "scenario": "S3",
+    "population_regime": "same_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 75,
+      "brier": 0.18208825204270893,
+      "nll": 0.5435253325658082,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 23,
+          "prediction": 0.3322875662297554,
+          "frequency": 0.43478260869565216
+        },
+        {
+          "lower": 0.4,
+          "n": 18,
+          "prediction": 0.48029559637909763,
+          "frequency": 0.4444444444444444
+        },
+        {
+          "lower": 0.6,
+          "n": 26,
+          "prediction": 0.7267078354843546,
+          "frequency": 0.8846153846153846
+        },
+        {
+          "lower": 0.8,
+          "n": 8,
+          "prediction": 0.8417523061510145,
+          "frequency": 1.0
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 27,
+        "brier": 0.11597932357132548,
+        "nll": 0.40082022809262347,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 23,
+            "prediction": 0.7185777900354138,
+            "frequency": 0.8695652173913043
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8157027397176331,
+            "frequency": 1.0
+          }
+        ]
+      },
+      "join": {
+        "n": 17,
+        "brier": 0.26447658207060426,
+        "nll": 0.7236201698221509,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 6,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.6666666666666666
+          },
+          {
+            "lower": 0.4,
+            "n": 11,
+            "prediction": 0.49660565299018644,
+            "frequency": 0.5454545454545454
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 17,
+        "brier": 0.2901748798108198,
+        "nll": 0.7833603607797024,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 12,
+            "prediction": 0.32902567741017147,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.4,
+            "n": 5,
+            "prediction": 0.45581478196366854,
+            "frequency": 0.4
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 7,
+        "brier": 0.1269932717555219,
+        "nll": 0.4347166118020777,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 5,
+            "prediction": 0.30608206298009166,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.0
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 7,
+        "brier": 0.029592773214931135,
+        "nll": 0.18293835444124595,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 3,
+            "prediction": 0.7890381839262343,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 4,
+            "prediction": 0.8678018725843958,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.041077441077441074,
+    "attendance_seed_range": [
+      2,
+      5
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "d0edc120f2614cbd0ee7295fd5093c7fbf070270ecc5dacd990a97f4579decee",
+      "4b833b01a209f71d238fc397ab2cdaece168f933c6eee70f0e6062148ad54577",
+      "050e0e3582d70fac756e274b2120ddbaf91662e3b5b198dc967daef2156ee3c6"
+    ]
+  },
+  {
+    "backend": "simple_statistical",
+    "method": "joint",
+    "event_id": "test-new-07",
+    "scenario": "S3",
+    "population_regime": "new_people_new_event",
+    "provenance": "synthetic",
+    "model_hash": "5870d2ee9103b46672fc22b043ebf77c99e63ad2591abcbe282764483e840963",
+    "one_step": {
+      "n": 142,
+      "brier": 0.21229780700662004,
+      "nll": 0.6090717726361485,
+      "reliability_bins": [
+        {
+          "lower": 0.0,
+          "n": 0,
+          "prediction": null,
+          "frequency": null
+        },
+        {
+          "lower": 0.2,
+          "n": 47,
+          "prediction": 0.3300938584759944,
+          "frequency": 0.6595744680851063
+        },
+        {
+          "lower": 0.4,
+          "n": 27,
+          "prediction": 0.4804172847514569,
+          "frequency": 0.6666666666666666
+        },
+        {
+          "lower": 0.6,
+          "n": 56,
+          "prediction": 0.7199836352665596,
+          "frequency": 0.9107142857142857
+        },
+        {
+          "lower": 0.8,
+          "n": 12,
+          "prediction": 0.8368654791423803,
+          "frequency": 0.9166666666666666
+        }
+      ]
+    },
+    "stage_scores": {
+      "view": {
+        "n": 59,
+        "brier": 0.12572350038411373,
+        "nll": 0.4272181948399212,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 52,
+            "prediction": 0.7150236159009457,
+            "frequency": 0.9038461538461539
+          },
+          {
+            "lower": 0.8,
+            "n": 7,
+            "prediction": 0.8157027397176331,
+            "frequency": 0.8571428571428571
+          }
+        ]
+      },
+      "join": {
+        "n": 32,
+        "brier": 0.290534522822192,
+        "nll": 0.7772132579993085,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 15,
+            "prediction": 0.36064926324364316,
+            "frequency": 0.7333333333333333
+          },
+          {
+            "lower": 0.4,
+            "n": 17,
+            "prediction": 0.49725549868955954,
+            "frequency": 0.5882352941176471
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "share": {
+        "n": 32,
+        "brier": 0.33389158330899904,
+        "nll": 0.8700476920664086,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 24,
+            "prediction": 0.3187385549449024,
+            "frequency": 0.7083333333333334
+          },
+          {
+            "lower": 0.4,
+            "n": 8,
+            "prediction": 0.45179232105668243,
+            "frequency": 0.875
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "cancel": {
+        "n": 10,
+        "brier": 0.24668178105728936,
+        "nll": 0.6878853713087026,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 8,
+            "prediction": 0.306868385129929,
+            "frequency": 0.375
+          },
+          {
+            "lower": 0.4,
+            "n": 2,
+            "prediction": 0.4517923210566823,
+            "frequency": 0.5
+          },
+          {
+            "lower": 0.6,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.8,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          }
+        ]
+      },
+      "attend": {
+        "n": 9,
+        "brier": 0.031127651722925358,
+        "nll": 0.18790156706530842,
+        "reliability_bins": [
+          {
+            "lower": 0.0,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.2,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.4,
+            "n": 0,
+            "prediction": null,
+            "frequency": null
+          },
+          {
+            "lower": 0.6,
+            "n": 4,
+            "prediction": 0.7844638870195406,
+            "frequency": 1.0
+          },
+          {
+            "lower": 0.8,
+            "n": 5,
+            "prediction": 0.8664933143370263,
+            "frequency": 1.0
+          }
+        ]
+      }
+    },
+    "free_rollout_normalized_mae": 0.08451178451178451,
+    "attendance_seed_range": [
+      0,
+      6
+    ],
+    "interval_kind": "min-max of 3 simulation seeds; NOT empirical CI",
+    "seeds": [
+      21,
+      22,
+      23
+    ],
+    "tail_hashes": [
+      "bfd499cbe87c348b33bf9e7d0b9afa07bf4d3ca8efeb3ef62bfa9c56c21dd77c",
+      "efa301a3a9df8f150897a0d67052f8487cd83267cf46c9ebefc9985d387302f9",
+      "312994aa8485fe604134024317a9acd7133c677450a77a06176b3c8ca9781998"
+    ]
+  }
+]
