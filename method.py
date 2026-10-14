@@ -6,6 +6,8 @@ This is model-internal expected reduction, not guaranteed real-error reduction.
 """
 import torch
 
+TRAJECTORY_SCALE = 0.04
+
 
 def construct_compatible_set(train_cache, process_slack=0.045,
                              trajectory_limit=0.10, mode='joint'):
@@ -33,7 +35,8 @@ def construct_compatible_set(train_cache, process_slack=0.045,
         keep = process_ok & trajectory_ok
     if not keep.any():
         raise ValueError('Empty compatible set: model inadequacy; do not silently relax thresholds')
-    weights = keep.float() / keep.sum()
+    energy = trajectory_error.square() / (2 * TRAJECTORY_SCALE**2)
+    weights = torch.softmax((-energy).masked_fill(~keep, -torch.inf), dim=0)
     return {'weights': weights, 'mask': keep, 'process_error': process_error,
             'trajectory_error': trajectory_error}
 
