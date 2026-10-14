@@ -50,3 +50,22 @@
 阅读 `ROUND2_RESULTS.md`，中英文论文第 4.5 节位于 `paper/sections/05_round2.tex` 和 `paper/sections_zh/05_round2.tex`。中文版从 PDF 第 10 页开始，英文版从第 11 页开始。使用 `reproduce_round2.ps1` 或 `.sh` 复现冻结版本和论文；不要将旧 V1 锁直接应用到新的基础设施。新结果仅为 tested_synthetic，validated_real 仍为空。
 
 最终核验：一键 PowerShell 复现通过，英文 19 页 / 中文 18 页，均零编译诊断；30 个候选源码及决策、30 组逐活动统计已独立核对。原项目 374 个受控源文件无新增差异；仅原先已有的两处内部 Git refs 差异，未回滚。完整候选源码已另存 provenance/v2/candidates/，拒绝 refs 也保留。
+
+
+## 2026-10-14 标准版 V3 / V0：当前默认入口
+
+用户本轮授权重构 prepare_and_cache.py / evaluate.py / method.py 并替换默认缓存。独立分支为 exp/v3-standard-v0，代码基线 494ddf9；算法哈希 3551eea8b92707f76232e7b226ac93fdbecd3ff9fd52ec1614ef2ca295d16ba7。本次没有启动搜索循环，V0 的算法在初次开发评测之后没有改动。
+
+默认 data/rollout_cache.pt 已是 V3；V1 缓存、入口和 V2 方法的字节快照在 provenance/v3/previous/。V1/V2 完整版本保留于 exp/v2-non-collapsed / dac68e8，以及 dist/v2-before-v3.zip。旧锁不适用于当前默认入口，当前锁是 infrastructure.v3.lock.json。legacy 未修改，原项目仍只读。
+
+200 候选中含 25 种不同预测机制、100 个历史相容候选，历史两两轨迹最大 RMSE 为 0；组合探针 / 测试设计最大分歧 0.256035 / 0.233434。并非所有候选对都相差 >.18。初始 ESS=100，去掉四种无关审计倾向后的预测机制 ESS=25。五个主动对照同一先验，预算按成本 0.5/1/2 累计。32 个潜在事件各有四条相关传感记录，使用条件联合似然而非重复独立计数；MCAR 缺失被边缘化。
+
+V0 开发 Full AUC 0.085853629；B0->B16 RMSE 0.134855404->0.073028207，在 [0,2,4,8,12,16] 上单调下降。Random/Entropy/ParamIG/Standard_OED AUC 为 0.114701/0.112174/0.102989/0.113458，Full 相对改善 25.15%/23.46%/16.64%/24.33%，配对 95% 世界 bootstrap 区间均大于零（未作多重比较校正）。最终 Brier 0.193683，快速运行 7.63s，完整开发消融 6.40s。
+
+必须保留负结果：NoBatch AUC 0.086398，差值区间跨零；同批同事件比例 42.9% 对 Full 17.9%，说明机制分支确实生效，但没有显著预测收益。MAP AUC 0.082177，数值优于 Full，差值区间也跨零；没有人为更换平局规则让其失败。NoProbes 0.113458，NoSharing 0.123833。NoSharing 最初 800 粒子引入边际先验混杂，原运行与缓存保存在 pre_balance/；修正为 3200 个分层平衡联合粒子（V0 下 400 个非零），三个活动初始边际与 Full 完全一致。联合独立性仍为有限粒子近似。除该结构缓存外，算法、shared 缓存、训练/证据/真值与所有其他策略曲线经校验完全不变。这是一次明确记录的消融正确性修复，不是额外算法搜索。
+
+测试集未解封，未创建 test_release.json。本轮仅 tested_synthetic 的开发验证，不能声称所有核心模块显著有效、SOTA、真实数据验证或官方比赛/MIT 成绩。现有 paper/ 仍是 V1/V2 论文，未把 V3 开发结果偷偷写成测试结论。
+
+结果入口：V3_BASELINE.md；指定运行：provenance/v3/v0.json；8 项科学契约测试通过；scripts/report_standard_v3.py 独立核验全部成本、重复索引、同先验、27 组逐活动统计及修复前后不变性。运行默认 evaluate.py --split dev --mode fast_dev 或 --mode full_paper_ablation。默认 prepare_and_cache.py 已执行，已有冻结缓存时拒绝重复生成。下一步若继续研究，需要新的明确指令；不要直接调用历史 V1/V2 搜索控制器。
+
+原项目 374 个受控源码无新增差异，仅两处既有内部 Git refs 差异；不回滚。

@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "494ddf9",
+  "method_sha256": "3551eea8b92707f76232e7b226ac93fdbecd3ff9fd52ec1614ef2ca295d16ba7",
+  "cache_sha256": "b80aa03d09becafc136b4dabab0b591d39a70c338ea231478a6ae8f61c78858d",
+  "fast_result": "results/v3/dev-fast_dev-b99c5cb68dc8.json",
+  "ablation_result": "results/v3/dev-full_paper_ablation-30421d8b3efe.json",
+  "pre_balance_fast": "results/v3/dev-fast_dev-86105ac7852d.json",
+  "pre_balance_ablation": "results/v3/dev-full_paper_ablation-f112e3d990bd.json",
+  "search_trials": 0,
+  "test_status": "sealed",
+  "repeated_runs": "infrastructure correctness repair only; not independent trials"
+}

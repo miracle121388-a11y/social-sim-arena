@@ -1,0 +1,16 @@
+{
+  "same_primary_prior": true,
+  "costs_and_no_repeated_indices_verified": true,
+  "activity_statistics_verified": 27,
+  "primary_results_unchanged_after_repair": true,
+  "method_sha256": "3551eea8b92707f76232e7b226ac93fdbecd3ff9fd52ec1614ef2ca295d16ba7",
+  "initial_ess": 100.0,
+  "predictive_ess_after_nuisance_marginalization": 25.00000111758713,
+  "no_sharing_initial_marginal_TV": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "test_unopened": true,
+  "unit_tests_passed": 8
+}

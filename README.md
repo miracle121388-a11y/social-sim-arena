@@ -1,3 +1,24 @@
+# 标准版 V3 / V0：当前默认入口
+
+本次基准重构与 V0 初始化完成，未启动搜索，测试集仍封存。代码基线在分支 `exp/v3-standard-v0`。完整结果与限制见 [V3_BASELINE.md](V3_BASELINE.md)。
+
+- 默认 `prepare_and_cache.py`、`evaluate.py`、`method.py` 已升级；原 V1/V2 完整版本在分支 `exp/v2-non-collapsed` / `dac68e8` 和 `dist/v2-before-v3.zip`。
+- 默认缓存已生成并替换，旧缓存已做字节级归档；再次运行准备脚本会拒绝覆盖 V3。
+- 初始 ESS 100（去除无关参数后为 25），Full 开发 AUC 0.085854，B0→B16 RMSE 0.134855→0.073028。
+- 五个主动方法使用完全相同的先验；成本预算和相关审计记录的联合似然均经过核对。
+- Full 优于四个主动基线；**NoBatch 与 MAP 的比较没有显著优势**，不宣称所有模块均有效。
+
+```powershell
+.\.venv-research\Scripts\python.exe -B evaluate.py --split dev --mode fast_dev
+.\.venv-research\Scripts\python.exe -B evaluate.py --split dev --mode full_paper_ablation
+.\.venv-research\Scripts\python.exe -I -B tests/test_standard_v3.py
+.\.venv-research\Scripts\python.exe -I -B scripts/report_standard_v3.py
+```
+
+当前固定锁为 `infrastructure.v3.lock.json`。以下是历史 V2/V1 说明，其中的锁和复现命令只适用于对应归档版本；现有论文仍报告 V1/V2。
+
+---
+
 # AutoResearch Round 2：非坍缩取证实验
 
 当前分支 `exp/v2-non-collapsed` 已完成并封存 30 轮搜索。最优方法为 `0d094ec`，初始有效机制数 26.45，开发 / 测试 AUC 为 0.07569 / 0.05776；同先验测试 AUC 比 Random / Entropy 低 50.1% / 56.6%。Full 与 ParamIG 持平，数据仍全部为构造的合成压力测试。
