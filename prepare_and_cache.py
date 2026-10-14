@@ -259,7 +259,12 @@ def build(device):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--device',default='auto',choices=['auto','cpu','cuda'])
+    parser.add_argument('--high-disagreement-mode', action='store_true',
+                        help='Build the separate preregistered V2 stress cache')
     args=parser.parse_args()
+    if args.high_disagreement_mode:
+        from v2_benchmark import main as build_v2
+        return build_v2(device_name(args.device))
     if path('data/rollout_cache.pt').exists():
         raise FileExistsError('Cache already exists. Preserve it; use a new benchmark workspace/version to regenerate.')
     started=time.perf_counter()

@@ -1,0 +1,392 @@
+[
+  {
+    "round": 1,
+    "config": {
+      "sigma": 0.003,
+      "ess_floor": 8.0,
+      "process_weight": 0.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 8, sigma 0.003, process 0, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 2,
+    "config": {
+      "sigma": 0.003,
+      "ess_floor": 8.0,
+      "process_weight": 0.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 8, sigma 0.003, process 0, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 3,
+    "config": {
+      "sigma": 0.003,
+      "ess_floor": 8.0,
+      "process_weight": 0.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 8, sigma 0.003, process 0, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 4,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 8.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 8, sigma 0.008, process 8, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 5,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 8.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 8, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 6,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 8.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 8, sigma 0.008, process 8, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 7,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 8.0,
+      "process_weight": 32.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 8, sigma 0.02, process 32, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 8,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 8.0,
+      "process_weight": 32.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 8, sigma 0.02, process 32, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 9,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 8.0,
+      "process_weight": 32.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 8, sigma 0.02, process 32, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 10,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 11,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 12,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 13,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 16, sigma 0.008, process 8, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 14,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 16, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 15,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 16, sigma 0.008, process 8, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 16,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 24.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 24, sigma 0.008, process 8, mean, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 17,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 24.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 24, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 18,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 24.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 24, sigma 0.008, process 8, mean, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 19,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 32, worst_event, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 20,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 32, worst_event, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 21,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 32, worst_event, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 22,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 3.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 16, sigma 0.02, process 8, mean, tau 1, late 3, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 23,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 3.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 16, sigma 0.02, process 8, mean, tau 0.5, late 3, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 24,
+    "config": {
+      "sigma": 0.02,
+      "ess_floor": 16.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 3.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 16, sigma 0.02, process 8, mean, tau 2, late 3, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 25,
+    "config": {
+      "sigma": 0.04,
+      "ess_floor": 24.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 24, sigma 0.04, process 32, worst_event, tau 1, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 26,
+    "config": {
+      "sigma": 0.04,
+      "ess_floor": 24.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 24, sigma 0.04, process 32, worst_event, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 27,
+    "config": {
+      "sigma": 0.04,
+      "ess_floor": 24.0,
+      "process_weight": 32.0,
+      "objective": "worst_event",
+      "late_weight": 1.0,
+      "batch_fantasy": true,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 24, sigma 0.04, process 32, worst_event, tau 2, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 28,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": false,
+      "update_temperature": 1.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 1, late 1, fantasy False: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 29,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": false,
+      "update_temperature": 0.5
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy False: preserve ambiguity and transfer evidence under matched priors"
+  },
+  {
+    "round": 30,
+    "config": {
+      "sigma": 0.008,
+      "ess_floor": 12.0,
+      "process_weight": 8.0,
+      "objective": "mean",
+      "late_weight": 1.0,
+      "batch_fantasy": false,
+      "update_temperature": 2.0
+    },
+    "hypothesis": "ESS 12, sigma 0.008, process 8, mean, tau 2, late 1, fantasy False: preserve ambiguity and transfer evidence under matched priors"
+  }
+]

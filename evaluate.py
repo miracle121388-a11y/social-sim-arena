@@ -239,7 +239,12 @@ def main():
     parser.add_argument('--split',choices=['dev','test'],default='dev')
     parser.add_argument('--mode',choices=['fast_dev','full_paper_ablation'],default='fast_dev')
     parser.add_argument('--device',choices=['auto','cpu','cuda'],default='auto')
+    parser.add_argument('--campaign',choices=['v1','v2'],default='v1')
+    parser.add_argument('--method-version',choices=['current','v1'],default='current')
     args=parser.parse_args()
+    if args.campaign=='v2':
+        from v2_evaluation import main as evaluate_v2
+        return evaluate_v2(args,START)
     run_id=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
     result={'run_id':run_id,'split':args.split,'mode':args.mode,'method_sha256':digest('method.py')}
     try:

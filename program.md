@@ -1,5 +1,18 @@
 # AutoResearch: compatible mechanisms and active evidence
 
+## Round 2 override (2026-10-14; explicitly authorized)
+
+The independent branch `exp/v2-non-collapsed` uses the immutable protocol
+`provenance/v2/protocol.md`, `configs/high_disagreement_mode.json`, and
+`infrastructure.v2.lock.json`. Run `python v2_research.py` for exactly 30 valid
+trials. Only `method.py` changes during that campaign. KEEP additionally requires
+initial ESS >=8, initial and final audit Brier <=.195, a positive lower bound of
+the paired 95% world-bootstrap B0-minus-B16 error CI, and at least 5% lower
+same-prior AUC than BOTH Random and Entropy; runtime <=15 seconds. Every KEEP
+must improve the incumbent dev AUC by >1e-8. Test is loaded only after sealing.
+V1 originals and the previous campaign remain immutable. The historical rules
+below document V1 and do not limit the explicitly authorized Round-2 branch.
+
 Read README.md, AGENTS.md and STATUS.md first. This is an adaptation of Andrej Karpathy's single-edit-file paradigm: https://github.com/karpathy/autoresearch/blob/master/program.md . We freeze evaluation, commit a candidate before running it, then keep improvements and rewind rejected candidates. The coding agent supplies hypotheses; autoresearch.py supplies the Git state machine. No external LLM API is called.
 
 ## Fixed experiment

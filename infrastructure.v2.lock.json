@@ -1,0 +1,19 @@
+{
+  "campaign": "v2",
+  "files": {
+    "prepare_and_cache.py": "0224b30efc292ab3eaccb2302727a6bafe990db69267b3116a568bd7bbd15514",
+    "evaluate.py": "b9d8ec1e21e57b0a28a02c508b8ab3399765f72a3b41a3742fbdb6448848bb9d",
+    "program.md": "3e256182a58e4ed903db402acff945611628de4f1de5176c5dd87c9b5f76418e",
+    "v2_benchmark.py": "1fa94ab63b11cf4634bce7a1ff2267abb89bf232d2313d2ae7322c41255dbd00",
+    "v2_evaluation.py": "3517f11184daa4419c0585cd2e85160734c4d9195fbf46bbb1465d6d513f51c5",
+    "v2_research.py": "3bea6d7e99e409133d247f4bc6f3c5c88fede9eea0535e693fc67dc45381c16f",
+    "workspace.py": "822f035131538d8977fdc9299989c531fbc580f1d8b128c6dc3b9645b86101e0",
+    "configs/high_disagreement_mode.json": "4938e44c3d1976aba19bc9f597ac76c038d22f2ee11143c6fa115f627f3363c4",
+    "configs/v2_method_body.txt": "41c8c3363fc18d77a74f29e72e4848c0fe9facb512c3b3e2576cd786723b881f",
+    "configs/v2_trials.json": "b333bbd84317c2c55067c8cdbf94c68f75440b6d610648a658e1647fc69fffb2",
+    "tests/test_v2.py": "96fce59729b9acdf5b410190062f98bc6c5e49ddc7e2bddee93987e4f5ac1412",
+    "provenance/v2/protocol.md": "f65857a93bebf96d5625ab18ef4d9fdd4d5e391f2277e15355a1d616515b6b6e",
+    "data/v2/manifest.json": "11c2701f5864acf96ab511490e01d2276e87042986a28e973cfcf772e37178ae",
+    "provenance/v2/v1_snapshot/method.py": "b8389adc234ee11e923d59084eaeb83b3821986c5f2f714c9ad5a84ed14650af"
+  }
+}

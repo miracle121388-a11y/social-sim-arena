@@ -17,6 +17,9 @@ artifacts/
 /results/
 /paper/
 /data/*.pt
+/data/v2/*.pt
+/.autoresearch-v2/
+/experiments_v2.tsv
 /frozen_method.json
 /dist/
 # Public upstream documentation snapshots stay local; URL/hash provenance is tracked.
