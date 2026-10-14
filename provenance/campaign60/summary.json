@@ -1,0 +1,40 @@
+{
+  "valid_trials": 60,
+  "kept": 10,
+  "discarded": 50,
+  "crashed_trials": 0,
+  "unique_candidate_sources": 60,
+  "baseline_dev_auc": 0.02579135459382087,
+  "best_dev_auc": 0.005431994562968612,
+  "relative_dev_reduction": 0.7893870000814143,
+  "frozen_test_auc": 0.00691576924873516,
+  "best_algorithm_commit": "eb641c22eb197d038696894a5e6857d31002af78",
+  "method_sha256": "b8389adc234ee11e923d59084eaeb83b3821986c5f2f714c9ad5a84ed14650af",
+  "tests_passed": 14,
+  "test_evaluations_after_freeze": 1,
+  "diagnostics": {
+    "training_effective_mechanisms": 1.00038480758667,
+    "training_largest_weight": 0.9998076558113098,
+    "hard_compatible_count": 170,
+    "nonzero_weights": 12,
+    "weights_over_1e_4": 2,
+    "top_parameter": [
+      0.4166666567325592,
+      0.6833333373069763,
+      0.41999998688697815
+    ],
+    "valid_trials": 60,
+    "hypotheses_logged_before_execution": true,
+    "kept": 10,
+    "discarded": 50,
+    "runtime_min_s": 4.031855100009125,
+    "runtime_max_s": 9.387668900017161
+  },
+  "dev_result": "20261014T054247Z-c010344b",
+  "test_result": "20261014T054254Z-092b064c",
+  "epistemic_warning": "Effectively single-mechanism; no evidence of active acquisition benefit. NoCombination equals full method.",
+  "process_warning": {
+    "baseline_dev_brier": 0.18933476507663727,
+    "best_dev_brier": 0.2420533448457718
+  }
+}

@@ -1,11 +1,11 @@
 # 交接
 
-最新任务：用户要求完整可跑的 AutoResearch 框架、实际 GPU 基线分数及第一次提交。四个指定主文件、Git 控制器和测试已建。正式 dev_auc_error=0.02579135；快速评估 5.49 秒；完整结果见 provenance/baseline-v0-final.json。
+用户要求不间断完成 60 轮有效实验，现已完成：10 keep、50 discard、无实验崩溃。全部候选只改 method.py，失败于改进阈值的提交仍保留在 refs/autoresearch/rejected。
 
-先读 program.md。算法研究只允许修改 method.py；固定底座已哈希封存。原始缓存一次生成，不覆盖。测试前必须通过 autoresearch.py freeze-test；当前尚未做测试集评价，不应为了出图提前解封。
+最佳算法提交 eb641c22eb197d038696894a5e6857d31002af78。dev AUC=0.00543199，冻结后的 test AUC=0.00691577。60 轮日志、假设、账本、完整对照和核验结果在 provenance/campaign60，结论见 RESEARCH_REPORT_60.md。
 
-使用 autoresearch.py status 查看当前基线状态；init 只用于首次提交后的单次初始化，不要重复初始化。后续研究指令通过 trial 启动候选实验。初始上限 3 次，连续失败 2 次或总计 45 分钟停止。控制器不内置 LLM、不跨会话调度。十四项测试已通过，含真实 Git 过渡测试；测试 fixture 仅在 .tmp，不是研究结果。
+frozen_method.json 已生成。本轮不允许继续试验或覆盖测试封存；当前控制器状态 trials=60/max_trials=60。不要重新 init，不要清空计数以绕过冻结。best_commit 指最后一个算法提交；后续收尾文档提交只记录结果，不是第 61 个候选。
 
-失败记录：首轮 argsort 参数兼容错误及缓存缺失保存在 provenance/bootstrap_failures.json 和结果登记中。早期 AUC 0.01968210 是尚未限制查询可获取性的搭建版本；正式结果 0.02579135，不混用。v0 没有建立方法优势，偏移检测漏检也已保留。
+科学结论有限：有效机制数约 1.0004，NoCombination 与完整方法同分，过程 Brier 变差。因此没有主动取证优势或机制恢复成功的证据。下一步若获授权，应重新设计独立验证协议，避免沿用已看过的测试集调参。
 
-legacy 2,077 个文件字节一致；source 审计仅原有两处 refs 差异，没有新增受检查源码变化。根 scripts/isolation.py 使用归档基线；不要执行旧项目或直接运行 legacy 下带路径假设的脚本。
+14 项测试通过，原项目审计仅旧 refs 差异，legacy 2,077 文件字节一致。收尾清单读取曾因默认 GBK 失败，明确 UTF-8 后核验完成；此操作错误不属于 60 轮实验，记录在 integrity.json。

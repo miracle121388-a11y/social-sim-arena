@@ -1,17 +1,8 @@
 {
-  "id": "v0-campaign",
-  "status": "implemented",
-  "baseline_status": "tested_synthetic",
-  "entry": "program.md",
-  "command": "python autoresearch.py trial --description <hypothesis>",
-  "editable_file": "method.py",
-  "network": false,
-  "paid_models": false,
-  "real_data": false,
-  "candidate_limit": 3,
-  "evaluation_timeout_s": 30,
-  "fast_dev_limit_s": 15,
-  "campaign_limit_s": 2700,
-  "test_frozen": false,
-  "baseline_auc_error": 0.02579135459382087
+  "campaign": "campaign60",
+  "status": "complete_frozen",
+  "valid_trials": 60,
+  "next_run_authorized": false,
+  "best_algorithm_commit": "eb641c22eb197d038696894a5e6857d31002af78",
+  "reason": "Development and one final test complete; future search needs a new independent validation protocol."
 }

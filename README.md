@@ -1,6 +1,10 @@
-# Multi-agent social simulation · AutoResearch v0
+# Multi-agent social simulation · AutoResearch
 
 A runnable synthetic research framework for mechanism ambiguity and budgeted process evidence. Campus participation is the first adapter; it does not define the research scope. No official challenge score, MIT leaderboard result or real-data validation is claimed.
+
+## Completed 60-trial campaign
+
+See [RESEARCH_REPORT_60.md](RESEARCH_REPORT_60.md). Best dev AUC 0.00543199; frozen test AUC 0.00691577. The improvement is mainly calibration: weights are nearly a point mass, process Brier worsened, and NoCombination matches the full method. The campaign is sealed; do not use the opened test set for further tuning.
 
 ## Run on this machine
 

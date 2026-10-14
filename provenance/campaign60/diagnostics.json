@@ -1,0 +1,18 @@
+{
+  "training_effective_mechanisms": 1.00038480758667,
+  "training_largest_weight": 0.9998076558113098,
+  "hard_compatible_count": 170,
+  "nonzero_weights": 12,
+  "weights_over_1e_4": 2,
+  "top_parameter": [
+    0.4166666567325592,
+    0.6833333373069763,
+    0.41999998688697815
+  ],
+  "valid_trials": 60,
+  "hypotheses_logged_before_execution": true,
+  "kept": 10,
+  "discarded": 50,
+  "runtime_min_s": 4.031855100009125,
+  "runtime_max_s": 9.387668900017161
+}

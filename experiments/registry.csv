@@ -3,3 +3,6 @@ date,record_type,id,status,evidence
 2026-10-14,bootstrap,autoresearch-bootstrap-failures,recorded,provenance/bootstrap_failures.json
 2026-10-14,synthetic_evaluation,20261014T042937Z-2cf977a7,tested_synthetic,provenance/baseline-v0-final.json
 2026-10-14,verification,scientific-and-git-contracts,14_tests_passed,tests/
+2026-10-14,campaign,campaign60,60_valid_10_keep_50_discard,provenance/campaign60/summary.json
+2026-10-14,frozen_test,20261014T054254Z-092b064c,tested_synthetic,provenance/campaign60/test.json
+2026-10-14,verification,campaign60-integrity,14_tests_60_commits_2077_files_verified,provenance/campaign60/integrity.json
