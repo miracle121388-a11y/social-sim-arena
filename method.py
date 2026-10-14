@@ -6,7 +6,7 @@ This is model-internal expected reduction, not guaranteed real-error reduction.
 """
 import torch
 
-TRAJECTORY_SCALE = 0.04
+TRAJECTORY_SCALE = 0.025
 
 
 def construct_compatible_set(train_cache, process_slack=0.045,
