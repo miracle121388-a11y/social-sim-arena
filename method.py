@@ -6,14 +6,18 @@ This is model-internal expected reduction, not guaranteed real-error reduction.
 """
 import torch
 
+TRAIN_VARIANCE_FLOOR = 1e-05
+
 FIT_OBJECTIVE = 'worst_event'
 
 TRAJECTORY_SCALE = 0.0007
 
 
 
-def _training_distance(trajectories, truth, original_error):
-    residual = trajectories - truth
+def _training_distance(trajectories, truth, original_error, train_cache):
+    variance = train_cache["Trajectories"].float().var(1, unbiased=False).mean(0)
+    relative_variance = (variance + TRAIN_VARIANCE_FLOOR) / (variance.mean() + TRAIN_VARIANCE_FLOOR)
+    residual = (trajectories - truth) / relative_variance.sqrt()
     if FIT_OBJECTIVE == 'worst_event':
         return residual.square().mean((2, 3)).amax(1)
     if FIT_OBJECTIVE == 'worst_channel':
@@ -55,7 +59,7 @@ def construct_compatible_set(train_cache, process_slack=0.045,
         keep = process_ok & trajectory_ok
     if not keep.any():
         raise ValueError('Empty compatible set: model inadequacy; do not silently relax thresholds')
-    energy = _training_distance(trajectories, truth, trajectory_error) / (2 * TRAJECTORY_SCALE**2)
+    energy = _training_distance(trajectories, truth, trajectory_error, train_cache) / (2 * TRAJECTORY_SCALE**2)
     weights = torch.softmax((-energy).masked_fill(~keep, -torch.inf), dim=0)
     return {'weights': weights, 'mask': keep, 'process_error': process_error,
             'trajectory_error': trajectory_error}
