@@ -98,6 +98,19 @@ def sample_audit(pg,pool,g,replicates=1):
     prob=torch.where(latent[:,groups],r,1-r)
     return (torch.rand(prob.shape,generator=g,device=pg.device)<prob).float()
 
+def unshared_indices(cfg):
+    """Balanced conditional marginals in EVERY product-stratum combination.
+
+    Each of the eight combinations contains four Latin-hypercube replicates of
+    all 100 nuisance-inclusive mechanisms per activity. This avoids losing
+    support merely because history rejects one product stratum.
+    """
+    g=torch.Generator().manual_seed(cfg['unshared_seed'])
+    repetitions=cfg['unshared_particles']//800
+    return torch.cat([torch.stack([100*s+torch.randperm(100,generator=g) for s in strata],1)
+                      for strata in itertools.product(range(2),repeat=3)
+                      for _ in range(repetitions)],0)
+
 @torch.no_grad()
 def build(device):
     cfg=config();sim=SocialSimulator(cfg,device);pool=pool_definition(cfg)
@@ -128,9 +141,7 @@ def build(device):
     save_json('provenance/v3/geometry.json',geometry)
     if not(geometry['train']['diameter']<.012 and geometry['probe']['diameter']>.18 and geometry['test']['diameter']>.18):
         raise ValueError('Pre-evaluation geometry check failed; preserve evidence before protocol changes')
-    rng=torch.Generator().manual_seed(cfg['unshared_seed'])
-    indices=torch.cat([torch.stack([torch.randperm(200,generator=rng) for _ in range(3)],1)
-                       for _ in range(cfg['unshared_particles']//200)],0)
+    indices=unshared_indices(cfg)
     cache['unshared']['indices']=indices;joint=grid[indices.to(device)]
     for split in ['probe','dev','test']:
         parts=[sim.run(chunk,split,cfg['cache_seed'])['Trajectories'].half().cpu() for chunk in joint.split(100)]

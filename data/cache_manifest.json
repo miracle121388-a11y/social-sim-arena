@@ -1,13 +1,13 @@
 {
   "schema": "standard-v3-v0",
   "files": {
-    "data/rollout_cache.pt": "369b661508e1d3436e812e3d7d771cc8ca1907cccf32b01f5af1c0b2e46e629b",
+    "data/rollout_cache.pt": "b80aa03d09becafc136b4dabab0b591d39a70c338ea231478a6ae8f61c78858d",
     "data/v3/dev_truth.pt": "8e74abd691615431e1dc493a7ea80e628e13e088ff36c64dd58b39e2c781c800",
     "data/v3/test_truth.pt": "ab415390c91440f02abd3de8a2be3fb10f1bd9968ea84ca7e83bc7ac15abdd79",
-    "configs/standard_v3.json": "2e602e2eb98c59b76c5722a918a4f66a58c19daa9ff7f9c48519df33dc8cf599"
+    "configs/standard_v3.json": "d3beca397dc8982fc9d209109500d3042bece5a4bbe105408d9d8a6bb404a343"
   },
   "runtime_s": 10.635627300012857,
-  "cache_mb": 6.412111,
+  "cache_mb": 20.447375,
   "geometry": {
     "alias_count": 100,
     "distinct_predictive_mechanisms": 25,
@@ -32,5 +32,6 @@
       "median": 0.07668410241603851,
       "fraction_above_018": 0.12929293513298035
     }
-  }
+  },
+  "correctness_revision": "balanced NoSharing strata; shared cache and truth unchanged"
 }

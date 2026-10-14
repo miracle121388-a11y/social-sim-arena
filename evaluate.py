@@ -71,9 +71,18 @@ def run_policy(name,w0,cache,worlds,split):
         bank=cache['unshared'];indices=bank['indices']
         # Factorized activity priors on a finite stratified joint particle bank.
         prior=w0[indices].prod(1);prior=prior/prior.sum()
+        active=prior>0
+        # Remove exactly zero-mass particles, without pruning positive weights.
+        bank={k:({n:(v[active] if isinstance(v,torch.Tensor) and v.shape[0]==len(active) else v)
+                   for n,v in value.items()} if isinstance(value,dict) else
+                  value[active] if isinstance(value,torch.Tensor) and value.shape[0]==len(active) else value)
+              for k,value in bank.items()}
+        indices=indices[active];prior=prior[active]
         marginals=torch.zeros(3,len(w0),device=w0.device)
         for e in range(3):marginals[e].scatter_add_(0,indices[:,e],prior)
-        extra={'prior_dependence':'independent activity parameters; importance-weighted joint particle approximation',
+        if not torch.allclose(marginals,w0.expand(3,-1),atol=1e-6,rtol=1e-5):
+            raise ValueError('NoSharing initial marginal priors do not match Full; increase balanced support')
+        extra={'prior_dependence':'independent activity parameters; matched marginals, finite joint particle approximation',
                'initial_marginals':marginals.cpu().tolist(),
                'marginal_total_variation':(.5*(marginals-w0).abs().sum(1)).cpu().tolist()}
         guard_prior(prior)

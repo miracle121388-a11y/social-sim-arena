@@ -80,5 +80,14 @@ class StandardV3(unittest.TestCase):
         for e,cap in enumerate(sim.events('dev')[:,0]):
             self.assertLessEqual(float(shared[:,:,e,:,0].max()),int(float(cap)*32)/32+1e-6)
 
+    def test_no_sharing_has_matched_initial_marginals(self):
+        w=method.construct_compatible_set(self.cache['train'])['weights']
+        indices=self.cache['unshared']['indices']
+        prior=w[indices].prod(1);prior/=prior.sum()
+        for e in range(3):
+            marginal=torch.zeros_like(w).scatter_add_(0,indices[:,e],prior)
+            self.assertTrue(torch.allclose(marginal,w,atol=1e-6,rtol=1e-5))
+        self.assertTrue((indices[:,0]!=indices[:,1]).any())
+
 
 if __name__=='__main__':unittest.main()

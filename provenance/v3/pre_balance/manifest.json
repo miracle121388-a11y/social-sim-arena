@@ -1,0 +1,12 @@
+{
+  "reason": "Correct NoSharing marginal-prior imbalance after development audit; preserve all original outcomes; no Full or truth changes",
+  "files": {
+    "prepare_and_cache.py": "c418b37fd59d13d441f1e4a8cf9b79887c05017b857da66bb7e45b59c9d50265",
+    "evaluate.py": "ffa87b5878356cce161529bd118899f0ec98a21713611a536ce6b7bb186182ba",
+    "configs/standard_v3.json": "2e602e2eb98c59b76c5722a918a4f66a58c19daa9ff7f9c48519df33dc8cf599",
+    "infrastructure.v3.lock.json": "272ada98f048d669f299751b6be8fea510c590c27114e2ce5a11ade088e61e40",
+    "data/v3/manifest.json": "74c49dfb9870c2b2d7eaaff8f06b5f970b49eb3ec84fff44a0a61ff726600091",
+    "data/rollout_cache.pt": "369b661508e1d3436e812e3d7d771cc8ca1907cccf32b01f5af1c0b2e46e629b",
+    "provenance/v3/protocol.md": "77ca0da821a04f1260a9886b6756aeb7f8439943457dc3fb66d031167a6b97f7"
+  }
+}
