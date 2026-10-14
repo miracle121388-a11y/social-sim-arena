@@ -6,8 +6,28 @@ This is model-internal expected reduction, not guaranteed real-error reduction.
 """
 import torch
 
+FIT_OBJECTIVE = 'worst_event'
+
 TRAJECTORY_SCALE = 0.001
 
+
+
+def _training_distance(trajectories, truth, original_error):
+    residual = trajectories - truth
+    if FIT_OBJECTIVE == 'worst_event':
+        return residual.square().mean((2, 3)).amax(1)
+    if FIT_OBJECTIVE == 'worst_channel':
+        return residual.square().mean((1, 2)).amax(1)
+    if FIT_OBJECTIVE == 'absolute':
+        return residual.abs().mean((1, 2, 3)).square()
+    if FIT_OBJECTIVE == 'huber':
+        return 2 * torch.nn.functional.huber_loss(trajectories, truth.expand_as(trajectories), delta=.01, reduction='none').mean((1, 2, 3))
+    if FIT_OBJECTIVE == 'trimmed':
+        errors = residual.square().flatten(1).sort(1).values
+        return errors[:, :int(.9 * errors.shape[1])].mean(1)
+    if FIT_OBJECTIVE == 'late':
+        return residual[:, :, residual.shape[2]//2:, :].square().mean((1, 2, 3))
+    return original_error.square()
 
 def construct_compatible_set(train_cache, process_slack=0.045,
                              trajectory_limit=0.10, mode='joint'):
@@ -35,7 +55,7 @@ def construct_compatible_set(train_cache, process_slack=0.045,
         keep = process_ok & trajectory_ok
     if not keep.any():
         raise ValueError('Empty compatible set: model inadequacy; do not silently relax thresholds')
-    energy = trajectory_error.square() / (2 * TRAJECTORY_SCALE**2)
+    energy = _training_distance(trajectories, truth, trajectory_error) / (2 * TRAJECTORY_SCALE**2)
     weights = torch.softmax((-energy).masked_fill(~keep, -torch.inf), dim=0)
     return {'weights': weights, 'mask': keep, 'process_error': process_error,
             'trajectory_error': trajectory_error}
