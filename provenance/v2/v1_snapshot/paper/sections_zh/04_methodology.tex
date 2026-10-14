@@ -1,0 +1,133 @@
+\section{方法}
+\label{sec:method}
+以下公式对应冻结代码实际执行的分支。最终演化改变的是校准距离，而不是协方差取证公式。源码中仍然保留但未启用的其他损失，不属于本文报告的方法。
+
+\subsection{相容机制与校准权重}
+设 $\bar X_{metc}=S^{-1}\sum_sX_{msetc}$，$H_{etc}$ 为历史观测的平均轨迹。对已观测历史记录 $\mathcal O$，分别定义过程与轨迹误差：
+\begin{align}
+ B_m&=|\mathcal O|^{-1}\sum_{r\in\mathcal O}(p_{mr}-y_r)^2,\nonumber\\
+ R_m&=\left[(ETC)^{-1}\sum_{etc}(\bar X_{metc}-H_{etc})^2\right]^{1/2}.
+ \label{eq:compaterrors}
+\end{align}
+当 $\mathcal O$ 为空时，令 $B_m=0$。相容集合为
+\begin{equation}
+ \mathcal C=\{m:B_m\leq\min_j B_j+0.045\}\cap\{m:R_m\leq0.10\}.
+ \label{eq:set}
+\end{equation}
+集合为空时直接报错，而不是自动放宽阈值。这些经验筛选标准没有置信集合覆盖保证，也不保证真实机制位于候选网格内。过程 Brier 误差在这里是筛选统计量，不是伯努利对数似然。
+
+最终校准规则用估计的模拟噪声归一化轨迹残差，并强调拟合最差的历史活动：
+\begin{align}
+ v_{etc}&=\frac1{MS}\sum_{m,s}(X_{msetc}-\bar X_{metc})^2,
+ &\bar v&=\frac1{ETC}\sum_{etc}v_{etc},\nonumber\\
+ r_{etc}&=\frac{v_{etc}+\epsilon}{\bar v+\epsilon},
+ &D_m&=\max_e\frac1{TC}\sum_{tc}\frac{(\bar X_{metc}-H_{etc})^2}{r_{etc}},\label{eq:distance}\\
+ w_m^{(0)}&=\frac{\ind\{m\in\mathcal C\}\exp[-D_m/(2\sigma^2)]}
+ {\sum_{j\in\mathcal C}\exp[-D_j/(2\sigma^2)]},
+ &\epsilon&=10^{-5},\quad\sigma=7\times10^{-4}.\label{eq:weights}
+\end{align}
+方差除数为 $S$，并在筛选前对全部 $M$ 个候选平均。这是种子方差，不是蒙特卡洛均值的方差。$r_{etc}$ 因而提供随时段和通道变化的精度权重；实现中没有另行学习的时间注意力项，也没有高阶取证修正项。所得分布是 Gibbs 型校准混合分布。若要称其为历史轨迹生成过程的精确后验，还需要一个实现中并未指定的观测似然。
+
+\subsection{查看记录缺失与观测似然}
+在标准化核查人群中，未观测的查看状态被积分消去。若 $V_r$ 表示是否查看，$I_r$ 表示参与意图，则
+\begin{equation}
+ P(I_r=1\mid\theta_m)=P(V_r=1\mid\theta_m)P(I_r=1\mid V_r=1,\theta_m)
+ =a_m\rho_{e(r)}b_m\iota_r,
+ \label{eq:view}
+\end{equation}
+其中 $\rho_e$ 是通知触达率，$\iota_r$ 是记录中的兴趣。因此，缺失查看不等于未查看。候补退出记录以已知候补风险状态为条件。这些公式不能替代对未知互动历史进行潜状态过滤。
+
+对已经请求获取的记录，用 $o_r$ 表示结果是否被观测。本基准采用完全随机缺失（MCAR）：$o_r=1$ 时，$\ell_{mr}=p_{mr}^{y_r}(1-p_{mr})^{1-y_r}$；否则 $\ell_{mr}=1$。若提供已知观察模型 $\gamma_{mry}=P(o_r=1\mid Y_r=y,\theta_m)$，则使用
+\begin{equation}
+ \ell_{mr}=\begin{cases}
+ p_{mr}^{y_r}(1-p_{mr})^{1-y_r}\gamma_{mr y_r},&o_r=1,\\
+ (1-p_{mr})(1-\gamma_{mr0})+p_{mr}(1-\gamma_{mr1}),&o_r=0.
+ \end{cases}
+ \label{eq:missing}
+\end{equation}
+这一处理反映了对不可忽略观察过程进行建模的必要性 \citep{rubin1976}。可选分支通过了单元测试，但没有在真实缺失情境下得到验证。右删失则是另一类问题：尚未结束的事件时间观测需要例如 $P(T_r>t_{\mathrm{cut}}\mid\theta_m)$ 的生存似然，以及明确的事件时间模型。该扩展尚未实现；当前证据池仅包含观察机会已完整结束的二元记录。
+
+\subsection{缓存探针与协方差取证恒等式}
+令 $z_m\in\R^D$ 为候选在固定组合探针上的平均轨迹拼接向量，其中 $D=E_{\mathrm p}TC$。给定当前权重 $w$，定义
+\begin{equation}
+ \mu=\sum_mw_mz_m,\qquad q_r=\sum_mw_mp_{mr},\qquad
+ c_r=\sum_mw_m(p_{mr}-q_r)(z_m-\mu).
+ \label{eq:cov}
+\end{equation}
+取证价值为
+\begin{equation}
+ A_r(w)=\frac{\|c_r\|_2^2}{Dk_rq_r(1-q_r)},\qquad
+ C=P^\top\operatorname{diag}(w)(Z-\mathbf1\mu^\top).
+ \label{eq:score}
+\end{equation}
+$C$ 的各行包含所有 $c_r^\top$。矩阵乘法在记录之间共享计算。代码对 $q_r(1-q_r)$ 设置 $10^{-12}$ 的下限；确定性观测的精确理论价值为零。
+
+\begin{proposition}[二元观测的预测方差缩减]
+给定固定缓存条件均值 $Z=z_\theta$、模型隐含的二元观测分布以及 $0<q_r<1$，观测 $Y_r$ 后，平均坐标方差的预期减少量等于 $k_rA_r(w)$。
+\end{proposition}
+\begin{proof}
+令 $\mu_y=\E[Z\mid Y_r=y]$。由贝叶斯公式，$\mu_1-\mu=c_r/q_r$，$\mu_0-\mu=-c_r/(1-q_r)$。利用全协方差分解，得到
+\begin{align}
+ \frac1D\tr\{\Cov(Z)-\E_{Y_r}\Cov(Z\mid Y_r)\}
+ &=\frac{q_r\|\mu_1-\mu\|^2+(1-q_r)\|\mu_0-\mu\|^2}{D}\nonumber\\
+ &=\frac{\|c_r\|^2}{Dq_r(1-q_r)}.
+\end{align}
+\end{proof}
+这是预测方差缩减在当前条件下的特例，并非新的通用最优设计定理，其作用是说明高效实现的正确性。它要求观测仅通过机制权重改变目标预测。如果取证同时干预了智能体，或揭示了 $\theta$ 中没有表示、却与目标相关的潜变量，则条件轨迹也需要更新，仅凭缓存公式已不足够。模型内部的预期方差下降，也不意味着实际 RMSE、随机方差或模型偏差必然下降。
+
+\subsection{小批量条件化与预测不确定性}
+为了避免同一批次的每条记录都按未更新权重评分，在选完 $j$ 条记录后，维护假设结果分支 $\mathcal F_j=\{(\pi_f,w_f)\}$。下一条记录最大化
+\begin{equation}
+ r_{j+1}=\argmax_{r\ \mathrm{eligible}}\sum_{f\in\mathcal F_j}\pi_f A_r(w_f).
+ \label{eq:batch}
+\end{equation}
+每个分支按 $y\in\{0,1\}$ 展开。令 $L_{mry}=p_{mr}^y(1-p_{mr})^{1-y}$，则结果概率为 $q_{fy}=\sum_mw_{fm}L_{mry}$，新分支质量为 $\pi_fq_{fy}$，权重为 $w_{fm}L_{mry}/q_{fy}$。选择阶段不读取真实标签。在条件独立假设下，该过程对贪心批次的假设结果精确求期望；数值实现忽略概率不超过 $10^{-12}$ 的分支。它既不是全局最优批量搜索，也不是一般具有次模性的目标，第~\ref{sec:boundaries} 节给出反例。实验批量大小为 2，代码上限为 4。
+
+获取真实证据后，按下式更新权重：
+\begin{equation}
+ w'_m\propto w_m\exp\left\{\tau^{-1}\sum_{r\in Q}\log\ell_{mr}\right\},\qquad\tau=1.
+ \label{eq:update}
+\end{equation}
+对数输入截断到 $[10^{-7},1-10^{-7}]$；先验质量为零的候选仍为零。目标分布由完整缓存轨迹组成：
+\begin{equation}
+ \widehat P(X^*\mid Y_Q)=\sum_{m,s}\frac{w'_m}{S}\delta_{X^*_{ms}},
+ \qquad\widehat\mu=\sum_mw'_m\bar X^*_m.
+ \label{eq:mixture}
+\end{equation}
+逐坐标不确定性分解为
+\begin{align}
+ V_{\mathrm{epi}}&=\sum_mw'_m(\bar X^*_m-\widehat\mu)^2,\nonumber\\
+ V_{\mathrm{alea}}&=\sum_mw'_m\frac1S\sum_s(X^*_{ms}-\bar X^*_m)^2.
+ \label{eq:uncertainty}
+\end{align}
+其中，认识不确定性 $V_{\mathrm{epi}}$ 来自不同机制均值的差异，随机不确定性 $V_{\mathrm{alea}}$ 来自同一机制下不同种子的波动。加权第 5 和第 95 百分位数形成逐点 90\% 预测区间，而非整条路径同时覆盖的带，也不是真实总体参数的置信区间。完整轨迹样本保留时间依赖，即便边际图不能显示这种依赖。
+
+\begin{algorithm}[tbp]
+\caption{基于缓存过程证据的相容机制推断}
+\label{alg:main}
+\small
+\begin{algorithmic}[1]
+\Require 历史数据；缓存 $X,P,Z,X^*$；可查询池 $U$；成本 $k$；预算 $B$
+\State 按式~\eqref{eq:compaterrors}--\eqref{eq:set} 计算 $B_m,R_m$ 和 $\mathcal C$
+\If{$\mathcal C=\emptyset$}
+ \State 报告模型不相容错误并停止
+\EndIf
+\State 计算 $v,r,D$，按式~\eqref{eq:distance}--\eqref{eq:weights} 初始化 $w$
+\While{$U$ 中仍有预算允许的记录}
+ \State $\mathcal F\gets\{(1,w)\}$，$Q\gets\emptyset$，$B_{\mathrm{reserve}}\gets B$
+ \For{$j=1,2$}
+  \State $U'\gets\{r\in U\setminus Q:k_r\leq B_{\mathrm{reserve}}\}$
+  \If{$U'=\emptyset$} \State 跳出当前循环 \EndIf
+  \State 根据式~\eqref{eq:score} 与式~\eqref{eq:batch} 为所有 $r\in U'$ 评分
+  \State 选取得分最大的 $r$，加入 $Q$，从预留预算中扣除 $k_r$
+  \State 对 $r$ 的两种二元结果展开每个假设分支
+ \EndFor
+ \State 获取 $Y_Q$ 与观测掩码，按式~\eqref{eq:missing} 处理缺失
+ \State 按式~\eqref{eq:update} 更新 $w$；$U\gets U\setminus Q$，$B\gets B-\sum_{r\in Q}k_r$
+\EndWhile
+\State \Return 完整轨迹混合分布、均值、$V_{\mathrm{epi}}$、$V_{\mathrm{alea}}$ 与边际分位数
+\end{algorithmic}
+\end{algorithm}
+
+\paragraph{计算开销。}
+对 $M$ 个机制、$R$ 条记录和 $D$ 个探针坐标，缓存概率与条件均值需要 $O(MR+MD)$ 内存。完整种子轨迹使每个库增加 $O(MSD)$ 存储。一次协方差评分需要 $O(MRD)$ 算术运算；显式二元结果枚举具有相同阶数，但会在许多小操作中重复中心化和归约。因此，实测收益来自向量化与共享计算，而非更低的渐近复杂度。批量大小为 $b$ 时，精确分支期望的最坏复杂度为 $O((2^b-1)MRD)$，这解释了小批量限制。标签更新需要 $O(Mb)$，目标均值与方差需要 $O(MSD_*)$，边际排序另需 $O(D_*MS\log(MS))$。离线模拟成本发生在这些操作之前。数学接口可跨领域复用，但观测概率和模拟器库仍依赖具体领域。

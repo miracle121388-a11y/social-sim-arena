@@ -1,0 +1,15 @@
+\begin{table}[tbp]
+\centering
+\caption{10 次同步 GPU 配对计时，执行顺序交替。分别计算每一对的加速比再取中位数，因此不必等于两类时间中位数之比。}
+\label{tab:timing}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\toprule
+先验 & 协方差（毫秒） & 枚举（毫秒） & 配对加速比中位数 & 最大残差 \\
+\midrule
+冻结先验 & 0.773 & 178.17 & 217.95 & 9.08e-16 \\
+均匀相容先验 & 0.747 & 191.85 & 275.16 & 1.38e-10 \\
+\bottomrule
+\end{tabular}
+\end{table}

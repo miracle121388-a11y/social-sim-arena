@@ -1,0 +1,24 @@
+% Synthetic example only; no external benchmark validation.
+\begin{table*}[t]
+\caption{Budget-error comparison; timing measured for covariance and explicit enumeration.}
+\label{tab:experiment2}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & AUC & Brier & NLL & Coverage & Width & Cov ms & Enum ms \\
+\midrule
+Covariance & 0.0069 & 0.2459 & 0.6811 & 0.9792 & 0.0304 & 0.2318 & 55.6234 \\
+Random & 0.0180 & 0.1957 & 0.5775 & 1.0000 & 0.0666 & -- & -- \\
+Entropy & 0.0111 & 0.1862 & 0.5572 & 1.0000 & 0.0691 & -- & -- \\
+ParamIG & 0.0110 & 0.1860 & 0.5618 & 1.0000 & 0.0679 & -- & -- \\
+Standard\_OED & 0.0255 & 0.2086 & 0.6021 & 1.0000 & 0.0666 & -- & -- \\
+SimpleStats & 0.0236 & 0.3026 & 0.8458 & 0.8125 & 0.0318 & -- & -- \\
+Uncalibrated & 0.0175 & 0.2144 & 0.6139 & 1.0000 & 0.0896 & -- & -- \\
+ProcessOnly & 0.0199 & 0.2238 & 0.6328 & 1.0000 & 0.0769 & -- & -- \\
+TrajectoryOnly & 0.0182 & 0.2202 & 0.6253 & 1.0000 & 0.0804 & -- & -- \\
+PassiveV1 & 0.0199 & 0.2238 & 0.6328 & 1.0000 & 0.0769 & -- & -- \\
+NoSharing & 0.0513 & 0.2050 & 0.6108 & 0.6146 & 0.0360 & -- & -- \\
+NoCombination & 0.0069 & 0.2459 & 0.6811 & 0.9792 & 0.0304 & -- & -- \\
+SinglePoint & 0.0083 & 0.2513 & 0.7070 & 0.9479 & 0.0291 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table*}

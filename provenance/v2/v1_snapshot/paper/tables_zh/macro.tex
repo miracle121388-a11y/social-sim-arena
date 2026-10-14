@@ -1,0 +1,19 @@
+\begin{table}[tbp]
+\centering
+\caption{宏平均 AUC $\times10^3$ 及其相对 Full 的描述性均值差。区间是均值的世界 bootstrap 区间，不是预测区间。}
+\label{tab:macro}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+方法 & 宏平均 AUC & 相对 Full 的差值 \\
+\midrule
+Full & 7.0635 [6.0247, 8.0995] & +0.0000 \\
+匹配 MAP & 7.0655 [6.0267, 8.1012] & +0.0019 \\
+同先验 Random & 7.0589 [6.0192, 8.0962] & -0.0046 \\
+移除组合目标 & 7.0635 [6.0247, 8.0995] & +0.0000 \\
+移除批量条件化 & 7.0635 [6.0247, 8.0995] & +0.0000 \\
+取消参数共享* & 39.8238 [38.5402, 41.0323] & +32.7602 \\
+\bottomrule
+\end{tabular}
+\end{table}

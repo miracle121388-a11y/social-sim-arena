@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{对照减 Full 的配对活动 AUC 差值 $\times10^6$，附 95\% 世界 bootstrap 区间。正值有利于 Full；微小差值不一定具有实际意义。}
+\label{tab:paired}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+对照减 Full & 活动 1 & 活动 2 & 活动 3 \\
+\midrule
+匹配 MAP & 1.19 [0.62, 1.84] & 3.72 [2.22, 5.21] & 0.92 [-0.18, 2.07] \\
+同先验 Random & -3.61 [-5.60, -1.70] & -8.86 [-13.65, -3.83] & -1.38 [-5.02, 2.14] \\
+移除组合目标 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+移除批量条件化 & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] & 0.00 [0.00, 0.00] \\
+\bottomrule
+\end{tabular}
+\end{table}

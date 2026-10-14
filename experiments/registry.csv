@@ -13,3 +13,6 @@ date,record_type,id,status,evidence
 2026-10-14,integration,socialsim-arena-v2,offline_contract_only_NOT_EVALUATED,SOCIALSIM_INTEGRATION.md
 2026-10-14,tooling,closure-tooling,failures_preserved,provenance/closure/tooling-notes.json
 2026-10-14,package,closure-research-zip,fresh_extraction_full_pipeline_passed,provenance/closure/package-validation.json
+2026-10-14,manuscript,complete-english-paper,compiled_17_pages_zero_warnings,paper/main.pdf
+2026-10-14,verification,paper-evidence-audit,60_git_candidates_38_interval_summaries_verified,paper/qa/evidence-validation.json
+2026-10-14,translation,full-chinese-paper,compiled_15_pages_zero_warnings,paper/main_zh.pdf

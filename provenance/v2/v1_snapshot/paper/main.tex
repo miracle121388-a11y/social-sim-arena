@@ -1,0 +1,67 @@
+\documentclass[10pt]{article}
+\usepackage[letterpaper,textwidth=5.9in,textheight=9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype}
+\usepackage{booktabs,amsmath,amssymb,amsthm}
+\usepackage{algorithm,algpseudocode,graphicx,subcaption}
+\usepackage{longtable,array}
+\usepackage[round,authoryear]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage[section]{placeins}
+\hypersetup{pdftitle={Mechanism-Disagreement-Driven Active Evidence Selection and Set Calibration for Compositional Multi-Agent Social Simulation},pdfauthor={Anonymous research manuscript}}
+\newtheorem{proposition}{Proposition}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\ind}{\mathbf{1}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{2pt}
+\setlength{\textfloatsep}{11pt plus 2pt minus 2pt}
+\emergencystretch=1.5em
+\graphicspath{{figures/}}
+\input{tables/numbers}
+\title{Mechanism-Disagreement-Driven Active Evidence Selection and Set Calibration for Compositional Multi-Agent Social Simulation}
+\author{Anonymous research manuscript}
+\date{}
+\begin{document}
+\maketitle
+\input{sections/01_abstract}
+\input{sections/02_introduction}
+\input{sections/03_problem_setup}
+\input{sections/04_methodology}
+\input{sections/05_experiments}
+\input{sections/06_discussion_and_related_work}
+\bibliographystyle{plainnat}
+\bibliography{references}
+\clearpage
+\appendix
+\section{Additional results and audit trail}
+\label{app:results}
+All tables below are generated from the same sealed result files as the main text. They are not additional tuning runs. Table~\ref{tab:golden} retains the original evaluator's pooled metric, whereas the other activity tables use independent-world replication. The distinction prevents a change in aggregation from being mistaken for a change in performance.
+\input{tables/golden}
+\input{tables/calibration}
+\input{tables/paired}
+\input{tables/uncertainty}
+\input{tables/stress_magnitude}
+\FloatBarrier
+\section{Reproduction and evidence provenance}
+\label{app:reproduction}
+The frozen algorithm is commit \texttt{eb641c2}; its SHA-256 is recorded in the machine-readable artifact manifest. The manuscript generator verifies this hash before producing figures. It reads the canonical frozen evaluation, the fixed 24-world supplement, the audited candidate ledger, and the campaign summary. All other root-level JSON results are inventoried with hashes and retained as historical or reproduction runs, rather than selected by test performance. The candidate audit reconciles decision rows with evaluation rows by run identifier and verifies their Git sources. Thus 60 candidates, not the number of ledger lines, define the search budget.
+
+The release separates environment preparation, the fixed evaluator, the sole evolvable algorithm file, and the search controller. The present manuscript changes none of them. The original cache contains labels in the same local process; source checks and API conventions provide auditability, not an adversarially secure holdout. A deployment with sensitive observations would require a separate permission-controlled evaluation service.
+
+To rebuild the figures and PDF, run \texttt{python paper/generate\_artifacts.py}, followed by \texttt{python paper/build.py}, from the repository root in the supplied research environment. The latter invokes pdfLaTeX and BibTeX from the paper directory and checks the final log for unresolved references and layout warnings. The standalone paper source directory also supports conventional pdfLaTeX--BibTeX compilation. The research reproduction script at the root is separate: it can rerun the sealed synthetic experiments but is not required to typeset the manuscript. Cached evaluation excludes offline simulation cost; Table~\ref{tab:timing} additionally excludes cache loading, calibration, posterior prediction, and figure generation.
+
+No human participants were recruited and no real student records were used. The executable social model represents a constructed resource-participation process. Its parameters must not be interpreted as estimates of individual psychological traits. The SocioVerse and SocialSim integration materials are interface preparation, not evidence of external validity or an official leaderboard submission.
+
+\section{Complete development decisions}
+\label{app:trials}
+Table~\ref{tab:alltrials} reports every accepted and rejected candidate in chronological order. Rejection includes changes that were numerically indistinguishable or smaller than the predeclared acceptance threshold; it does not always mean a substantial deterioration. Hypotheses, full source hashes, and exact candidate files remain in the repository's evolution audit. These observations explain the selected implementation but do not replace a new independent comparison of the corresponding mathematical choices.
+\footnotesize
+\input{tables/evolution_all}
+\end{document}

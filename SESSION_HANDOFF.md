@@ -19,3 +19,13 @@ SocialSim 官方入口已由用户明确提供，见 SOCIALSIM_INTEGRATION.md。
 复现：Git for Windows Bash 执行 bash reproduce_all.sh，或 .venv-research/Scripts/python.exe -B reproduce.py。打包：同环境运行 build_research_package.py；默认拒绝覆盖 dist/njusim-frozen-research.zip。Windows 平台已测，Linux 未验证。源项目审计仍只有两处既有 refs 差异，不回滚。
 
 可交付压缩包 dist/njusim-frozen-research.zip（约 2.3 MB）已通过全新目录端到端复现。SHA256 见同名 .sha256；包外验证收据同名 .validation.json。
+
+## 最新阶段：完整论文已写完
+
+paper/main.pdf 为 17 页英文全文，paper/main.tex 和 sections/ 是源文件，paper/paper_zh.md 是中文核心逻辑对照。paper/paper-source.zip 是可独立 TeX 编译的源码包。再生成图表运行 paper/generate_artifacts.py；编译 paper/build.py；证据检查 paper/validate_evidence.py，使用 .venv-research/Scripts/python.exe -I -B。脚本从研究根目录运行，不改 method.py。
+
+qa/compilation.json 和 qa/evidence-validation.json 记录编译及 60 候选/38 组统计核验，qa/review.json 记录逐页检查。原 source refs 两处差异仍是既有差异。论文引用已核查的一手资料，严格披露集合近单点、无主动取证优势及官方未评测状态。当前是中性匿名稿，不应声称已套用具体届次官方模板；后续若调整论文请只改 paper/，不得为改善叙事回头调已解封测试。
+
+## 最新交付：完整中文版
+
+paper/main_zh.pdf（15 页）可直接阅读；main_zh.tex 与 sections_zh/ 是对应源码。原 paper_zh.md 仍是核心逻辑摘要，勿混称全文。中文表格与图分别在 tables_zh/、figures_zh/，生成脚本 generate_zh_assets.py，编译脚本 build_zh.py。当前源码依赖 C:/Windows/Fonts/ 下的宋体/黑体/仿宋/楷体及 XeLaTeX；PDF 已嵌入字体，可独立阅读。英文 main.pdf、main.tex、PAPER_TABLES.tex、method.py 哈希均保持不变。编译与中英文一致性核验在 qa/zh/。

@@ -1,0 +1,18 @@
+\begin{table}[H]
+\centering
+\caption{Passive calibration baselines. These rows acquire no additional evidence. Activity AUC $\times10^3$ with 95\% world-bootstrap intervals; 24 worlds, fixed training data, evidence and templates.}
+\label{tab:calibration}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+Method & Activity 1 & Activity 2 & Activity 3 \\
+\midrule
+Simple statistics & 24.05 [23.81, 24.30] & 32.30 [30.39, 34.18] & 18.84 [18.07, 19.77] \\
+Uncalibrated & 19.99 [19.34, 20.63] & 17.08 [15.25, 18.87] & 13.81 [12.79, 14.89] \\
+Process only & 20.43 [19.38, 21.40] & 19.94 [17.30, 22.45] & 15.96 [13.85, 17.89] \\
+Trajectory only & 19.56 [18.65, 20.40] & 17.66 [15.15, 20.03] & 14.28 [12.53, 15.93] \\
+Passive V1 & 20.43 [19.38, 21.40] & 19.94 [17.30, 22.45] & 15.96 [13.85, 17.89] \\
+\bottomrule
+\end{tabular}
+\end{table}

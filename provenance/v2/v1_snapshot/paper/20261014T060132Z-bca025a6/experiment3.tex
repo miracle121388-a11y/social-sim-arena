@@ -1,0 +1,16 @@
+% Synthetic example only; no external benchmark validation.
+\begin{table*}[t]
+\caption{Held-out composition prediction and ablations (synthetic; unsharing also changes the prior).}
+\label{tab:experiment3}
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & AUC & RMSE & Coverage & Width & EpiVar & AleaVar \\
+\midrule
+Covariance & 0.0069 & 0.0069 & 0.9792 & 0.0304 & 0.0000 & 0.0002 \\
+PassiveV1 & 0.0199 & 0.0199 & 1.0000 & 0.0769 & 0.0012 & 0.0002 \\
+NoSharing & 0.0513 & 0.0513 & 0.6146 & 0.0360 & 0.0000 & 0.0003 \\
+NoCombination & 0.0069 & 0.0069 & 0.9792 & 0.0304 & 0.0000 & 0.0002 \\
+SinglePoint & 0.0083 & 0.0083 & 0.9479 & 0.0291 & 0.0000 & 0.0002 \\
+\bottomrule
+\end{tabular}
+\end{table*}

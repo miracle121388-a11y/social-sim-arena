@@ -1,0 +1,24 @@
+\section{Problem setup}
+\label{sec:setup}
+\paragraph{Partially observed social dynamics.}
+Let $i\in\{1,\ldots,N\}$ index agents and $e$ index activities. At time $t$, the global state is $s_t=(h_{1t},\ldots,h_{Nt},g_t)$, where $h_{it}$ contains interest, availability, remaining budget, received information, and participation experience. The environment state $g_t$ contains notifications, application windows, capacities, bookings, waiting lists, and schedules. Agent $i$ observes $o_{it}\sim O_i(\cdot\mid s_t)$ and forms an intention $u_{it}\sim\pi_\theta(\cdot\mid o_{it},h_{it})$. Interactions produce messages $m_t\sim G_\theta(\cdot\mid s_t,u_t)$. Settlement maps intentions and messages to realized outcomes, followed by state feedback:
+\begin{equation}
+ a_t\sim K_\xi(\cdot\mid s_t,u_t,m_t),\qquad
+ s_{t+1}\sim F_\xi(\cdot\mid s_t,a_t,m_t).
+ \label{eq:loop}
+\end{equation}
+Here $\xi$ denotes environmental rules. Equation~\eqref{eq:loop} is a partially observed multi-agent stochastic system; no reward optimization or policy-learning claim is required. A wish to register is not a booking: capacity, time conflicts, and budget may reject it, while cancellation and replacement may change later realized participation.
+
+The implementation uses $\theta=(a,b,d)$ for attention, conditional participation, and waiting dropout, shared across activities. Heterogeneous agent states and activity features still produce different individual probabilities. A single agent population participates in interacting activities within each simulated world. The population trajectory $X_{etc}$ records fractions registered, waiting, and attending, with channel $c\in\{1,2,3\}$. For candidate $m$ and simulation seed $s$, the cached path is $X_{msetc}$. Each path uses one fixed mechanism throughout; averaging parameters or switching mechanisms between time steps would define a different simulator.
+
+\paragraph{Historical information and evidence opportunities.}
+The historical data comprise observed trajectories and a separate audit cohort with binary stage records. An acquisition pool contains additional audit people, each contributing one record at a standardized, known opportunity state. Its candidate probability is $p_{mr}=P(Y_r=1\mid\theta_m,x_r)$ and its acquisition cost is $k_r>0$. In the supplied benchmark, records are conditionally independent given a mechanism, and availability metadata are known before acquisition. We do not infer independence for arbitrary logs from an interacting population. Reusing a process total as independent evidence after observing its constituent records would double-count information; the disjoint cohorts avoid that specific dependency.
+
+\paragraph{Compositional prediction objective.}
+Write an activity configuration as $\xi=(\ell,f,c,\eta)$, with waiting-list, forwarding, and conflict indicators $(\ell,f,c)$ and remaining event attributes $\eta$. Historical activities expose waiting and forwarding separately; the conflict rule is available in the simulator but inactive in all historical configurations. Fixed probes combine these accessible rules to approximate future prediction demands. An acquisition policy $\alpha$ selects a sequence $Q$ with $\sum_{r\in Q}k_r\leq B$ and updates a mixture over mechanisms. Its scientific objective is low trajectory risk under a target activity distribution:
+\begin{equation}
+ \mathcal R_B(\alpha)=\E_{\xi,Y,Q\sim\alpha}\!\left[
+ L\big(\widehat X(\xi\mid Y_Q),X^{\mathrm{true}}(\xi)\big)\right].
+ \label{eq:risk}
+\end{equation}
+Probe disagreement is a computable, model-internal surrogate for this risk, not an estimator guaranteed to be unbiased for it. The cache includes train, probe, development, and test banks. Development already includes pairwise and triple combinations; test uses distinct event instantiations, not rule combinations unseen throughout all development. We therefore describe the experiment as transfer beyond the empirical training activities, rather than unrestricted compositional out-of-distribution generalization. Introducing a rule absent from every candidate is a separate misspecification experiment.

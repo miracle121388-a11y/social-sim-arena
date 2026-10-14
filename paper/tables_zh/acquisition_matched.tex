@@ -1,0 +1,18 @@
+\begin{table}[tbp]
+\centering
+\caption{同先验取证对照：所有方法采用进化先验。逐活动 AUC $\times10^3$，括号为 95\% 世界 bootstrap 区间；24 个独立世界，固定训练数据、证据与模板。}
+\label{tab:acquisition_matched}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
+\toprule
+方法 & 活动 1 & 活动 2 & 活动 3 \\
+\midrule
+同先验 Random & 4.19 [3.38, 5.07] & 10.84 [8.77, 12.84] & 6.15 [3.98, 8.65] \\
+同先验 Entropy & 4.19 [3.38, 5.07] & 10.85 [8.78, 12.85] & 6.15 [3.98, 8.65] \\
+同先验 ParamIG & 4.19 [3.38, 5.07] & 10.85 [8.78, 12.85] & 6.15 [3.98, 8.65] \\
+同先验 Standard OED & 4.19 [3.38, 5.07] & 10.85 [8.78, 12.85] & 6.15 [3.98, 8.65] \\
+Full & 4.19 [3.38, 5.07] & 10.85 [8.78, 12.85] & 6.15 [3.98, 8.65] \\
+\bottomrule
+\end{tabular}
+\end{table}
