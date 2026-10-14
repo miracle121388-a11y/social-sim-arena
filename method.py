@@ -190,7 +190,7 @@ def update_and_predict(candidate_weights, revealed_records, target_cache,
     weights = posterior_update(candidate_weights, revealed_records, temperature)
     return {'weights': weights, **predict(weights, target_cache)}
 
-V2_CONFIG = {'sigma': 0.003, 'ess_floor': 8.0, 'process_weight': 0.0, 'objective': 'mean', 'late_weight': 1.0, 'batch_fantasy': True, 'update_temperature': 0.5}
+V2_CONFIG = {'sigma': 0.008, 'ess_floor': 8.0, 'process_weight': 8.0, 'objective': 'mean', 'late_weight': 1.0, 'batch_fantasy': True, 'update_temperature': 0.5}
 
 # Round 2: vectorized world batches and entropy-constrained calibration.
 SUPPORTS_WORLD_BATCH = True
