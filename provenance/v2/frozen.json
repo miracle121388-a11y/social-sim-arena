@@ -1,0 +1,10 @@
+{
+  "method_sha256": "5125975a933bf283ddc117a67f82e0a9e7d726aac3d21a39a0651796b92f6e48",
+  "commit": "0d094ecdf021a9def8daf6d5f38ada0e6cc9686d",
+  "valid_trials": 30,
+  "keeps": 3,
+  "eligible_winner": true,
+  "best_dev_auc": 0.07568687200546265,
+  "baseline_result": "results/v2/dev-v1-2d1a75fd2bba.json",
+  "infrastructure_sha256": "da35a7ceefeaec7dac57d91f0c8b1dca2c5d09b3d2111b3ca10d68a060d76f78"
+}

@@ -1,0 +1,14 @@
+{
+  "trial": "V2-R17",
+  "commit": "f5b1cc7397c85913d937b28f4acd306409bb19cd",
+  "parent": "0d094ecdf021a9def8daf6d5f38ada0e6cc9686d",
+  "method_sha256": "381a74df0be76195d581b2dfe8ea024a6aeb6c67c39167c06477d2304022ec0d",
+  "hypothesis": "ESS 24, sigma 0.008, process 8, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors",
+  "status": "REVERT",
+  "auc": 0.07568687200546265,
+  "ess": 26.447500228881836,
+  "runtime_s": 6.506677099969238,
+  "guards": "{\"ess\": true, \"initial_brier\": true, \"final_brier\": true, \"b16_significant\": true, \"random_gain\": true, \"entropy_gain\": true, \"runtime\": true}",
+  "result": "results/v2/dev-current-3864f3d85774.json",
+  "reason": "guard failure or no AUC improvement"
+}

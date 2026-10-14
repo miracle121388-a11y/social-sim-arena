@@ -1,3 +1,7 @@
 # Preserve exact provenance and frozen-snapshot bytes across operating systems.
 # Hash manifests refer to raw bytes, so implicit CRLF/LF conversion is forbidden.
 * -text
+
+*.tsv whitespace=cr-at-eol
+*.json whitespace=cr-at-eol
+provenance/v2/reproduction-log.txt whitespace=cr-at-eol

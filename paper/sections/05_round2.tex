@@ -1,0 +1,46 @@
+\subsection{Round 2: noncollapsed calibration and matched-prior acquisition}
+\label{sec:round2}
+\paragraph{A prospective extension, with V1 retained.}
+Sections~\ref{sec:method} and 4.1--4.4 describe the original V1 study. We now test the specific failure identified there: can evidence acquisition become useful when calibration retains plausible alternatives? We preserve V1 commit \texttt{eb641c2} and its original data, then preregister a separate stress configuration, three statistical guards, and 30 development configurations. Both versions are evaluated on this new configuration; its scores must not be compared numerically with the earlier benchmark's scores as if only the algorithm had changed.
+
+\paragraph{Controlled ambiguity and inferential units.}
+The new simulator uses 256 agents, eight rollout seeds, 12 time steps, and 200 candidate mechanisms. The fixed pair $(a,b,d)=(.2,.95,.12)$ and $(.95,.2,.12)$ has the same attention--participation product. Inverse-transform common random numbers generate the same initial intentions for this pair. History activates queueing or forwarding separately; queue-enabled peer notices in the combination activate an eight-neighbor cascade, together with strong same-time conflict blocking. The pair's historical RMSE is 0.00000, whereas its probe and test-design disagreement is 0.28094. This is a deliberately constructed interaction, not a fitted human behavioral law. Development uses 12 independently simulated worlds and test uses 24 fresh worlds. Test reuses the fixed combined event design; it is fresh-world replication, not an additional unseen combination beyond the probe design. All confidence intervals resample complete worlds and preserve within-world activity dependence.
+
+\paragraph{Calibration and acceptance rule.}
+For the V1-compatible support $\mathcal C$, let $r_{etc}$ denote the relative seed-variance normalization from Eq.~\eqref{eq:distance}. V2 uses
+\begin{align}
+ E_m^{(2)}&=\frac{1}{2\sigma^2}\operatorname{mean}_{e,t,c}
+ \frac{(\bar X_{metc}-H_{etc})^2}{r_{etc}}+\lambda\ell_m^{\mathrm{proc}},\\
+ \ell_m^{\mathrm{proc}}&=-\frac{1}{|\mathcal O|}\sum_{j\in\mathcal O}
+ [y_j\log p_{mj}+(1-y_j)\log(1-p_{mj})],\\
+ w_{0m}^{(2)}&\propto\mathbf1[m\in\mathcal C]\exp(-E_m^{(2)}/T),\qquad
+ T=\inf\{t\geq1:\,N_{\mathrm{eff}}(w_0(t))\geq8\}.
+ \label{eq:v2-calibration}
+\end{align}
+The implementation uses a small numerical margin and bisection for the temperature floor; MCAR missing history labels contribute no log likelihood. Unobserved views in intention records remain marginalized through $p_{mj}=a_mb_m I_j$. The support filter is unchanged. The mean residual above describes the selected V2 configuration; worst-event variants are also included in the search. Gibbs temperature has an entropy-regularization interpretation, but the enforced effective size is based on R\'enyi-2 entropy, not Shannon entropy.
+
+A candidate is retained only if development AUC improves by more than $10^{-8}$ and all guards hold: initial effective size at least eight; both initial and budget-16 audit Brier at most .195; a strictly positive lower endpoint of the paired 95\% bootstrap interval for $R(0)-R(16)$; at least 5\% lower AUC than both matched-prior Random and Entropy; and fast-development runtime at most 15 seconds. All selectors within a version share initial weights, observations, costs, missingness, and posterior update. With selected evidence $D$, the update is
+\begin{equation}
+ w_m(D)\propto w_{0m}\exp\!\left\{\tau^{-1}
+ \sum_{j\in D\cap\mathcal O}\log p_m(y_j)\right\}.
+ \label{eq:v2-update}
+\end{equation}
+The winner uses $\sigma=0.008$, $\lambda=8$ and $\tau=0.5$, with unweighted probe times and two-query fantasy conditioning. Both hypothetical branches use the same likelihood temperature as the real update. For $\tau\ne1$, this is a generalized-Bayes update: the original covariance score is still used as a heuristic acquisition ranking, and is not claimed to equal the exact variance reduction of the tempered posterior. No submodularity guarantee is added.
+
+\paragraph{Frozen results.}
+Thirty valid trials yield 3 KEEP and 27 REVERT decisions with no runtime failures. The selected commit is \texttt{0d094ec}. Initial effective size is 26.45, compared with 1.01 for V1 on this new cache. Table~\ref{tab:v2-overview} reports the matched benchmark comparison. V2 development AUC is 0.07569, with gains of 27.5\% and 43.2\% over matched-prior Random and Entropy. The algorithm is sealed before test truth is loaded. Test Full AUC is 0.05776 (95\% interval [0.04948, 0.06688]), compared with 0.14389 for V1: a 59.9\% reduction on the same new benchmark. V2 test error falls from 0.13319 at zero evidence to 0.03948 at budget 16; the paired improvement interval is [0.08321, 0.10258]. Initial and final test Brier are 0.18800 and 0.17438, respectively. Initial Brier is worse than V1's even though both satisfy the guard; the improvement occurs after evidence acquisition.
+\input{tables/v2_overview}
+\input{tables/v2_selectors}
+
+On test, Full improves AUC by 50.1\% over same-prior Random and 56.6\% over same-prior Entropy. The paired intervals for baseline-minus-Full AUC are [0.03946, 0.07722] and [0.06633, 0.08376]. Figure~\ref{fig:v2-curves} shows that the reduction is present for each activity, with activitywise uncertainty in Table~\ref{tab:v2-activities}. However, ParamIG selects the same records and exactly matches Full, so this experiment does not establish superiority of prediction-oriented covariance scoring over parameter information gain. The standard OED control targets historical trajectories and is weaker here; it is not an optimized compositional OED oracle.
+\begin{figure}[tbp]
+\centering\includegraphics[width=\linewidth]{v2_budget_curves.pdf}
+\caption{Round-2 frozen-test curves, separately by activity. Shading is a pointwise 95\% whole-world bootstrap interval. V2 selectors share their prior and update; V1 uses its own original calibration. ParamIG coincides with V2 Full and is omitted for legibility.}
+\label{fig:v2-curves}
+\end{figure}
+\input{tables/v2_activities}
+
+\paragraph{What changed, and what remains unproved.}
+The thirty configurations produce 18 distinct development AUC values. Raising the effective-size floor from 8 to 24 at the winner's calibration width has no effect because its unconstrained effective size already exceeds 24. Thus the guard prevents inadmissible winners, but its active intervention is not the cause of the selected configuration's gain. With width .008 and process weight 8 fixed, changing $\tau$ from 1 to .5 reduces AUC from 0.08193 to 0.07569; $\tau=2$ worsens it to 0.09056. These are controlled temperature comparisons. Comparisons across other groups also change width, process weight or loss aggregation and cannot identify their individual causal contributions. Removing fantasy conditioning produces the same selected records and score in the matched configurations; this pool supplies no evidence for a separate batch-conditioning benefit.
+
+The acquisition pool deliberately contains 24 view records, 40 known-probability availability records with $p=.5$, and 96 marginalized intention records. Maximum entropy spends its budget on irreducible availability uncertainty, while the informative view records distinguish the ambiguous attention mechanisms. This design makes the failure mode interpretable but limits generality: it favors information-sensitive selection over a pure predictive-entropy heuristic, and does not establish robust dominance on arbitrary pools. The wider test improvement than development is conditional on the fixed historical cohort and different acquisition answers; the 12-world development set is small. This constructed setting restores acquisition value; it does not establish real-world identification, new risk guarantees, or official rankings.

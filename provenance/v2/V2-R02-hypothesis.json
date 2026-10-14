@@ -1,0 +1,14 @@
+{
+  "parent": "93d2e2cec9d0bd64aeace295644f18376d868761",
+  "round": 2,
+  "config": {
+    "sigma": 0.003,
+    "ess_floor": 8.0,
+    "process_weight": 0.0,
+    "objective": "mean",
+    "late_weight": 1.0,
+    "batch_fantasy": true,
+    "update_temperature": 0.5
+  },
+  "hypothesis": "ESS 8, sigma 0.003, process 0, mean, tau 0.5, late 1, fantasy True: preserve ambiguity and transfer evidence under matched priors"
+}

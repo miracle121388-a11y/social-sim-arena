@@ -16,3 +16,4 @@ date,record_type,id,status,evidence
 2026-10-14,manuscript,complete-english-paper,compiled_17_pages_zero_warnings,paper/main.pdf
 2026-10-14,verification,paper-evidence-audit,60_git_candidates_38_interval_summaries_verified,paper/qa/evidence-validation.json
 2026-10-14,translation,full-chinese-paper,compiled_15_pages_zero_warnings,paper/main_zh.pdf
+2026-10-14,campaign,v2-non-collapsed-30,tested_synthetic_frozen,provenance/v2/frozen.json;provenance/v2/validation.json;ROUND2_RESULTS.md

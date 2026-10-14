@@ -1,3 +1,18 @@
+# AutoResearch Round 2：非坍缩取证实验
+
+当前分支 `exp/v2-non-collapsed` 已完成并封存 30 轮搜索。最优方法为 `0d094ec`，初始有效机制数 26.45，开发 / 测试 AUC 为 0.07569 / 0.05776；同先验测试 AUC 比 Random / Entropy 低 50.1% / 56.6%。Full 与 ParamIG 持平，数据仍全部为构造的合成压力测试。
+
+- 结果与限制：[ROUND2_RESULTS.md](ROUND2_RESULTS.md)
+- 中文论文：`paper/main_zh.pdf` 第 10 页起，第 4.5 节；英文 `paper/main.pdf` 第 11 页起。
+- 冻结复现：`powershell -NoProfile -File reproduce_round2.ps1`，或 `bash reproduce_round2.sh`。不重启搜索。
+- 手动评测：`.venv-research/Scripts/python.exe -B evaluate.py --campaign v2 --split test --mode full_paper_ablation`；同缓存 V1 加 `--method-version v1`。
+- 证据核对：`.venv-research/Scripts/python.exe -I -B scripts/validate_round2.py`。
+- 全部候选：`experiments_v2.tsv`；固定协议与历史快照：`provenance/v2/`。
+
+V1 的旧缓存、实验和研究包保持不变。以下保留的是 **V1 历史说明**；其旧锁和根目录命令不适用于已升级的 V2 分支。V1 可复现发行包为 `dist/njusim-frozen-research.zip`。
+
+---
+
 # Frozen social-simulation research package
 
 研究问题：历史总量相近的不同微观机制，面对新的事件组合可能给出不同预测。本项目实现相容机制校准、按组合预测分歧选择过程证据、完整轨迹混合预测。校园活动只是首个合成实例。**全部实证结果目前均为合成测试，不是 SocioVerse 或 MIT 官方成绩。**

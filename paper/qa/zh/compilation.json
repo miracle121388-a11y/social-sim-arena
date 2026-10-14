@@ -1,0 +1,13 @@
+{
+  "compiler": "D:\\LaTeX\\texlive\\2024\\bin\\windows\\xelatex.EXE",
+  "pdf_sha256": "6491e8512c45d3dd75b8a76b5e09dcf9ecd765f516972a96ad7cc95f6ee79dbc",
+  "preserved": {
+    "method.py": "5125975a933bf283ddc117a67f82e0a9e7d726aac3d21a39a0651796b92f6e48",
+    "paper/main.tex": "01a810376cb2e0f233b621538576d0540581638766329e27b3c0ce4720c7cfb7",
+    "paper/main.pdf": "3a0e8d3497c5c2dc0d0e28002b4a767b8a2431925865f8728892bcf9ab3870a4",
+    "PAPER_TABLES.tex": "b0ebf1a00146511014d6619afca66b174e48ae70c1c120d809bcbc5f94c1a347"
+  },
+  "remaining_diagnostics": [],
+  "passes": 4,
+  "pdf_bytes": 437974
+}
