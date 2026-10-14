@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Experiment 3: frozen-method ablations. *NoSharing changes the candidate prior; original SinglePoint uses another selection objective. MatchedMAP removes only the mixture. Constructed synthetic test activities; 24 independent worlds, paired world-bootstrap 95\% CIs. Activities interact inside each world; no resampling of dependent time cells. Fixed training/evidence/templates.}
+\begin{tabular}{lccc}
+\toprule
+Method & Activity 1 AUC [95\% CI] & Activity 2 AUC [95\% CI] & Activity 3 AUC [95\% CI] \\
+\midrule
+Full (frozen) & 0.00419 [0.00338, 0.00507] & 0.01085 [0.00878, 0.01285] & 0.00615 [0.00398, 0.00865] \\
+w/o parameter sharing* & 0.04719 [0.04523, 0.04901] & 0.02117 [0.01872, 0.02361] & 0.05111 [0.04860, 0.05335] \\
+w/o combination target & 0.00419 [0.00338, 0.00507] & 0.01085 [0.00878, 0.01285] & 0.00615 [0.00398, 0.00865] \\
+Single point (original)* & 0.00542 [0.00471, 0.00608] & 0.00754 [0.00592, 0.00935] & 0.00737 [0.00578, 0.00895] \\
+Single point (matched MAP) & 0.00419 [0.00338, 0.00507] & 0.01085 [0.00878, 0.01285] & 0.00615 [0.00399, 0.00865] \\
+w/o batch redundancy update & 0.00419 [0.00338, 0.00507] & 0.01085 [0.00878, 0.01285] & 0.00615 [0.00398, 0.00865] \\
+\bottomrule
+\end{tabular}
+\end{table*}

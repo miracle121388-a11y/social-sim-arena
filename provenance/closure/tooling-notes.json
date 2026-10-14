@@ -1,0 +1,22 @@
+{
+  "tooling_failures": [
+    {
+      "step": "web open",
+      "detail": "socialsim.org docs inaccessible to web tool; fetched public page successfully with urllib"
+    },
+    {
+      "step": "print downloaded HTML",
+      "detail": "Windows GBK stdout could not encode mathematical minus; original bytes were saved; reparsed with UTF-8 stdout"
+    },
+    {
+      "step": "upstream LICENSE probe",
+      "detail": "HTTP 404; no third-party full documents included in distribution"
+    },
+    {
+      "step": "README edit",
+      "detail": "apply_patch rejected delete+add of same path in one patch; no change occurred; replaced README with validated local writer"
+    }
+  ],
+  "scientific_evaluation_failures": 0,
+  "method_changed": false
+}

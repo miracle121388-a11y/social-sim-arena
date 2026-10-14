@@ -6,3 +6,10 @@ date,record_type,id,status,evidence
 2026-10-14,campaign,campaign60,60_valid_10_keep_50_discard,provenance/campaign60/summary.json
 2026-10-14,frozen_test,20261014T054254Z-092b064c,tested_synthetic,provenance/campaign60/test.json
 2026-10-14,verification,campaign60-integrity,14_tests_60_commits_2077_files_verified,provenance/campaign60/integrity.json
+2026-10-14,frozen_test_reproduction,closure-golden,tested_synthetic,provenance/closure/golden-test.json
+2026-10-14,independent_worlds,closure-24-worlds,tested_synthetic,provenance/closure/supplement.json
+2026-10-14,history_audit,closure-60-candidates,60_hashes_and_decisions_verified,provenance/closure/evolution-audit.json
+2026-10-14,verification,closure-reproduction,22_tests_and_bash_pipeline_passed,provenance/closure/verification.json
+2026-10-14,integration,socialsim-arena-v2,offline_contract_only_NOT_EVALUATED,SOCIALSIM_INTEGRATION.md
+2026-10-14,tooling,closure-tooling,failures_preserved,provenance/closure/tooling-notes.json
+2026-10-14,package,closure-research-zip,fresh_extraction_full_pipeline_passed,provenance/closure/package-validation.json

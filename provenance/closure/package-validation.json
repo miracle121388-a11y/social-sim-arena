@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "archive_sha256": "245779f2cde4793dca40b9846e76859080df801b43c46b4bd421d5bdfe03fd14",
+  "verified_archive_files": 192,
+  "fresh_extraction": ".tmp/package-check-83f30a74",
+  "full_bash_pipeline": {
+    "status": "passed",
+    "method_sha256": "b8389adc234ee11e923d59084eaeb83b3821986c5f2f714c9ad5a84ed14650af",
+    "steps": [
+      {
+        "command": [
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\1.log"
+      },
+      {
+        "command": [
+          "evaluate.py",
+          "--split",
+          "dev",
+          "--mode",
+          "fast_dev"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\2.log"
+      },
+      {
+        "command": [
+          "evaluate.py",
+          "--split",
+          "test",
+          "--mode",
+          "full_paper_ablation"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\3.log"
+      },
+      {
+        "command": [
+          "paper_artifacts.py",
+          "--result",
+          "results/20261014T062717Z-7fabdf2f.json"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\4.log"
+      },
+      {
+        "command": [
+          "closure_evaluate.py",
+          "--result",
+          "results/20261014T062717Z-7fabdf2f.json"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\5.log"
+      },
+      {
+        "command": [
+          "closure_artifacts.py",
+          "--result",
+          "results/20261014T062733Z-closure-34be5e27.json"
+        ],
+        "returncode": 0,
+        "log": "results\\reproduce-20261014T062656Z-240d0a48\\6.log"
+      }
+    ],
+    "original_algorithm_commit": "eb641c22eb197d038696894a5e6857d31002af78"
+  },
+  "independent_world_results_exact_match": true,
+  "method_sha256": "b8389adc234ee11e923d59084eaeb83b3821986c5f2f714c9ad5a84ed14650af",
+  "source_audit": "provenance/isolation_checks/closure-final.json"
+}

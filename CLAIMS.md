@@ -5,3 +5,9 @@
 主指标下降不能解释成主动取证或机制恢复有效。初始权重有效机制数约 1.0004，NoCombination 的 test AUC 与完整方法相同；dev Brier 从 0.1893 变差到 0.2421。SinglePoint 对照采用不同的选点目标，不能用其差值证明集合优势。
 
 未验证：真实数据、跨领域稳定性、任何 MIT 榜单、SocioVerse 官方评测成绩、顶会创新性。B0/B2 旧有缺失没有被新名字替代。没有 validated_real 结论。本地哈希与接口限制不是保密执行沙箱。
+
+## 2026-10-14 补充结果
+
+Full 的 24 世界 macro-event AUC=0.00706354 [0.00602473,0.00809948]，这是不同于原 pooled AUC 的补充指标。MatchedMAP=0.00706548；NoCombination 与 NoBatchDedup 均与 Full 相同。同先验 Random=0.00705892，无 Full 取证优越的证据。
+
+未知候补与传播规则检出率低，不能称为可靠越界检测。独立世界置信区间条件于固定训练数据、证据和三个模板，不是跨域有效性。22 项本地测试不等于 Arena 官方接入认证。官方 SocioVerse / MIT Arena 仍 NOT_EVALUATED。

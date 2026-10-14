@@ -18,3 +18,8 @@ artifacts/
 /paper/
 /data/*.pt
 /frozen_method.json
+/dist/
+# Public upstream documentation snapshots stay local; URL/hash provenance is tracked.
+/provenance/closure/arena-*.md
+/provenance/closure/arena-*.schema.json
+/provenance/closure/socialsim-docs.html
