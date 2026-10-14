@@ -1,26 +1,11 @@
-# 下一会话交接｜2026-10-09
+# 交接
 
-**只在 `D:\Users\Lenovo\Desktop\njusim-contest` 开发。** 原目录 `D:\Users\Lenovo\Desktop\NJU-xianlinSWM` 始终只读。当前聊天最初绑定旧目录，本轮所有创建新项目后的命令均明确cwd新目录；后续在Codex打开新目录作为工作区，不依赖旧聊天cwd。不能在旧目录创建记录/分支/环境。
+最新任务：用户要求完整可跑的 AutoResearch 框架、实际 GPU 基线分数及第一次提交。四个指定主文件、Git 控制器和测试已建。正式 dev_auc_error=0.02579135；快速评估 5.49 秒；完整结果见 provenance/baseline-v0-final.json。
 
-开工先读PROJECT_CONTEXT、STATUS、DECISIONS、CLAIMS、AGENTS与experiments/registry.csv。两原附件保存在provenance/inputs。核心问题与用户边界已继承，不重新发散研究方向。
+先读 program.md。算法研究只允许修改 method.py；固定底座已哈希封存。原始缓存一次生成，不覆盖。测试前必须通过 autoresearch.py freeze-test；当前尚未做测试集评价，不应为了出图提前解封。
 
-已交付：独立环境和Git、374文本哈希+769文件元数据/Git状态只读审计、冻结sampler两模块/许可证；S1/S2/S3各30合成人物；32项原生测试；1200组抽样parity；7事件合成校准实验；三场景官方真实循环/DuckDB包装逐条parity。无真实数据/真实API结果，B0完整原系统和B2原始Jev/LLM仍缺。
+使用 autoresearch.py status 查看当前基线状态；init 只用于首次提交后的单次初始化，不要重复初始化。后续研究指令通过 trial 启动候选实验。初始上限 3 次，连续失败 2 次或总计 45 分钟停止。控制器不内置 LLM、不跨会话调度。十四项测试已通过，含真实 Git 过渡测试；测试 fixture 仅在 .tmp，不是研究结果。
 
-```powershell
-Set-Location 'D:\Users\Lenovo\Desktop\njusim-contest'
-.\.venv\Scripts\python.exe -I -B run.py test
-.\.venv\Scripts\python.exe -I -B run.py all --batch next-session-01
-.\.venv-socioverse\Scripts\python.exe -I -B studies\nju_compositional_simulation\run.py next-adapter-01
-.\.venv\Scripts\python.exe -I -B scripts\isolation.py next-check.json
-```
+失败记录：首轮 argsort 参数兼容错误及缓存缺失保存在 provenance/bootstrap_failures.json 和结果登记中。早期 AUC 0.01968210 是尚未限制查询可获取性的搭建版本；正式结果 0.02579135，不混用。v0 没有建立方法优势，偏移检测漏检也已保留。
 
-batch必须未使用。实际最终验收：artifacts/acceptance-v1、artifacts/adapter-acceptance、artifacts/test-acceptance.log。失败：pilot-v1/failure.json，全部说明docs/failures.md。官方固定commit9c3ac77，依赖锁requirements-socioverse.lock.txt。原生无需任何第三方库。
-
-先做三件事：
-1. 和用户确认真实活动过程数据的可得性与授权/审批路径，人工审核并冻结事件、风险集、可观测标签及组合保留设计；未经授权不采集真实学生数据。
-2. 补齐任务匹配的B0完整隔离基线和B2授权响应缓存；先查输入/许可/依赖/预算，再做公平同环境对照。当前两离线后端不能冒充真实模型。
-3. 完成独立事件、无共享/无过程/无闭环消融及可识别性/充分性与群集不确定性评估，按证据修订提案、报告和演示。
-
-限制：原生日志完成时落盘，暂无崩溃恢复；官方warm-start/外层多round拒绝；配置尚无人类科学审核；合成seed范围不是实证CI；出版/后续投稿条款待查。官网提案截止10月12日23:59 UTC+8、终稿10月31日同时间；报名/上传未执行。所有主张遵循proposed/implemented/tested_synthetic/validated_real，当前validated_real=0。
-
-结束时更新事实源、claims和registry，再复核源受控范围；若有差异报告即可，绝不擅自还原用户文件。
+legacy 2,077 个文件字节一致；source 审计仅原有两处 refs 差异，没有新增受检查源码变化。根 scripts/isolation.py 使用归档基线；不要执行旧项目或直接运行 legacy 下带路径假设的脚本。

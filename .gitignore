@@ -10,3 +10,11 @@ artifacts/
 .env*
 *.key
 *.pem
+
+# Generated local research state. Original traces are append-only on disk.
+/.autoresearch/
+/experiments.tsv
+/results/
+/paper/
+/data/*.pt
+/frozen_method.json

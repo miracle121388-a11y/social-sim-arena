@@ -1,0 +1,12 @@
+{
+  "prepare_and_cache.py": "445e265062656782d3dc3e24201b6a29046391568da42a1ee279d8d5d432a47a",
+  "evaluate.py": "529fe056a5756bb50651fff0207e8b2e889fb0a99e7ecc7fa85b8ee50f0ffc33",
+  "workspace.py": "822f035131538d8977fdc9299989c531fbc580f1d8b128c6dc3b9645b86101e0",
+  "autoresearch.py": "6705d3bd71fd53bebd4d32ea722946836568fb8d78afad823ba3f0e419c50600",
+  "paper_artifacts.py": "79bbf2190bd3ed8d60a5cb652680320d6b0f97fc686cded5aad896c1907b96c4",
+  "program.md": "5efe9e401f6ebd7aec59e6c608f816960178c220dcfa63eea1bad9393763b9cf",
+  "requirements.txt": "d7450630163ac4413fb4eae3960b7e6589bfe84f8888d6955dd2230462a3bffb",
+  "requirements.lock.txt": "ec912d5bb70af3e94388377d68dc06815f0965dee83a0d930d04d2088a8df927",
+  "tests/test_science.py": "225770660027eeb0cae2770c7fc9a64d07b5962ee2d8c321c8f5f658b71bfe6f",
+  "tests/test_git_machine.py": "fd8a2dbb91544e5066bc9c6e569039aa74cda62ea0ab74575863de9f218853ea"
+}

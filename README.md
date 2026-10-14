@@ -1,55 +1,50 @@
-# njusim-contest
+# Multi-agent social simulation · AutoResearch v0
 
-独立的可校准、可组合、可验证社会模拟研究原型。**当前证据全部为合成软件/机制测试，真实行为验证为0。** 原南京大学校园模拟器仅作只读参考，本项目没有在其内部开发。
+A runnable synthetic research framework for mechanism ambiguity and budgeted process evidence. Campus participation is the first adapter; it does not define the research scope. No official challenge score, MIT leaderboard result or real-data validation is claimed.
 
-源码参考：`D:\Users\Lenovo\Desktop\NJU-xianlinSWM`  
-唯一研发目录：`D:\Users\Lenovo\Desktop\njusim-contest`
-
-## 立即运行
-
-本机独立`.venv`已可用，原生内核仅用Python标准库，无API Key、无网络请求、无端口/服务。请从新目录运行；batch名必须未使用，以保留历史记录。
+## Run on this machine
 
 ```powershell
-Set-Location 'D:\Users\Lenovo\Desktop\njusim-contest'
-.\.venv\Scripts\python.exe -I -B run.py test
-.\.venv\Scripts\python.exe -I -B run.py all --batch reproduce-01
+.\.venv-research\Scripts\Activate.ps1
+python -B prepare_and_cache.py
+python -B evaluate.py --split dev --mode fast_dev
+python -B evaluate.py --split dev --mode full_paper_ablation
+python -B paper_artifacts.py
+python -B -m unittest discover -s tests -v
 ```
 
-`all`一键跑30人S1/S2/S3 smoke、回放验证、两后端×四种校准方式的合成训练/开发/测试原型。输出在`artifacts/reproduce-01/`，自动追加experiments/registry.csv；约几十秒，具体取决于机器。首次到别的机器先在**独立新目录**创建环境：`python -I -B -m venv --copies --without-pip .venv`，无需pip安装原生依赖。本轮Python为3.13.9。
+Preparation is one-time: the existing cache is never silently overwritten. On this machine it is already prepared, so start with evaluate.py. A new benchmark version must use a new workspace/cache artifact, not replace old evidence.
 
-自定义冻结配置及日志回放：
+## Files and contract
 
-```powershell
-.\.venv\Scripts\python.exe -I -B run.py simulate --config configs\S3.json --backend statistical --batch custom-02
-.\.venv\Scripts\python.exe -I -B run.py replay --trace artifacts\acceptance-v1\smoke\S2\trace.jsonl
-.\.venv\Scripts\python.exe -I -B scripts\isolation.py manual-check.json
-```
+- `prepare_and_cache.py`: fixed tensorized simulator, synthetic benchmark, generic external-data contract, 200-mechanism rollout cache.
+- `evaluate.py`: fixed metric, baselines, ablations, integrity checks, test freeze gate.
+- `method.py`: the only file a research campaign can evolve.
+- `autoresearch.py` + `program.md`: commit/evaluate/keep/discard controller and coding-agent workflow.
+- `paper_artifacts.py`: three Booktabs tables and a budget-error PDF/PNG; a full suite result is required.
+- `tests/test_science.py`: mathematical and simulator contracts.
+- `legacy/`: archived old work, preserved unchanged.
 
-replay命令验证hash chain和状态连续性；smoke额外通过固定响应缓存重新执行，逐条比对。已有目录不覆盖；失败文件保留。主研究EventSpec仍需人工科学审核，见configs/review_manifest.json。
+Baseline outputs append to `results/` and `experiments.tsv`. These generated traces and the cache stay local; their hashes and curated reports are versioned. Rejected candidate commits remain reachable. This framework does not invent hypotheses without a coding agent and does not schedule itself across sessions.
 
-## 本轮已运行验收
+## Scientific definitions
 
-- 原生32项测试通过：artifacts/test-acceptance.log、artifacts/tests-latest.json。
-- S1/S2/S3各30人；293/275/128条记录；状态还原与缓存重执行均通过：artifacts/acceptance-v1/smoke。
-- 抽样模块1200组parity：artifacts/legacy_parity.json，**不等于完整B0**。
-- 合成pilot：7个配置事件，2 train/1 dev/4 test，32条评测结果、96个已保存测试rollouts；artifacts/acceptance-v1/pilot。real_events=0，API calls/cost=0。
-- 9点参数网格中存在9组同一训练到场总数但过程尝试不同的参数对；artifacts/identifiability.json，仅作合成不可识别性示例。
-- 初次pilot调用错误保留在artifacts/pilot-v1与docs/failures.md，修正后pilot-v2和acceptance-v1通过。
+Closed-loop state includes individual interest, availability, budget, information and experience. Information travels through local ring neighbors. Intent is recorded before budget/conflict/capacity settlement; waiting, cancellations/refunds and promotions are explicit. Eight random seeds are cached for each candidate and event.
 
-## 可选官方适配
+Train events expose mechanisms individually; fixed probe rules compose them without target labels. Dev/test use new events and combinations. Process calibration, trajectory observations and active audit records use independent cohorts. Aggregate trajectory errors are compatibility constraints, not independent likelihood multipliers. Initial intent with unobserved viewing has likelihood attention × participation × interest. Acquisition records describe standardized known risk states, not arbitrary unobserved histories.
 
-独立`.venv-socioverse`已安装锁定依赖。官方vendor固定`9c3ac774816511c121184ca11f539dc398ba1544`，未修改Core。适配的是**本新项目内核**。
+A binary record's expected reduction in normalized trajectory variance is mean(Cov(p,Z)^2)/(q(1-q)), divided by cost. Batch selection integrates both hypothetical outcomes. This identity assumes fixed cached predictions and conditionally independent audit records; it is not a guarantee of reduced real error.
 
-```powershell
-.\.venv-socioverse\Scripts\python.exe -I -B studies\nju_compositional_simulation\run.py adapter-reproduce-01
-```
+Acquisition availability is known before selection; the pool excludes records that cannot be retrieved. Their labels are not revealed. Historical and target process missingness remains marginalized/masked. This keeps the binary fantasy model consistent with what an acquired record returns.
 
-三场景各330行独立DuckDB面板，完整sidecar与原生逐条一致。输出：artifacts/adapter-acceptance。不支持官方warm_start及外层多round，显式拒绝；不能拿外层panel单独宣称微事件可回放。
+Predictions are mixtures of whole trajectories. Epistemic variance is between-mechanism variance of seed means; aleatoric variance is mean within-mechanism seed variance. Reported 90% intervals are pointwise, not simultaneous path bands. RMSE/MAE and widths are population fractions. Multiply by 128 for this example's count scale. NLL/Brier concern held-out next-decision audit records.
 
-复建可选环境时，先把官方仓库克隆到本项目vendor/socioverse2并checkout上述提交，然后在新目录创建`.venv-socioverse`；使用其pip `--isolated install --cache-dir .cache/pip -r requirements-socioverse.lock.txt`。不要从原校园目录获取任何依赖、配置、数据或环境。下载/安装的TEMP/TMP指定到本项目.tmp。基础解释器/标准库来自本机Python安装，仅只读共享，与原校园环境无关。
+SimpleStats uses empirical historical paths. Uncalibrated is a uniform candidate mixture; ProcessOnly and TrajectoryOnly use one compatibility constraint. PassiveV1 applies both constraints with no active evidence. Standard_OED targets historical-event predictions; Covariance targets training-rule combinations. NoSharing uses independent event-specific parameter permutations, changing the prior as well as sharing; report that caveat.
 
-## 导航与边界
+The shifted world adds an unmodeled transport disruption. A post-observation flag marks shifted RMSE > .08 with epistemic variance < .0025. This is a fixed synthetic diagnostic, not reliable advance detection of all model misspecification.
 
-事实源：PROJECT_CONTEXT.md / STATUS.md / DECISIONS.md / SESSION_HANDOFF.md / CLAIMS.md / AGENTS.md / experiments/registry.csv。源码审计：docs/source_audit.md。架构与时间语义：docs/architecture.md。官方规则：docs/competition_rules.md。近邻：docs/novelty_matrix.md。真实数据空模板和协议：data/templates、docs/data_protocol.md。提案、实验表、演示脚本草案：submission/。
+## Environment and boundaries
 
-B0完整原系统和B2真实Jev/LLM尚缺；live插件只验证了调用形状，默认不联网。沒有真实预测改进、人格收益、因果效应或论文创新的已证实主张。只在新目录写入；进程级防护不是OS只读沙箱，原项目核验范围与排除项见provenance。未读取密钥/生产数据库、未启动原项目、未报名/上传/公开发布。
+Python 3.13, PyTorch 2.7.1 + CUDA 12.6 on RTX 4060 Laptop 8GB. Installation uses `uv pip install --python .venv-research/Scripts/python.exe torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126`, then the remaining packages in requirements.txt. Exact installed versions are in requirements.lock.txt. Configure TEMP/TMP and UV_CACHE_DIR under this workspace when installing.
+
+Upstream paradigm: https://github.com/karpathy/autoresearch . The research adaptation uses a 15-second dev budget and an initially bounded campaign. `infrastructure.lock.json` freezes evaluator code after bootstrap. It cannot stop malicious local Python from reading files; a secure external evaluator remains future work. Source project NJU-xianlinSWM stays read-only. MIT data requires a named dataset, provenance, license, explicit mapping and authorization; no real data is bundled.

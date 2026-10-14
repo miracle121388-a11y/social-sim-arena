@@ -1,0 +1,49 @@
+{
+  "version": "v2-protocol-draft-1",
+  "status": "proposed",
+  "human_reviewed": false,
+  "scope": "domain-independent evidence selection; existing campus kernel is one integration fixture",
+  "data_provenance": "synthetic_only_until_separate_authorization",
+  "budget_units": "record_cost_units_not_actual_collection_currency",
+  "budget_grid": [
+    0,
+    2,
+    4,
+    8,
+    16
+  ],
+  "initial_evidence": "freeze per-event records before selection; not specified yet",
+  "split_manifest": null,
+  "probe_manifest": null,
+  "primary_metric": "equal-event mean of within-event normalized trajectory MAE; trapezoidal AUC divided by common budget range",
+  "normalization": "freeze target scales from training; no test-based scale selection",
+  "seeds": "declare before execution; simulation repeats are not independent events",
+  "outputs": [
+    "mechanism_disagreement.csv",
+    "budget_event_errors.csv",
+    "coverage_width_misspecification.csv"
+  ],
+  "baselines": [
+    "passive_v1_joint",
+    "random",
+    "behavior_entropy",
+    "candidate_information_gain",
+    "goal_oriented_explicit_outcomes_shared_cache",
+    "composition_covariance_shared_cache"
+  ],
+  "unsupported_until_implemented": [
+    "correlated_batch_queries",
+    "missing-history_filtering",
+    "direct-state-changing_queries"
+  ],
+  "required_gates": [
+    "train-only_query_pool",
+    "predeclared_composition_split",
+    "constituent_mechanisms_supported_in_training",
+    "heldout_evaluator_access_control",
+    "conditional_observation_model",
+    "same_budget_and_cache_for_all_methods"
+  ],
+  "name": "misspecification",
+  "purpose": "Evaluate shared candidate errors under out-of-class delays, waiting rules and correlated actions"
+}

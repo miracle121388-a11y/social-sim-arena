@@ -1,0 +1,13 @@
+{
+  "tests_passed": 14,
+  "archive_files_verified": 2077,
+  "git_controller_test": "keep, discard, crash, retained rejected refs, budget stop; isolated fixture only",
+  "final_result": "20261014T042937Z-2cf977a7",
+  "infrastructure_frozen": true,
+  "bootstrap_corrections": [
+    "torch argsort keyword compatibility",
+    "fixed baselines independent of method.py",
+    "public record availability mask before acquisition"
+  ],
+  "test_split_evaluated": false
+}

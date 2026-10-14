@@ -54,7 +54,7 @@ def capture():
 
 if __name__ == '__main__':
     now = capture()
-    initial = ROOT / 'provenance/source_manifest.json'
+    initial = ROOT / 'legacy/provenance/source_manifest.json'
     if sys.argv[1:] == ['initial']:
         with initial.open('x', encoding='utf-8') as f: json.dump(now, f, ensure_ascii=False, indent=2)
         print(json.dumps({'controlled_files': len(now['controlled_hashes']), 'metadata_files': len(now['file_metadata']), 'links': now['reparse_points'], 'git_entries': now['git_entries']}))

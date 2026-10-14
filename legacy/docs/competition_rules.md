@@ -22,3 +22,12 @@
 技术版本：本轮只在新项目vendor内克隆官方仓库，固定commit `9c3ac774816511c121184ca11f539dc398ba1544`，库0.2.0；依赖锁见requirements-socioverse.lock.txt。实际阅读abc/environment.py、population.py、decision.py、trajectory.py及engine/loop.py、builder.py、schemas。采用Path-C共享Session工厂，不使用不匹配的Path-B通用装配。
 
 官方Core的warm_start明确限制依赖可从保存Action重建状态且interaction_rounds=1；Path-C存在隐含内部状态不能假定支持。本适配显式拒绝warm_start与多轮外层，保留原生微日志sidecar并逐条parity检验。
+
+## 2026-10-10 复核
+本轮静态读取赛事页及适配指南后，用浏览器加载动态内容并展开自研框架FAQ；没有认证、注册或提交。
+- [赛事提交页](https://socioverse.fudan-disc.com/challenge/#submit)：提案仍为1-2页PDF，截止2026-10-12 23:59 UTC+8；终稿截止2026-10-31同时间。初筛只影响额外API支持，不淘汰。
+- Track C仍要求对照解释有效性、成本和适用范围。报告4-8页含图表，视频MP4不超过5分钟（在线可用平台回放替代），固定seed、声明模型调用/成本、真实真值获取时点及防泄漏。
+- [FAQ](https://socioverse.fudan-disc.com/challenge/#faq)与[适配指南](https://socioverse.fudan-disc.com/docs/guides/wrap-legacy-model/)仍允许自研框架Path C适配，但成果必须为study；四接口及轨迹一致性要求仍在。
+- 命名模板含子赛道字段，公开赛道描述未列具体子赛道选项，不自行发明。团队/报名/出版兼容性均未确认。
+- 本轮未重读GitHub最新README，10月9日README日期冲突仅是历史记录。
+- 已形成两页提案审阅稿；须据实际团队、数据来源和报名信息定稿。

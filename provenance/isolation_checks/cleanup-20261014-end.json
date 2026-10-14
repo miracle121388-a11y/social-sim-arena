@@ -1,0 +1,11 @@
+{
+  "unchanged_within_scope": false,
+  "differences": {
+    "git_control_hashes": [
+      ".git/refs/codex/turn-diffs/checkpoints/aa44f3202969c41d3ff8bc5d51dd4590/808d40839f1fb6ac346e932d14343107/1791561989959/440503b5-6da7-4489-aba6-eaf10d8a8301",
+      ".git/refs/codex/turn-diffs/captures/1791541674107/da79f27c-955b-4bab-831c-47b8ffcda715/base"
+    ]
+  },
+  "controlled_file_count": 374,
+  "limitations": "No OS ACL changed. Text hashes exclude secrets, data, DBs, assets, caches, dependencies, hidden subtrees and files >=2MB. Metadata not content proof. Nested Git/link search uses same exclusions. Git objects/config not read. No source imports/execution."
+}
