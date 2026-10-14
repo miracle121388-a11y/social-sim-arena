@@ -8,7 +8,7 @@ import torch
 
 FIT_OBJECTIVE = 'worst_event'
 
-TRAJECTORY_SCALE = 0.001
+TRAJECTORY_SCALE = 0.0007
 
 
 
