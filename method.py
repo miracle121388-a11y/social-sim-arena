@@ -189,3 +189,107 @@ def update_and_predict(candidate_weights, revealed_records, target_cache,
                        temperature=1.0):
     weights = posterior_update(candidate_weights, revealed_records, temperature)
     return {'weights': weights, **predict(weights, target_cache)}
+
+V2_CONFIG = {'sigma': 0.003, 'ess_floor': 8.0, 'process_weight': 0.0, 'objective': 'mean', 'late_weight': 1.0, 'batch_fantasy': True, 'update_temperature': 1.0}
+
+# Round 2: vectorized world batches and entropy-constrained calibration.
+SUPPORTS_WORLD_BATCH = True
+_v1_construct = construct_compatible_set
+_v1_select = select_evidence_batch
+_v1_update = posterior_update
+
+
+def construct_compatible_set(train_cache, process_slack=.045,
+                             trajectory_limit=.10, mode='joint'):
+    z=train_cache['Trajectories'].float()
+    mu=z.mean(1); truth=train_cache['observed_trajectory'].float()
+    err=(mu-truth).square().mean((1,2,3)).sqrt()
+    mask=train_cache['history_observed'].bool()
+    p=train_cache['P_history'].float()[:,mask].clamp(1e-6,1-1e-6)
+    y=train_cache['history_labels'].float()[mask]
+    pe=(p-y).square().mean(1) if mask.any() else torch.zeros_like(err)
+    ll=-(y*p.log()+(1-y)*(1-p).log()).mean(1) if mask.any() else torch.zeros_like(err)
+    keep=(err<=trajectory_limit)&(pe<=pe.min()+process_slack)
+    if mode=='uncalibrated':keep=torch.ones_like(keep)
+    if int(keep.sum())<V2_CONFIG['ess_floor']:
+        raise ValueError('Compatible support smaller than the prespecified ESS floor')
+    var=z.var(1,unbiased=False).mean(0)
+    relative=(var+1e-5)/(var.mean()+1e-5)
+    residual=(mu-truth).square()/relative
+    distance=(residual.mean((2,3)).amax(1) if V2_CONFIG['objective']=='worst_event'
+              else residual.mean((1,2,3)))
+    energy=distance/(2*V2_CONFIG['sigma']**2)+V2_CONFIG['process_weight']*ll
+    def gibbs(temp):return torch.softmax((-energy/temp).masked_fill(~keep,-torch.inf),0)
+    # Smallest temperature >=1 with sufficient ESS. Equivalent to controlling
+    # Gibbs entropy regularization; ESS itself is Renyi-2, not Shannon entropy.
+    lo,hi=1.,1.
+    while float(gibbs(hi).square().sum().reciprocal())<V2_CONFIG['ess_floor']+1e-4:
+        hi*=2
+        if hi>1e10:raise ValueError('ESS constraint infeasible')
+    for _ in range(28):
+        mid=(lo+hi)/2
+        if float(gibbs(mid).square().sum().reciprocal())<V2_CONFIG['ess_floor']+1e-4:lo=mid
+        else:hi=mid
+    w=gibbs(hi)
+    return {'weights':w,'mask':keep,'trajectory_error':err,'process_error':pe,
+            'calibration_temperature':hi}
+
+
+def posterior_update(weights,revealed_records,temperature=None):
+    tau=V2_CONFIG['update_temperature'] if temperature is None else temperature
+    if weights.ndim==1:return _v1_update(weights,revealed_records,tau)
+    p=revealed_records['probabilities'].clamp(1e-7,1-1e-7) # W,M,B
+    y=revealed_records['labels'][:,None,:]
+    observed=revealed_records['observed'][:,None,:]
+    ll=torch.where(y>.5,p.log(),(1-p).log())
+    ll=torch.where(observed,ll,torch.zeros_like(ll)).sum(-1)
+    logw=torch.where(weights>0,weights.log(),-torch.inf)
+    return torch.softmax(logw+ll/tau,-1)
+
+
+def _world_covariance(w,p,z,costs):
+    q=w@p
+    cov=torch.einsum('mr,wm,md->wrd',p,w,z)-(q[:,:,None]*(w@z)[:,None,:])
+    return cov.square().mean(-1)/(q*(1-q)).clamp_min(1e-10)/costs
+
+
+def select_evidence_batch(candidate_weights,probe_cache,pool_mask,costs,
+                          batch_size=2,budget_remaining=None,strategy='Covariance',generator=None):
+    single=candidate_weights.ndim==1
+    w=candidate_weights[None,:] if single else candidate_weights
+    mask=pool_mask[None,:].clone() if single else pool_mask.clone()
+    p=probe_cache['P_records'].float()
+    z=probe_cache['Trajectories'].float().mean(1)
+    time_weight=torch.linspace(1.,V2_CONFIG['late_weight'],z.shape[2],device=z.device)
+    z=(z*time_weight[None,None,:,None].sqrt()).flatten(1)
+    branches=[(torch.ones(len(w),device=w.device),w)];selected=[]
+    remaining=float('inf') if budget_remaining is None else float(budget_remaining)
+    for j in range(batch_size):
+        if strategy=='Random':scores=torch.rand(mask.shape,device=w.device,generator=generator)
+        else:
+            scores=torch.zeros_like(mask,dtype=torch.float32)
+            for mass,bw in branches:
+                q=(bw@p).clamp(1e-7,1-1e-7)
+                if strategy=='Entropy':s=(-q*q.log()-(1-q)*(1-q).log())/costs
+                else:s=_world_covariance(bw,p,z,costs)
+                scores+=mass[:,None]*s
+        ix=scores.masked_fill(~(mask&(costs<=remaining)),-torch.inf).argmax(1)
+        selected.append(ix);mask.scatter_(1,ix[:,None],False)
+        remaining-=float(costs[ix].max())
+        if V2_CONFIG['batch_fantasy'] and j+1<batch_size:
+            expanded=[]
+            for mass,bw in branches:
+                pi=p[:,ix].T
+                for likelihood in (pi,1-pi):
+                    prob=(bw*likelihood).sum(1)
+                    powered=likelihood.pow(1/V2_CONFIG['update_temperature'])
+                    nw=bw*powered;nw=nw/nw.sum(1,keepdim=True)
+                    expanded.append((mass*prob,nw))
+            branches=expanded
+    result=torch.stack(selected,1)
+    return result[0] if single else result
+
+
+def update_and_predict(candidate_weights,revealed_records,target_cache,temperature=None):
+    w=posterior_update(candidate_weights,revealed_records,temperature)
+    return {'weights':w,**predict(w,target_cache)}
