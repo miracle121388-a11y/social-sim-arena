@@ -1,284 +1,173 @@
-"""Fixed synthetic benchmark, simulator, tensor adapter and compact rollout cache.
-
-Freeze this file before search. No download, model API or external data by default.
-"""
+"""Fixed V3 simulator, correlated process audits, and immutable split caches."""
 import argparse
 import itertools
 import json
 import time
-from workspace import path, digest, save_json
 import torch
+from workspace import path, digest, save_json
 
-SCHEMA = 1
-N_AGENTS, N_SEEDS, N_STEPS = 128, 8, 8
-BUDGETS = [0, 2, 4, 8, 12, 16]
-CHANNELS = ['registered', 'waitlisted', 'attended']
-
+def config():
+    return json.loads(path('configs/standard_v3.json').read_text())
 
 def device_name(request='auto'):
-    return 'cuda' if request == 'auto' and torch.cuda.is_available() else ('cpu' if request == 'auto' else request)
-
-
-class MIT_Benchmark_Adapter:
-    """Explicit generic schema, NOT a certified MIT dataset/leaderboard adapter.
-
-    Caller maps a named, licensed dataset to agent/event tensors and records
-    [agent_id,event_id,time,stage,value,observed,group_id]. Missing values may
-    be NaN only when observed=0. No real data is loaded by this project.
-    """
-    @staticmethod
-    def convert(agents, events, stage_records, group_trajectory, *, dataset_name,
-                source_uri, license_name, split, units='count'):
-        if split not in {'train', 'dev', 'test'}:
-            raise ValueError('Invalid split')
-        if not dataset_name or not source_uri or not license_name:
-            raise ValueError('Dataset provenance and license are required')
-        a, e, s, g = [torch.as_tensor(x).clone() for x in (agents, events, stage_records, group_trajectory)]
-        if a.ndim != 2 or e.ndim != 2 or s.ndim != 2 or s.shape[1] != 7 or g.ndim != 3:
-            raise ValueError('Expected Agent[A,F], Event[E,F], Stage_Record[R,7], Group_Trajectory[E,T,C]')
-        if g.shape[0] != e.shape[0] or not torch.isfinite(g).all():
-            raise ValueError('Invalid trajectory/event alignment')
-        if not torch.isfinite(a).all() or not torch.isfinite(e).all():
-            raise ValueError('Nonfinite features')
-        if s.numel():
-            if not torch.isfinite(s[:, [0,1,2,3,5,6]]).all():
-                raise ValueError('Nonfinite record metadata')
-            if not torch.all((s[:,5] == 0) | (s[:,5] == 1)):
-                raise ValueError('observed must be binary')
-            if not torch.all(s[:,[0,1,2,3,6]] == s[:,[0,1,2,3,6]].floor()):
-                raise ValueError('IDs/time/stage must be integers')
-            if (s[:,0] < 0).any() or (s[:,0] >= len(a)).any() or (s[:,1] < 0).any() or (s[:,1] >= len(e)).any():
-                raise ValueError('Unknown agent/event')
-            if (s[:,2] < 0).any() or (s[:,2] >= g.shape[1]).any():
-                raise ValueError('Invalid time')
-            observed = s[:,5].bool()
-            if not torch.all((s[observed,4] == 0) | (s[observed,4] == 1)):
-                raise ValueError('Observed process outcomes must be binary')
-            if len(torch.unique(s[:,[0,1,2,3]], dim=0)) != len(s):
-                raise ValueError('Duplicate process records: deduplicate at source')
-        return {'Agent': a, 'Event': e, 'Stage_Record': s, 'Group_Trajectory': g,
-                'metadata': {'dataset': dataset_name, 'source': source_uri,
-                             'license': license_name, 'split': split, 'units': units,
-                             'status': 'mapped_not_benchmark_validated'}}
-
-
-class SocioVerse_Campus:
-    """Small constructed ambiguity benchmark; not official contest data."""
-    @staticmethod
-    def events(split):
-        # [capacity, waitlist, forwarding, conflict, notification reach, price, start]
-        # Historical mechanisms appear separately; held-out events combine them.
-        rows = {
-            'train': [[128,0,0,0,1.,1.,5], [128,0,0,0,.85,1.,6],
-                      [22,1,0,0,1.,1.,7], [128,0,1,0,.7,1.,7]],
-            'probe': [[22,1,1,0,.8,1.,5], [20,1,0,1,.9,1.,5],
-                      [128,0,1,1,.75,1.,6], [18,1,1,1,.85,1.,6]],
-            'dev': [[20,1,1,0,.82,1.,5], [24,1,0,1,.88,1.,5], [19,1,1,1,.72,1.,6]],
-            'test': [[17,1,1,1,.78,1.,5], [26,1,1,1,.91,1.,5], [21,1,1,1,.68,1.,6]],
-        }
-        return torch.tensor(rows[split], dtype=torch.float32)
-
-    @staticmethod
-    def population(n, seed, device):
-        g = torch.Generator(device=device).manual_seed(seed)
-        # Pre-event interest, time availability, spendable budget, past experience.
-        return torch.stack([.55+.45*torch.rand(n, generator=g, device=device),
-                            (torch.rand(n, generator=g, device=device) > .10).float(),
-                            1+2*torch.rand(n, generator=g, device=device),
-                            torch.zeros(n, device=device)], dim=1)
-
+    return 'cuda' if request!='cpu' and torch.cuda.is_available() else 'cpu'
 
 class SocialSimulator:
-    """Tensorized over mechanisms, random seeds and people; loops only time/events.
-
-    State: informed/attempted/booked/waiting, budget, availability, experience.
-    Intent is logged before capacity/conflict/budget settlement; forwarding uses
-    a ring neighbor's previous state, never global private information.
+    """Intent -> capacity/conflict settlement -> budget/information feedback.
+    theta = attention, conditional participation, cascade, audit nuisance.
+    Shared [M,4] and independent [M,E,4] parameters use the SAME kernel.
     """
-    def __init__(self, n_agents=N_AGENTS, n_seeds=N_SEEDS, steps=N_STEPS, device='cpu'):
-        self.n, self.s, self.t, self.device = n_agents, n_seeds, steps, device
+    def __init__(self,cfg=None,device='cpu'):
+        self.cfg=cfg or config();self.device=device
+
+    def events(self,split):
+        # capacity fraction, waitlist, forwarding, exclusive conflict, reach, start
+        rows={
+            'train':[[.8,1,0,0,1.,6],[.8,0,1,0,.9,7],[.8,1,0,0,.8,8]],
+            'probe':[[.40,1,1,1,.9,6],[.45,1,1,1,.85,6],[.80,1,1,1,.8,7]],
+            'dev':[[.38,1,1,1,.95,5],[.42,1,1,1,.8,5],[.75,1,1,1,.9,8]],
+            'test':[[.35,1,1,1,.85,6],[.48,1,1,1,.95,6],[.70,1,1,1,.75,8]]
+        }[split]
+        return torch.tensor(rows,device=self.device)
 
     @torch.no_grad()
-    def run(self, theta, events, seed=0, misspecified=False):
-        theta, events = theta.to(self.device), events.to(self.device)
-        m, e = theta.shape[0], len(events)
-        if theta.ndim == 2:
-            theta = theta[:,None,:].expand(-1,e,-1)
-        if theta.shape != (m,e,3):
-            raise ValueError('Parameters must be [M,3] shared or [M,E,3] unshared')
-        pop = SocioVerse_Campus.population(self.n, seed+71, self.device)
-        gen = torch.Generator(device=self.device).manual_seed(seed)
-        shape = (m,self.s,e,self.n)
-        informed = torch.zeros(shape, dtype=torch.bool, device=self.device)
-        attempted = informed.clone(); booked = informed.clone(); waiting = informed.clone()
-        attended = informed.clone()
-        queued = torch.full(shape, 999., device=self.device)
-        budget = pop[:,2].expand(m,self.s,self.n).clone()
-        experience = pop[:,3].expand(m,self.s,self.n).clone()
-        priority = torch.rand((1,self.s,e,self.n), generator=gen, device=self.device)
-        attention = theta[:,:,0][:,None,:,None] * events[:,4][None,None,:,None]
-        part = theta[:,:,1][:,None,:,None] * pop[:,0][None,None,None,:]
-        dropout = theta[:,:,2][:,None,:,None]
-        traces, intents, views = [], [], []
-        def random():
-            # Common random numbers align mechanisms; independent truth seeds.
-            return torch.rand((1,self.s,e,self.n), generator=gen, device=self.device)
-        for t in range(self.t):
-            window = (t < events[:,6]-1)[None,None,:,None]
-            notified = (random() < attention) if t == 0 else torch.zeros_like(informed)
-            if t > 0:
-                peer = torch.roll(informed | booked, 1, -1)
-                notified |= peer & (events[:,2][None,None,:,None] > 0) & (random() < attention*.35)
-            newly_seen = notified & ~informed & window
-            informed |= newly_seen
-            intent = informed & ~attempted & window & (random() < part*(1+.04*experience[:,:,None,:]).clamp_max(1.2))
-            # One participation decision after first notice: preserves a*p ambiguity.
-            intent &= newly_seen
-            attempted |= newly_seen
-            cancel = booked & (random() < .035*dropout) & window
-            leave = waiting & (random() < dropout) & (t > 0)
-            if misspecified and t == 4:
-                # Withheld common transport disruption, absent from every candidate.
-                cancel |= booked & (random() < .85)
-                leave |= waiting
-            booked &= ~cancel; waiting &= ~leave
-            budget += (cancel.float()*events[:,5][None,None,:,None]).sum(2)
-            for j in range(e):
-                start = int(events[j,6])
-                conflict = torch.zeros_like(budget, dtype=torch.bool)
-                if events[j,3] > 0:
-                    same_time = (events[:,6] == events[j,6]) & (torch.arange(e,device=self.device) != j)
-                    conflict = booked[:,:,same_time,:].any(2)
-                eligible = (pop[:,1] > 0) & (budget >= events[j,5]) & ~conflict
-                applicants = intent[:,:,j,:] & eligible
-                wait_enabled = events[j,1] > 0
-                queued[:,:,j,:] = torch.where(applicants, t+priority[:,:,j,:], queued[:,:,j,:])
-                pool = (waiting[:,:,j,:] | applicants) & eligible & (t < start-1)
-                scores = queued[:,:,j,:].masked_fill(~pool, 1e6)
-                order = scores.argsort(dim=-1, stable=True)
-                ranks = torch.empty_like(order).scatter_(-1, order, torch.arange(self.n,device=self.device).expand_as(order))
-                slots = (events[j,0] - booked[:,:,j,:].sum(-1)).clamp_min(0)
-                admit = pool & (ranks < slots[:,:,None])
-                booked[:,:,j,:] |= admit
-                budget -= admit * events[j,5]
-                waiting[:,:,j,:] = (pool & ~admit) & wait_enabled
-                if t == start:
-                    arrived = booked[:,:,j,:] & (pop[:,1] > 0)
-                    attended[:,:,j,:] |= arrived
-                    experience += arrived
-            assert not (booked & waiting).any()
-            assert (booked.sum(-1) <= events[:,0][None,None,:]).all()
-            assert (budget >= -1e-5).all()
-            traces.append(torch.stack([booked.sum(-1),waiting.sum(-1),attended.sum(-1)],-1))
-            intents.append(intent.sum(-1)); views.append(newly_seen.sum(-1))
-        return {'Trajectories': torch.stack(traces,3).float()/self.n,
-                'Intent': torch.stack(intents,3), 'Views': torch.stack(views,3),
-                'Agent': pop, 'Event': events}
+    def run(self,theta,split,seed):
+        n=self.cfg['agents'];s=self.cfg['seeds'];events=self.events(split);e=len(events)
+        m=len(theta);pars=theta[:,None,:].expand(-1,e,-1) if theta.ndim==2 else theta
+        a,b,c=[pars[:,:,i][:,None,:,None] for i in range(3)]
+        g=torch.Generator(device=self.device).manual_seed(seed)
+        def rand():return torch.rand((1,s,e,n),generator=g,device=self.device)
+        interest=.85+.15*rand();available=rand()>.05;u=rand()
+        reach=events[None,None,:,4,None]
+        seen=(u<a*reach).clone();intent=(u<a*b*reach*interest).clone()
+        # Conditional on seeing, U/(a*reach) is uniform. Equal a*b gives equal intents.
+        booked=torch.zeros((m,s,e,n),dtype=torch.bool,device=self.device)
+        waiting=booked.clone();attended=booked.clone()
+        budget=torch.full((m,s,n),3.,device=self.device)
+        trajectory=[];intent_path=[]
+        for t in range(self.cfg['steps']):
+            if t:
+                peers=torch.zeros_like(seen,dtype=torch.float32)
+                for offset in [1,2,4,8,16,32,64,128]:peers+=seen.roll(offset,-1)
+                enabled=(events[:,1]*events[:,2])[None,None,:,None]
+                arrival=(~seen)&(rand()<1-(1-.55*c*enabled)**peers)
+                intent=arrival&(rand()<b*interest);seen|=arrival
+            intent &= t<events[None,None,:,5,None]-1
+            cancel=booked&(rand()<.0015)&(t<events[None,None,:,5,None])
+            booked &= ~cancel;budget+=cancel.sum(2)
+            waiting &= rand()>.018
+            for k in range(e):
+                overlaps=events[:,5]==events[k,5];overlaps[k]=False
+                blocked=booked[:,:,overlaps,:].any(2)&(events[k,3]>0)
+                eligible=available[:,:,k,:]&(budget>=1)&~blocked
+                demand=(waiting[:,:,k,:]|intent[:,:,k,:])&~booked[:,:,k,:]&eligible&(t<events[k,5])
+                slots=(int(float(events[k,0])*n)-booked[:,:,k,:].sum(-1)).clamp_min(0)
+                accepted=demand&(demand.long().cumsum(-1)<=slots[:,:,None])
+                booked[:,:,k,:]|=accepted;budget-=accepted.float()
+                waiting[:,:,k,:]=(demand&~accepted)&(events[k,1]>0)
+                if t==int(events[k,5]):attended[:,:,k,:]=booked[:,:,k,:]&available[:,:,k,:]
+            trajectory.append(torch.stack([booked.sum(-1),waiting.sum(-1),attended.sum(-1)],-1)/n)
+            intent_path.append(intent.sum(-1)/n)
+        return {'Trajectories':torch.stack(trajectory,3),'Intent':torch.stack(intent_path,3),'Event':events}
 
+def pool_definition(cfg):
+    names=[name for name,count in cfg['group_counts'].items() for _ in range(count)]
+    groups=torch.arange(len(names)).repeat_interleave(cfg['records_per_group'])
+    stages=torch.tensor([['view','cascade','nuisance','ordinary','noise'].index(n) for n in names])
+    group_cost=torch.tensor([(.5 if i%2==0 else 1.) if n in ['view','cascade'] else
+                            (2. if n=='ordinary' else .5) for i,n in enumerate(names)])
+    g=torch.Generator().manual_seed(cfg['pool_permutation_seed'])
+    order=torch.randperm(len(groups),generator=g)
+    return {'group':groups[order],'stage':stages[groups[order]],'group_stage':stages,
+            'costs':group_cost[groups[order]],'event':torch.zeros(len(groups),dtype=torch.long),
+            'reliability':torch.full((len(groups),),cfg['sensor_reliability']),
+            'observed_probability':torch.full((len(groups),),cfg['observation_probability'])}
 
-def process_cohort(theta, events, count=160, seed=12, kind='pool'):
-    """Independent audit people, one Bernoulli record each (no reused counts).
+def group_probabilities(theta,pool):
+    pars=theta if theta.ndim==2 else theta[:,0,:]
+    a,b,c,h=pars.T;stage=pool['group_stage'].to(theta.device)
+    return torch.stack([a,c,h,a*b*.925,torch.full_like(a,.5)],1)[:,stage].clamp(1e-6,1-1e-6)
 
-    View unknown for intent rows: P(intent)=P(view)*P(intent|view), not zero.
-    Conditional dropout row is sampled in a standardized observed waitlist risk
-    state. Pool likelihoods therefore do not claim arbitrary-history validity.
-    """
-    device = theta.device
-    g = torch.Generator(device=device).manual_seed(seed)
-    event = torch.arange(count,device=device) % len(events)
-    stage = torch.arange(count,device=device) % 3 if kind == 'pool' else torch.ones(count,device=device,dtype=torch.long)
-    interest = .55+.45*torch.rand(count,generator=g,device=device)
-    pars = theta[:,None,:].expand(-1,count,-1) if theta.ndim==2 else theta[:,event,:]
-    a = pars[:,:,0]*events[event,4]
-    b = pars[:,:,1]*interest
-    p = torch.where(stage[None,:]==0,a,torch.where(stage[None,:]==1,a*b,pars[:,:,2]))
-    return p.clamp(1e-5,1-1e-5), {'event':event,'stage':stage,'interest':interest}
+def record_probabilities(pg,pool):
+    r=pool['reliability'].to(pg.device);groups=pool['group'].to(pg.device)
+    return (1-r)+(2*r-1)*pg[:,groups]
 
+def sample_audit(pg,pool,g,replicates=1):
+    latent=torch.rand((replicates,pg.numel()),generator=g,device=pg.device)<pg
+    groups=pool['group'].to(pg.device);r=pool['reliability'].to(pg.device)
+    prob=torch.where(latent[:,groups],r,1-r)
+    return (torch.rand(prob.shape,generator=g,device=pg.device)<prob).float()
 
 @torch.no_grad()
 def build(device):
-    grid = torch.tensor(list(itertools.product(torch.linspace(.15,.95,10).tolist(),
-                                               torch.linspace(.15,.95,10).tolist(),[.12,.42])),device=device)
-    truth = torch.tensor([[.90,.30,.27]],device=device)
-    sim = SocialSimulator(device=device)
-    cache = {'schema':SCHEMA,'parameters':grid.cpu(),'budgets':BUDGETS,'channels':CHANNELS,
-             'n_agents':N_AGENTS,'n_seeds':N_SEEDS,'banks':{}}
-    seeds = {'train':113,'probe':211,'dev':317,'test':419}
-    for bank_name in ('shared','unshared'):
-        bank = {}
-        for split in seeds:
-            events = SocioVerse_Campus.events(split).to(device)
-            if bank_name=='shared':
-                theta=grid
-            else:
-                g=torch.Generator(device=device).manual_seed(seeds[split]+992)
-                theta=torch.stack([grid[torch.randperm(len(grid),generator=g,device=device)] for _ in events],1)
-            rollout=sim.run(theta,events,seeds[split])
-            p,meta=process_cohort(theta,events,seed=seeds[split]+2000)
-            bank[split]={'Trajectories':rollout['Trajectories'].cpu().half(),
-                         'P_records':p.cpu(), 'events':events.cpu()}
-            if split=='train':
-                ph,_=process_cohort(theta,events,count=96,seed=914,kind='history')
-                bank[split]['P_history']=ph.cpu()
-        cache['banks'][bank_name]=bank
-    truth_data={}
-    for split in ('train','dev','test'):
-        events=SocioVerse_Campus.events(split).to(device)
-        actual=sim.run(truth,events,seeds[split]+10000)
-        p,meta=process_cohort(truth,events,seed=seeds[split]+2000)
-        g=torch.Generator(device=device).manual_seed(seeds[split]+23000)
-        labels=(torch.rand(p.shape[1],device=device,generator=g)<p[0]).float()
-        observed=torch.rand(p.shape[1],device=device,generator=g)>.15
-        truth_data[split]={'trajectory':actual['Trajectories'][0].cpu(),
-                           'labels':labels.cpu(),'observed':observed.cpu()}
-        if split=='train':
-            ph,_=process_cohort(truth,events,count=96,seed=914,kind='history')
-            history_y=(torch.rand(96,device=device,generator=g)<ph[0]).float()
-            history_observed=torch.rand(96,device=device,generator=g)>.2
-            for bank in cache['banks'].values():
-                bank['train'].update({'observed_trajectory':actual['Trajectories'][0].mean(0).cpu(),
-                                     'history_labels':history_y.cpu(),'history_observed':history_observed.cpu()})
-        else:
-            shifted=sim.run(truth,events,seeds[split]+10000,misspecified=True)
-            truth_data[split]['shifted_trajectory']=shifted['Trajectories'][0].cpu()
-    cache['costs']=torch.ones(160)
-    # Active acquisition labels are trainer-owned, never included in method APIs.
-    truth_data['acquisition']=truth_data.pop('train')
-    cache['truth']=truth_data
-    cache['metadata']={'status':'tested_synthetic_only','population':'constructed campus example',
-        'probe_source':'fixed training-rule compositions; no target labels used',
-        'missingness':'MCAR; missing intent views marginalized analytically',
-        'cohorts':'trajectory, passive process, active audit are disjoint independent cohorts',
-        'unshared':'independent per-event parameter permutations; larger hypothesis space, prior changes',
-        'security':'local integrity checks only; cache is NOT a secure held-out boundary',
-        'MIT':'generic schema only, no named benchmark loaded',
-        'seeds':seeds}
+    cfg=config();sim=SocialSimulator(cfg,device);pool=pool_definition(cfg)
+    grid=torch.tensor([[a,p/a,c,h] for p,a,c,h in itertools.product(cfg['products'],cfg['attention'],cfg['cascade'],cfg['nuisance'])],device=device)
+    assert len(grid)==200
+    truth=torch.tensor([cfg['truth']],device=device)
+    cache={'schema':cfg['schema'],'parameters':grid.cpu(),'pool':pool,'budgets':cfg['budgets'],'shared':{},'unshared':{}}
+    for split in ['train','probe','dev','test']:
+        cache['shared'][split]={'Trajectories':sim.run(grid,split,cfg['cache_seed'])['Trajectories'].half().cpu()}
+    pg=group_probabilities(grid,pool).cpu()
+    cache['shared']['P_groups']=pg;cache['shared']['P_records']=record_probabilities(pg,pool)
+    interest=torch.linspace(.85,1.,256,device=device)
+    ph=grid[:,0,None]*grid[:,1,None]*interest
+    g=torch.Generator(device=device).manual_seed(cfg['history_seed'])
+    truep=truth[0,0]*truth[0,1]*interest
+    cache['train']={**cache['shared']['train'],'P_history':ph.cpu(),
+        'history_labels':(torch.rand(256,device=device,generator=g)<truep).float().cpu(),
+        'history_observed':(torch.rand(256,device=device,generator=g)>.2).cpu(),
+        'observed_trajectory':sim.run(truth,'train',cfg['history_seed'])['Trajectories'][0].mean(0).cpu()}
+    alias=torch.where((grid[:,0]*grid[:,1]-.22).abs()<1e-5)[0].cpu()
+    geometry={'alias_count':len(alias),'distinct_predictive_mechanisms':25,
+              'definition':'pairwise RMSE diameter; not a lower bound on every pair'}
+    for split in ['train','probe','dev','test']:
+        z=cache['shared'][split]['Trajectories'].float().mean(1)[alias].flatten(1)
+        dist=torch.pdist(z)/z.shape[1]**.5
+        geometry[split]={'diameter':float(dist.max()),'median':float(dist.median()),
+                         'fraction_above_018':float((dist>.18).float().mean())}
+    save_json('provenance/v3/geometry.json',geometry)
+    if not(geometry['train']['diameter']<.012 and geometry['probe']['diameter']>.18 and geometry['test']['diameter']>.18):
+        raise ValueError('Pre-evaluation geometry check failed; preserve evidence before protocol changes')
+    rng=torch.Generator().manual_seed(cfg['unshared_seed'])
+    indices=torch.cat([torch.stack([torch.randperm(200,generator=rng) for _ in range(3)],1)
+                       for _ in range(cfg['unshared_particles']//200)],0)
+    cache['unshared']['indices']=indices;joint=grid[indices.to(device)]
+    for split in ['probe','dev','test']:
+        parts=[sim.run(chunk,split,cfg['cache_seed'])['Trajectories'].half().cpu() for chunk in joint.split(100)]
+        cache['unshared'][split]={'Trajectories':torch.cat(parts)}
+    cache['unshared']['P_groups']=group_probabilities(joint,pool).cpu()
+    cache['unshared']['P_records']=record_probabilities(cache['unshared']['P_groups'],pool)
+    for split in ['dev','test']:
+        worlds=[]
+        for seed in cfg[split+'_seeds']:
+            g=torch.Generator(device=device).manual_seed(seed+30000);pt=group_probabilities(truth,pool)[0]
+            worlds.append({'trajectory':sim.run(truth,split,seed)['Trajectories'][0].mean(0).cpu(),
+                'labels':sample_audit(pt,pool,g)[0].cpu(),
+                'observed':(torch.rand(len(pool['group']),generator=g,device=device)<cfg['observation_probability']).cpu(),
+                'audit_labels':sample_audit(pt,pool,g,64).cpu()})
+        torch.save(worlds,path('data/v3/'+split+'_truth.pt'))
+    cache['geometry']=geometry
+    cache['metadata']={'status':'tested_synthetic_only','missingness':'MCAR',
+        'joint_observations':'shared Bernoulli episode; conditionally independent noisy sensor records',
+        'test_status':'sealed; candidate predictions but no target answers inside main cache',
+        'no_sharing':'independent activity joint particles; prior dependence changes'}
     return cache
 
-
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--device',default='auto',choices=['auto','cpu','cuda'])
-    parser.add_argument('--high-disagreement-mode', action='store_true',
-                        help='Build the separate preregistered V2 stress cache')
-    args=parser.parse_args()
-    if args.high_disagreement_mode:
-        from v2_benchmark import main as build_v2
-        return build_v2(device_name(args.device))
-    if path('data/rollout_cache.pt').exists():
-        raise FileExistsError('Cache already exists. Preserve it; use a new benchmark workspace/version to regenerate.')
-    started=time.perf_counter()
-    torch.set_num_threads(4)
-    device=device_name(args.device)
-    cache=build(device)
-    torch.save(cache,path('data/rollout_cache.pt'))
-    manifest={'schema':SCHEMA,'sha256':digest('data/rollout_cache.pt'),
-              'prepare_sha256':digest('prepare_and_cache.py'),'device':device,
-              'size_mb':path('data/rollout_cache.pt').stat().st_size/1e6,
-              'runtime_s':time.perf_counter()-started,'metadata':cache['metadata']}
-    save_json('data/cache_manifest.json',manifest)
+    parser=argparse.ArgumentParser();parser.add_argument('--device',default='auto',choices=['auto','cpu','cuda'])
+    args=parser.parse_args();torch.set_num_threads(4);started=time.perf_counter()
+    if path('data/v3/manifest.json').exists():raise FileExistsError('V3 cache already generated; preserve frozen data')
+    prior=json.loads(path('provenance/v3/previous/manifest.json').read_text())
+    if digest('data/rollout_cache.pt')!=prior['files']['data/rollout_cache.pt']:
+        raise RuntimeError('Existing root cache is not the archived V1 cache')
+    path('data/v3').mkdir(exist_ok=True)
+    cache=build(device_name(args.device));torch.save(cache,path('data/rollout_cache.pt'))
+    files=['data/rollout_cache.pt','data/v3/dev_truth.pt','data/v3/test_truth.pt','configs/standard_v3.json']
+    manifest={'schema':cache['schema'],'files':{f:digest(f) for f in files},
+              'runtime_s':time.perf_counter()-started,'cache_mb':path('data/rollout_cache.pt').stat().st_size/1e6,
+              'geometry':cache['geometry']}
+    save_json('data/v3/manifest.json',manifest)
+    path('data/cache_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8',newline='\n')
     print(json.dumps(manifest,indent=2))
 
-
-if __name__=='__main__':
-    main()
+if __name__=='__main__':main()

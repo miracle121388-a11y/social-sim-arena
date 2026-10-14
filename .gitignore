@@ -26,3 +26,5 @@ artifacts/
 /provenance/closure/arena-*.md
 /provenance/closure/arena-*.schema.json
 /provenance/closure/socialsim-docs.html
+
+/data/v3/*.pt

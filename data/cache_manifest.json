@@ -1,24 +1,36 @@
 {
-  "schema": 1,
-  "sha256": "5cda2802953d611e8ac61cf2c51050e138d7df0616ac7362a578f6da63553289",
-  "prepare_sha256": "445e265062656782d3dc3e24201b6a29046391568da42a1ee279d8d5d432a47a",
-  "device": "cuda",
-  "size_mb": 3.362254,
-  "runtime_s": 2.453883800015319,
-  "metadata": {
-    "status": "tested_synthetic_only",
-    "population": "constructed campus example",
-    "probe_source": "fixed training-rule compositions; no target labels used",
-    "missingness": "MCAR; missing intent views marginalized analytically",
-    "cohorts": "trajectory, passive process, active audit are disjoint independent cohorts",
-    "unshared": "independent per-event parameter permutations; larger hypothesis space, prior changes",
-    "security": "local integrity checks only; cache is NOT a secure held-out boundary",
-    "MIT": "generic schema only, no named benchmark loaded",
-    "seeds": {
-      "train": 113,
-      "probe": 211,
-      "dev": 317,
-      "test": 419
+  "schema": "standard-v3-v0",
+  "files": {
+    "data/rollout_cache.pt": "369b661508e1d3436e812e3d7d771cc8ca1907cccf32b01f5af1c0b2e46e629b",
+    "data/v3/dev_truth.pt": "8e74abd691615431e1dc493a7ea80e628e13e088ff36c64dd58b39e2c781c800",
+    "data/v3/test_truth.pt": "ab415390c91440f02abd3de8a2be3fb10f1bd9968ea84ca7e83bc7ac15abdd79",
+    "configs/standard_v3.json": "2e602e2eb98c59b76c5722a918a4f66a58c19daa9ff7f9c48519df33dc8cf599"
+  },
+  "runtime_s": 10.635627300012857,
+  "cache_mb": 6.412111,
+  "geometry": {
+    "alias_count": 100,
+    "distinct_predictive_mechanisms": 25,
+    "definition": "pairwise RMSE diameter; not a lower bound on every pair",
+    "train": {
+      "diameter": 0.0,
+      "median": 0.0,
+      "fraction_above_018": 0.0
+    },
+    "probe": {
+      "diameter": 0.2560350298881531,
+      "median": 0.08184206485748291,
+      "fraction_above_018": 0.14868687093257904
+    },
+    "dev": {
+      "diameter": 0.24167084693908691,
+      "median": 0.08420475572347641,
+      "fraction_above_018": 0.1325252503156662
+    },
+    "test": {
+      "diameter": 0.23343420028686523,
+      "median": 0.07668410241603851,
+      "fraction_above_018": 0.12929293513298035
     }
   }
 }

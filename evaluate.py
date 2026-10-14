@@ -1,295 +1,195 @@
-"""Fixed evaluator. Development selection only; test requires a frozen method."""
+"""Fixed V3 evaluator: identical primary priors, monetary budgets, honest ablations."""
 import time
-START = time.perf_counter()
+START=time.perf_counter()
 import argparse
-import csv
-from datetime import datetime, timezone
+import hashlib
 import json
 import subprocess
-import traceback
 import uuid
-from workspace import path, digest, save_json, ROOT
+import numpy as np
 import torch
 import method
-from prepare_and_cache import device_name
+from prepare_and_cache import config,device_name
+from workspace import path,digest,save_json,ROOT
 
-FIXED_FILES = ['prepare_and_cache.py','evaluate.py','workspace.py','autoresearch.py',
-               'paper_artifacts.py','program.md','requirements.txt','requirements.lock.txt',
-               'tests/test_science.py','tests/test_git_machine.py']
+PRIMARY=['Full','Random','Entropy','ParamIG','Standard_OED']
+ABLATIONS=['NoBatch','NoProbes','SinglePointMAP','NoSharing']
 
+class PriorCollapseError(ValueError):
+    pass
 
-def verify_integrity():
-    manifest=json.loads(path('data/cache_manifest.json').read_text(encoding='utf-8'))
-    if digest('data/rollout_cache.pt') != manifest['sha256']:
-        raise RuntimeError('Cache integrity check failed')
-    if digest('prepare_and_cache.py') != manifest['prepare_sha256']:
-        raise RuntimeError('Benchmark generator changed after preparation')
-    if path('infrastructure.lock.json').exists():
-        for name, expected in json.loads(path('infrastructure.lock.json').read_text()).items():
-            if digest(name) != expected:
-                raise RuntimeError(f'Fixed infrastructure changed: {name}')
-    return manifest
+def guard_prior(w):
+    if w.ndim!=1 or not torch.isfinite(w).all() or (w<0).any() or abs(float(w.sum())-1)>1e-5:
+        raise PriorCollapseError('Invalid initial calibration distribution')
+    ess=float(w.square().sum().reciprocal())
+    if ess<15.0:raise PriorCollapseError(f'Premature prior collapse: ESS={ess:.8f} < 15')
+    return ess
 
+def verify():
+    for filename in ['data/v3/manifest.json','infrastructure.v3.lock.json']:
+        for name,h in json.loads(path(filename).read_text())['files'].items():
+            if digest(name)!=h:raise RuntimeError('Frozen V3 dependency changed: '+name)
 
-def move(value, device):
-    if isinstance(value,torch.Tensor):
-        return value.to(device)
-    if isinstance(value,dict):
-        return {k:move(v,device) for k,v in value.items()}
-    return value
+def move(obj,device):
+    if isinstance(obj,torch.Tensor):return obj.to(device)
+    if isinstance(obj,dict):return {k:move(v,device) for k,v in obj.items()}
+    if isinstance(obj,list):return [move(v,device) for v in obj]
+    return obj
 
+def ci(x):
+    x=np.asarray(x,dtype=float);cfg=config()
+    rng=np.random.default_rng(cfg['bootstrap_seed'])
+    indices=rng.integers(0,len(x),(cfg['bootstrap_repeats'],len(x)))
+    return np.quantile(x[indices].mean(1),[.025,.975]).tolist()
 
-def validated_weights(w, m):
-    if w.shape != (m,) or not torch.isfinite(w).all() or (w < 0).any() or abs(float(w.sum())-1)>1e-5:
-        raise ValueError('Method returned invalid posterior')
-    return w
+def prior_hash(w):
+    return hashlib.sha256(w.detach().cpu().contiguous().numpy().tobytes()).hexdigest()
 
+def scorer(name,history,generator):
+    def score(w,p,z,costs):
+        q=torch.einsum('wm,wmr->wr',w,p).clamp(1e-7,1-1e-7)
+        if name=='Random':return torch.rand(q.shape,device=w.device,generator=generator)
+        entropy=-q*q.log()-(1-q)*(1-q).log()
+        if name=='Entropy':return entropy/costs
+        if name=='ParamIG':
+            pc=p.clamp(1e-7,1-1e-7)
+            conditional=-pc*pc.log()-(1-pc)*(1-pc).log()
+            return (entropy-torch.einsum('wm,wmr->wr',w,conditional)).clamp_min(0)/costs
+        # Independent outcome enumeration of historical predictive mean shifts.
+        hz=history.flatten(1);mu=w@hz
+        numerator=torch.bmm((w[:,:,None]*p).transpose(1,2),hz[None,:,:].expand(len(w),-1,-1))
+        mu1=numerator/q[:,:,None]
+        mu0=(mu[:,None,:]-numerator)/(1-q)[:,:,None]
+        value=q*((mu1-mu[:,None,:]).square().mean(-1))+(1-q)*((mu0-mu[:,None,:]).square().mean(-1))
+        return value/costs
+    return score
 
-def fixed_compatible(train,mode):
-    """Frozen comparator calibration, unaffected by edits to method.py."""
-    trajectory=(train['Trajectories'].float().mean(1)-train['observed_trajectory']).square().mean((1,2,3)).sqrt()
-    mask=train['history_observed'].bool()
-    process=(train['P_history'][:,mask]-train['history_labels'][mask]).square().mean(1)
-    pok=process<=process.min()+.045;tok=trajectory<=.10
-    keep={'uncalibrated':torch.ones_like(pok),'process':pok,'trajectory':tok,'joint':pok&tok}[mode]
-    if not keep.any():raise ValueError('Empty fixed comparator compatible set')
-    return {'weights':keep.float()/keep.sum(),'process_error':process,'trajectory_error':trajectory}
-
-
-def fixed_select(w,query,mask,costs,batch_size,strategy,generator):
-    """Frozen baseline acquisition, with the same exact fantasy-branch budget."""
-    p=query['P_records'].float();z=query['Trajectories'].float().mean(1).flatten(1)
-    branches=[(1.,w)];mask=mask.clone();selected=[]
-    for _ in range(batch_size):
-        scores=torch.zeros(p.shape[1],device=w.device)
-        if strategy=='Random':scores=torch.rand(len(scores),device=w.device,generator=generator)
-        else:
-            for mass,weights in branches:
-                q=(weights@p).clamp(1e-7,1-1e-7)
-                entropy=-q*q.log()-(1-q)*(1-q).log()
-                if strategy=='Entropy':value=entropy
-                elif strategy=='ParamIG':
-                    pc=p.clamp(1e-7,1-1e-7)
-                    value=entropy-weights@(-pc*pc.log()-(1-pc)*(1-pc).log())
-                else:
-                    covariance=p.T@(weights[:,None]*(z-weights@z))
-                    value=covariance.square().mean(1)/(q*(1-q))
-                scores+=mass*value/costs
-        index=int(scores.masked_fill(~mask,-torch.inf).argmax());selected.append(index);mask[index]=False
-        updated=[]
-        for mass,weights in branches:
-            for likelihood in (p[:,index],1-p[:,index]):
-                q=weights@likelihood
-                if q>1e-12:updated.append((mass*q,weights*likelihood/q))
-        branches=updated
-    return torch.tensor(selected,device=w.device,dtype=torch.long)
-
-
-def fixed_update(w,reveal):
-    p=reveal['probabilities'].clamp(1e-7,1-1e-7)
-    loglike=torch.where(reveal['labels'][None,:]>.5,p.log(),(1-p).log())
-    loglike=torch.where(reveal['observed'][None,:],loglike,0.)
-    logw=torch.where(w>0,w.log(),-torch.inf)
-    return torch.softmax(logw+loglike.sum(1),dim=0)
-
-
-def fixed_prediction(w, target):
-    """Evaluator-owned mixture moments/intervals, never trust method's metrics."""
-    samples=target['Trajectories'].float()
-    means=samples.mean(1)
-    mean=(w[:,None,None,None]*means).sum(0)
-    epi=(w[:,None,None,None]*(means-mean).square()).sum(0)
-    alea=(w[:,None,None,None]*samples.var(1,unbiased=False)).sum(0)
-    values,indices=samples.flatten(0,1).sort(0)
-    atoms=w.repeat_interleave(samples.shape[1])/samples.shape[1]
-    cumulative=atoms[indices].cumsum(0)
-    def quantile(q):
-        i=(cumulative<q).sum(0).clamp_max(len(values)-1)
-        return values.gather(0,i[None]).squeeze(0)
-    return {'mean':mean,'epistemic':epi,'aleatoric':alea,'lower':quantile(.05),
-            'upper':quantile(.95),'p':w@target['P_records'].float()}
-
-
-def metrics(w,target,truth):
-    pred=fixed_prediction(w,target)
-    observed=truth['trajectory'].float()
-    err=pred['mean']-observed.mean(0)
-    mask=truth['observed'].bool()
-    y=truth['labels'][mask]
-    p=pred['p'][mask].clamp(1e-7,1-1e-7)
-    interval=(observed>=pred['lower']) & (observed<=pred['upper'])
-    shifted=truth['shifted_trajectory'].float().mean(0)
-    shifted_rmse=(pred['mean']-shifted).square().mean().sqrt()
-    epi=pred['epistemic'].mean()
-    return {'rmse':float(err.square().mean().sqrt()),'mae':float(err.abs().mean()),
-            'rmse_per_event':err.square().mean((1,2)).sqrt().tolist(),
-            'rmse_per_time_channel':err.square().mean(0).sqrt().tolist(),
-            'nll':float(-(y*p.log()+(1-y)*(1-p).log()).mean()),
-            'brier':float((p-y).square().mean()),'coverage_90':float(interval.float().mean()),
-            'width_90':float((pred['upper']-pred['lower']).mean()),
-            'epistemic_variance':float(epi),'aleatoric_variance':float(pred['aleatoric'].mean()),
-            'shifted_rmse':float(shifted_rmse),
-            # Diagnostic after observations, not an omniscient pre-event detector.
-            'low_disagreement_wrong_flag':bool((epi<.0025)&(shifted_rmse>.08))}
-
-
-def run_strategy(cache,split,name,repeat=0):
-    bank=cache['banks']['unshared' if name=='NoSharing' else 'shared']
-    train=bank['train']; target=bank[split]
-    cal_mode={'Uncalibrated':'uncalibrated','ProcessOnly':'process','TrajectoryOnly':'trajectory'}.get(name,'joint')
-    fixed=name in ('Random','Entropy','ParamIG','Standard_OED','SimpleStats','Uncalibrated',
-                   'ProcessOnly','TrajectoryOnly','PassiveV1')
-    initial=fixed_compatible(train,cal_mode) if fixed else method.construct_compatible_set(train,mode=cal_mode)
-    w=validated_weights(initial['weights'],len(train['Trajectories']))
-    compatible=int((w>0).sum())
-    if name=='SinglePoint':
-        objective=initial['process_error']+initial['trajectory_error']
-        idx=objective.masked_fill(w==0,torch.inf).argmin()
-        w=torch.nn.functional.one_hot(idx,len(w)).float()
-    if name=='SimpleStats':
-        # Empirical historical-event paths as bootstrap atoms. No candidate fit.
-        samples=train['observed_trajectory'].float()[None,:,None,:,:].expand(1,-1,len(target['events']),-1,-1)
-        labels=train['history_labels'][train['history_observed']]
-        target={'Trajectories':samples,'P_records':torch.full((1,160),float(labels.mean()),device=w.device)}
-        w=torch.ones(1,device=w.device)
-    # Availability is public acquisition metadata, not a label. Restrict queries
-    # to retrievable records so binary-outcome fantasy updates match the oracle.
-    # Missing historical/held-out records remain missing, never negative labels.
-    mask=cache['truth']['acquisition']['observed'].bool().clone()
-    query={'P_records':train['P_records'],
-           'Trajectories':bank['train' if name in ('Standard_OED','NoCombination') else 'probe']['Trajectories']}
-    curves=[]; queries=[]; spent=0
-    passive=name in ('SimpleStats','Uncalibrated','ProcessOnly','TrajectoryOnly','PassiveV1')
-    generator=torch.Generator(device=w.device).manual_seed(600+repeat)
+def run_policy(name,w0,cache,worlds,split):
+    pool=cache['pool'];costs=pool['costs'];n=len(worlds);bank=cache['shared']
+    prior=w0.clone();shared_hash=prior_hash(w0);extra={}
+    if name=='NoSharing':
+        bank=cache['unshared'];indices=bank['indices']
+        # Factorized activity priors on a finite stratified joint particle bank.
+        prior=w0[indices].prod(1);prior=prior/prior.sum()
+        marginals=torch.zeros(3,len(w0),device=w0.device)
+        for e in range(3):marginals[e].scatter_add_(0,indices[:,e],prior)
+        extra={'prior_dependence':'independent activity parameters; importance-weighted joint particle approximation',
+               'initial_marginals':marginals.cpu().tolist(),
+               'marginal_total_variation':(.5*(marginals-w0).abs().sum(1)).cpu().tolist()}
+        guard_prior(prior)
+    elif name=='SinglePointMAP':
+        prior=torch.zeros_like(w0);prior[w0.argmax()]=1.
+        extra={'diagnostic_only':True,'prior_guard_exception':'evaluator-created MAP after full prior passed'}
+    if name in PRIMARY:assert torch.equal(prior,w0)
+    w=prior.expand(n,-1).clone();state=method.initial_episode_state(n,bank['P_groups'].shape[1],w.device)
+    mask=torch.ones(n,len(costs),dtype=torch.bool,device=w.device);spent=torch.zeros(n,device=w.device)
+    truth=torch.stack([x['trajectory'] for x in worlds]);labels=torch.stack([x['labels'] for x in worlds])
+    observed=torch.stack([x['observed'] for x in worlds]);audit=torch.stack([x['audit_labels'] for x in worlds])
+    target=bank[split]['Trajectories'].float();z=target.mean(1);flat=z.flatten(1)
+    probe={**bank['probe'],'P_groups':bank['P_groups']}
+    if name=='NoProbes':probe={**cache['shared']['train'],'P_groups':bank['P_groups']}
+    rng=torch.Generator(device=w.device).manual_seed(19913)
+    score_fn=scorer(name,cache['shared']['train']['Trajectories'].float().mean(1),rng) if name in PRIMARY[1:] else None
+    curve=[];briers=[];expenditures=[];traces=[];redundancy=[];epistemic=[];aleatoric=[]
     for budget in cache['budgets']:
-        while spent < budget and not passive:
-            if fixed:
-                batch=fixed_select(w,query,mask,cache['costs'],min(2,budget-spent),name,generator)
-            else:
-                batch=method.select_evidence_batch(w,query,mask,cache['costs'],
-                     batch_size=min(2,budget-spent),budget_remaining=budget-spent,
-                     strategy=name if name in ('Random','Entropy','ParamIG') else 'Covariance',generator=generator)
-            if batch.numel()==0:
-                raise RuntimeError('Acquisition cannot spend declared budget')
-            if len(torch.unique(batch)) != len(batch) or not mask[batch].all():
-                raise ValueError('Duplicate/reused evidence')
-            cost=int(cache['costs'][batch].sum())
-            if cost > budget-spent:
-                raise ValueError('Evidence budget exceeded')
-            reveal={'probabilities':train['P_records'][:,batch],
-                    'labels':cache['truth']['acquisition']['labels'][batch],
-                    'observed':cache['truth']['acquisition']['observed'][batch]}
-            # Only selected labels cross the algorithm boundary. Test labels never do.
-            new_w=fixed_update(w,reveal) if fixed else method.update_and_predict(w,reveal,target)['weights']
-            w=validated_weights(new_w,len(train['Trajectories']))
-            mask[batch]=False; spent+=cost
-            queries.append({'budget':spent,'indices':batch.tolist(),'cost':cost,
-                            'observed':reveal['observed'].tolist()})
-        curves.append({'budget':budget,'spent':spent,**metrics(w,target,cache['truth'][split])})
-    x=torch.tensor(cache['budgets'],dtype=torch.float64)
-    y=torch.tensor([v['rmse'] for v in curves],dtype=torch.float64)
-    auc=float(torch.trapezoid(y,x)/(x[-1]-x[0]))
-    return {'strategy':name,'repeat':repeat,'auc_error':auc,'compatible_count':compatible,
-            'curve':curves,'queries':queries,'final':curves[-1]}
-
-
-def score_comparison(cache):
-    bank=cache['banks']['shared']; w=method.construct_compatible_set(bank['train'])['weights']
-    p=bank['train']['P_records']; z=bank['probe']['Trajectories'].float().mean(1)
-    costs=cache['costs']
-    def sync():
-        if w.is_cuda: torch.cuda.synchronize()
-    method.covariance_scores(w,p,z,costs); method.explicit_scores(w,p[:,:2],z,costs[:2]); sync()
-    out={}
-    for name,fn in [('covariance',method.covariance_scores),('enumeration',method.explicit_scores)]:
-        sync(); started=time.perf_counter()
-        for _ in range(3): scores=fn(w,p,z,costs)
-        sync(); out[name+'_ms']=(time.perf_counter()-started)*1000/3
-        out[name+'_scores']=scores
-    out['max_abs_difference']=float((out.pop('covariance_scores')-out.pop('enumeration_scores')).abs().max())
-    # Select ambiguity pair using historical/probe predictions ONLY.
-    keep=w>0
-    history=bank['train']['Trajectories'].float().mean(1)[keep].flatten(1)
-    probes=z[keep].flatten(1)
-    historical=torch.cdist(history,history)/history.shape[1]**.5
-    divergence=torch.cdist(probes,probes)/probes.shape[1]**.5
-    permitted=(historical<.05)&~torch.eye(len(history),device=w.device,dtype=torch.bool)
-    chosen=divergence.masked_fill(~permitted,-1).flatten().argmax()
-    i,j=int(chosen)//len(history),int(chosen)%len(history)
-    out['ambiguity_pair_found']=bool(permitted.any())
-    out['historical_pair_rmse']=float(historical[i,j])
-    out['probe_pair_rmse']=float(divergence[i,j])
-    out['pair_parameters']=cache['parameters'][keep][[i,j]].tolist()
-    return out
-
-
-def record_tsv(result,status='baseline'):
-    p=path('experiments.tsv'); exists=p.exists()
-    columns=['run_id','commit','method_sha256','split','mode','auc_error','runtime_s','status','result']
-    row={k:result.get(k,'') for k in columns}
-    row['status']=status; row['result']='results/'+result['run_id']+'.json'
-    with p.open('a',encoding='utf-8',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=columns,delimiter='\t')
-        if not exists:writer.writeheader()
-        writer.writerow(row)
-
+        if name!='SinglePointMAP':
+            steps=0
+            while ((mask&(costs<=budget-spent[:,None]+1e-6)).any()):
+                steps+=1
+                if steps>64:raise RuntimeError('Acquisition failed to make progress')
+                ix=method.select_evidence_batch(w,probe,mask,costs,2,budget-spent,state,pool,
+                      condition=name not in ['NoBatch','Random'],score_function=score_fn,generator=rng)
+                if ix.shape!=(n,2) or (ix>=len(costs)).any() or (ix<-1).any():raise ValueError('Invalid query indices')
+                world=torch.arange(n,device=w.device)
+                batch_cost=torch.zeros(n,device=w.device)
+                for j in range(2):
+                    valid=ix[:,j]>=0;safe=ix[:,j].clamp_min(0)
+                    if not mask[world[valid],safe[valid]].all():raise ValueError('Repeated record index')
+                    mask[world[valid],safe[valid]]=False;batch_cost+=costs[safe]*valid
+                if (spent+batch_cost>budget+1e-6).any():raise ValueError('Evidence budget overspent')
+                if not (batch_cost>0).any():raise RuntimeError('No feasible query returned')
+                spent+=batch_cost
+                groups=pool['group'][ix.clamp_min(0)]
+                redundancy.append(((groups[:,0]==groups[:,1])&(ix>=0).all(1)).float())
+                traces.append({'checkpoint':budget,'indices':ix.cpu().tolist(),'cost':batch_cost.cpu().tolist()})
+                for j in range(2):
+                    safe=ix[:,j].clamp_min(0)
+                    w,state=method.update_one(w,state,bank['P_groups'],pool,ix[:,j],
+                                             labels[world,safe],observed[world,safe]&(ix[:,j]>=0))
+                if not torch.isfinite(w).all() or (w<0).any() or not torch.allclose(w.sum(1),torch.ones(n,device=w.device),atol=1e-5):
+                    raise ValueError('Invalid posterior')
+        mean=(w@flat).reshape(n,*z.shape[1:])
+        curve.append((mean-truth).square().mean((2,3)).sqrt())
+        q=w@bank['P_records'];briers.append((q[:,None,:]-audit).square().mean((1,2)))
+        expenditures.append(spent.clone())
+        epistemic.append(((w@flat.square())-(w@flat).square()).clamp_min(0).mean(1))
+        aleatoric.append((w@target.var(1,unbiased=False).flatten(1)).mean(1))
+    errors=torch.stack(curve,1);budgets=torch.tensor(cache['budgets'],device=w.device)
+    auc=torch.trapezoid(errors,budgets,dim=1)/16;macro=auc.mean(1)
+    vals=lambda x:x.detach().cpu().tolist()
+    events=[]
+    for e in range(z.shape[1]):
+        events.append({'activity':e,'auc':float(auc[:,e].mean()),'auc_ci95':ci(vals(auc[:,e])),
+                       'b0_b16_difference_ci95':ci(vals(errors[:,0,e]-errors[:,-1,e]))})
+    return {'auc':float(macro.mean()),'auc_ci95':ci(vals(macro)),'world_auc':vals(macro),
+            'event_world_auc':vals(auc),'event_world_errors':vals(errors),
+            'macro_curve':vals(errors.mean((0,2))),'brier_curve':vals(torch.stack(briers,1).mean(0)),
+            'spent':vals(torch.stack(expenditures,1)),'query_trace':traces,
+            'same_episode_batch_fraction':float(torch.stack(redundancy).mean()) if redundancy else 0.,
+            'initial_ess':float(prior.square().sum().reciprocal()),'initial_prior_hash':prior_hash(prior),
+            'shared_reference_prior_hash':shared_hash,'initial_weights':vals(prior),'final_weights':vals(w),
+            'b0_b16_difference_ci95':ci(vals(errors[:,0].mean(1)-errors[:,-1].mean(1))),
+            'epistemic_curve':vals(torch.stack(epistemic,1).mean(0)),
+            'aleatoric_curve':vals(torch.stack(aleatoric,1).mean(0)),'activities':events,**extra}
 
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--split',choices=['dev','test'],default='dev')
     parser.add_argument('--mode',choices=['fast_dev','full_paper_ablation'],default='fast_dev')
     parser.add_argument('--device',choices=['auto','cpu','cuda'],default='auto')
-    parser.add_argument('--campaign',choices=['v1','v2'],default='v1')
-    parser.add_argument('--method-version',choices=['current','v1'],default='current')
-    args=parser.parse_args()
-    if args.campaign=='v2':
-        from v2_evaluation import main as evaluate_v2
-        return evaluate_v2(args,START)
-    run_id=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')+'-'+uuid.uuid4().hex[:8]
-    result={'run_id':run_id,'split':args.split,'mode':args.mode,'method_sha256':digest('method.py')}
-    try:
-        result['commit']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
-        manifest=verify_integrity()
-        if args.split=='test':
-            frozen=json.loads(path('frozen_method.json').read_text())
-            if frozen['method_sha256']!=digest('method.py'):
-                raise RuntimeError('Test method differs from frozen development winner')
-        torch.set_num_threads(4)
-        device=device_name(args.device)
-        if device=='cuda':torch.cuda.reset_peak_memory_stats()
-        start=time.perf_counter()
-        cache=move(torch.load(path('data/rollout_cache.pt'),map_location='cpu',weights_only=True),device)
-        if device=='cuda':torch.cuda.synchronize()
-        result['cache_load_s']=time.perf_counter()-start
-        names=['Covariance']
-        if args.mode=='full_paper_ablation':
-            names+=['Random','Entropy','ParamIG','Standard_OED','SimpleStats','Uncalibrated',
-                    'ProcessOnly','TrajectoryOnly','PassiveV1','NoSharing','NoCombination','SinglePoint']
-        results=[]
-        with torch.inference_mode():
-            for name in names:
-                for repeat in range(3 if name=='Random' else 1):
-                    results.append(run_strategy(cache,args.split,name,repeat))
-            if args.mode=='full_paper_ablation':result['score_comparison']=score_comparison(cache)
-        if device=='cuda':torch.cuda.synchronize()
-        verify_integrity()
-        if result['method_sha256']!=digest('method.py'):
-            raise RuntimeError('Algorithm changed while evaluation was running')
-        result.update({'strategies':results,'auc_error':results[0]['auc_error'],
-                       'runtime_s':time.perf_counter()-START,'device':device,
-                       'peak_vram_mb':torch.cuda.max_memory_allocated()/1024**2 if device=='cuda' else 0,
-                       'cache_sha256':manifest['sha256'],'status':'tested_synthetic',
-                       'units':'population fraction; normalized trapezoidal budget AUC',
-                       'coverage':'pointwise mixture quantiles over mechanisms and seeds, not simultaneous bands',
-                       'nll':'independent audit cohort next decision at standardized known risk states'})
-        save_json('results/'+run_id+'.json',result);record_tsv(result)
-        print(f"RESULT | results/{run_id}.json | device: {device} | peak_vram_mb: {result['peak_vram_mb']:.1f}")
-        final=results[0]['final']
-        print(f"METRIC | {args.split}_auc_error: {result['auc_error']:.4f} | brier: {final['brier']:.4f} | coverage_90: {final['coverage_90']:.4f} | width_90: {final['width_90']:.4f} | runtime_s: {result['runtime_s']:.2f}")
-    except Exception:
-        result.update({'status':'crash','error':traceback.format_exc(),'runtime_s':time.perf_counter()-START})
-        save_json('results/'+run_id+'.json',result);record_tsv(result,'crash')
-        raise
-
+    args=parser.parse_args();verify();mh=digest('method.py')
+    if args.split=='test':
+        seal=path('provenance/v3/test_release.json')
+        if not seal.exists():raise RuntimeError('V3 test remains sealed; an explicitly authorized final-test release is required')
+        if json.loads(seal.read_text())['method_sha256']!=mh:raise RuntimeError('Test method is not the sealed method')
+    torch.set_num_threads(4);device=device_name(args.device)
+    cache=move(torch.load(path('data/rollout_cache.pt'),weights_only=True),device)
+    # Guard before opening any target outcomes.
+    with torch.inference_mode():
+        try:
+            calibration=method.construct_compatible_set(cache['train']);w0=calibration['weights'];ess=guard_prior(w0)
+        except (PriorCollapseError,ValueError) as exc:
+            result={'status':'invalid_prior','auc_error':999.,'reason':str(exc),'method_sha256':mh,
+                    'split':args.split,'runtime_s':time.perf_counter()-START}
+            filename='results/v3/invalid-'+uuid.uuid4().hex[:12]+'.json'
+            path('results/v3').mkdir(exist_ok=True);save_json(filename,result)
+            print('RESULT | '+filename);print(f'METRIC | {args.split}_auc_error: 999.0000 | invalid_prior: {exc}')
+            return result
+        worlds=move(torch.load(path('data/v3/'+args.split+'_truth.pt'),weights_only=True),device)
+        names=PRIMARY+(ABLATIONS if args.mode=='full_paper_ablation' else [])
+        policies={name:run_policy(name,w0,cache,worlds,args.split) for name in names}
+    assert len({policies[n]['initial_prior_hash'] for n in PRIMARY})==1
+    full=policies['Full'];paired={}
+    for name,value in policies.items():
+        difference=np.asarray(value['world_auc'])-np.asarray(full['world_auc'])
+        paired[name]={'mean_auc_difference':float(difference.mean()),'ci95':ci(difference),
+                      'relative_full_gain':1-full['auc']/value['auc']}
+    if device=='cuda':torch.cuda.synchronize()
+    verify()
+    if digest('method.py')!=mh:raise RuntimeError('Method changed during evaluation')
+    result={'schema':'standard-v3-v0','status':'tested_synthetic','split':args.split,'mode':args.mode,
+            'method_sha256':mh,'cache_sha256':digest('data/rollout_cache.pt'),
+            'initial_ess':ess,'compatible_support':int(calibration['mask'].sum()),'auc_error':full['auc'],
+            'runtime_s':time.perf_counter()-START,'device':device,'strategies':policies,'paired_vs_full':paired,
+            'test_status':'sealed' if args.split=='dev' else 'released',
+            'uncertainty_unit':'independent whole worlds; activities inside a world are dependent',
+            'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()}
+    filename='results/v3/'+args.split+'-'+args.mode+'-'+uuid.uuid4().hex[:12]+'.json'
+    path('results/v3').mkdir(exist_ok=True);save_json(filename,result)
+    print('RESULT | '+filename)
+    print('CURVE | '+json.dumps(full['macro_curve'])+' | ESS: '+str(ess))
+    for name,s in policies.items():print(f"{name}: AUC={s['auc']:.6f}, same-episode batch={s['same_episode_batch_fraction']:.3f}")
+    print(f"METRIC | {args.split}_auc_error: {full['auc']:.6f} | brier: {full['brier_curve'][-1]:.6f} | initial_ess: {ess:.4f} | runtime_s: {result['runtime_s']:.2f}")
+    return result
 
 if __name__=='__main__':main()
