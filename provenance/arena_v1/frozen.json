@@ -1,0 +1,22 @@
+{
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 2.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "dev_primary": 2.0806659323873404,
+  "initial_primary": 2.7876865969973146,
+  "dev_selected_strong_control": "expert_06",
+  "strong_control_primary": 2.1029870783439892,
+  "trials": 24,
+  "kept": 7,
+  "frozen_at": "2026-10-14T17:30:31.671475+00:00"
+}

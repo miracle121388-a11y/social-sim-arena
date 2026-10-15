@@ -1,114 +1,75 @@
-"""Standard V0: ESS-constrained calibration and correlated-evidence acquisition.
-No simulator calls, disk reads, target labels, or hidden evaluation access.
+"""Arena v1: selective historical calibration and conservative normal forecasting.
+Pure numerical code. No filesystem/network access. All hyperparameters here.
 """
-import torch
+import numpy as np
+from scipy.special import ndtr,logsumexp
+CONFIG = {'scale_prior': 2, 'location': 'persistence', 'selector': 'cdf', 'budget': 8, 'eta': 2.0, 'shrink': 1.0, 'decay': 0.0, 'stop': 0.0, 'update': 'crps', 'robust': 0.0}
 
-CALIBRATION_SIGMA=.015
-PROCESS_WEIGHT=1.
-MIN_ESS=15.
-LATE_WEIGHT=2.
+def crps(mu,sd,y):
+    z=(y-mu)/sd
+    return sd*(z*(2*ndtr(z)-1)+2*np.exp(-.5*z*z)/np.sqrt(2*np.pi)-1/np.sqrt(np.pi))
 
-def construct_compatible_set(train_cache):
-    samples=train_cache['Trajectories'].float();z=samples.mean(1)
-    residual=(z-train_cache['observed_trajectory']).square()
-    error=residual.mean((1,2,3)).sqrt()
-    mask=train_cache['history_observed'].bool();p=train_cache['P_history'][:,mask].clamp(1e-6,1-1e-6)
-    y=train_cache['history_labels'][mask]
-    pe=(p-y).square().mean(1) if mask.any() else torch.zeros_like(error)
-    nll=-(y*p.log()+(1-y)*(1-p).log()).mean(1) if mask.any() else torch.zeros_like(error)
-    keep=(error<=error.min()+.012)&(pe<=pe.min()+.01)
-    if int(keep.sum())<MIN_ESS:raise ValueError('Insufficient compatible support for ESS>=15')
-    variance=samples.var(1,unbiased=False).mean(0)
-    relative=(variance+1e-5)/(variance.mean()+1e-5)
-    energy=(residual/relative).mean((1,2,3))/(2*CALIBRATION_SIGMA**2)+PROCESS_WEIGHT*nll
-    def weights(temp):return torch.softmax((-energy/temp).masked_fill(~keep,-torch.inf),0)
-    lo,hi=1.,1.
-    while float(1/weights(hi).square().sum())<MIN_ESS-1e-5:
-        hi*=2
-        if hi>1e9:raise ValueError('Unable to meet ESS floor')
-    if hi>1:
-        for _ in range(25):
-            mid=(lo+hi)/2
-            if float(1/weights(mid).square().sum())<MIN_ESS:lo=mid
-            else:hi=mid
-    return {'weights':weights(hi),'mask':keep,'temperature':hi,
-            'trajectory_error':error,'process_error':pe}
+def prior(config):
+    loc=config["location"];k=config["scale_prior"]
+    a=np.ones((6,4))
+    if loc=="persistence":a[0,:]*=8.
+    elif loc=="trend":a[3:5,:]*=4.
+    elif loc=="smooth":a[[1,2,5],:]*=4.
+    if k>=0:a[:,k]*=6.
+    return a.flatten()/a.sum()
 
-def initial_episode_state(worlds,groups,device):
-    return {'log_l0':torch.zeros(worlds,groups,device=device),
-            'log_l1':torch.zeros(worlds,groups,device=device)}
+def cdf_value(w,means,sds,p):
+    grid=np.linspace(float(np.min(means-5*sds)),float(np.max(means+5*sds)),129)
+    f=ndtr((grid[None,:]-means[:,None])/sds[:,None])
+    q=float(w@p)
+    cov=(w*p)@f-q*(w@f)
+    return float(np.trapezoid(cov*cov,grid)/max(q*(1-q),1e-10))
 
-def conditional_probabilities(group_probabilities,pool,state):
-    pg=group_probabilities.clamp(1e-6,1-1e-6)
-    latent=torch.sigmoid(torch.logit(pg)[None,:,:]+(state['log_l1']-state['log_l0'])[:,None,:])
-    r=pool['reliability']
-    return (1-r)[None,None,:]+(2*r-1)[None,None,:]*latent[:,:,pool['group']]
+def mean_value(w,means,sds,p):
+    q=float(w@p);cov=float((w*p)@means-q*(w@means))
+    return cov*cov/max(q*(1-q),1e-10)
 
-def update_one(weights,state,group_probabilities,pool,index,answer,observed):
-    """Exact marginalization of shared episodes; repeated sensors are NOT iid."""
-    valid=(index>=0)&observed;ix=index.clamp_min(0);world=torch.arange(len(weights),device=weights.device)
-    p=conditional_probabilities(group_probabilities,pool,state)[world,:,ix].clamp(1e-7,1-1e-7)
-    likelihood=torch.where(answer[:,None]>.5,p,1-p)
-    ll=torch.where(valid[:,None],likelihood.log(),torch.zeros_like(likelihood))
-    logw=torch.where(weights>0,weights.log(),-torch.inf)
-    posterior=torch.softmax(logw+ll,1)
-    group=pool['group'][ix];r=pool['reliability'][ix]
-    l1=torch.where(answer>.5,r,1-r).log()*valid;l0=torch.where(answer>.5,1-r,r).log()*valid
-    new={'log_l0':state['log_l0'].clone(),'log_l1':state['log_l1'].clone()}
-    new['log_l0'].scatter_add_(1,group[:,None],l0[:,None])
-    new['log_l1'].scatter_add_(1,group[:,None],l1[:,None])
-    return posterior,new
-
-def covariance_scores(weights,probabilities,trajectories,costs):
-    z=trajectories.flatten(1);q=torch.einsum('wm,wmr->wr',weights,probabilities)
-    cov=torch.bmm(probabilities.transpose(1,2),weights[:,:,None]*z[None,:,:])-q[:,:,None]*(weights@z)[:,None,:]
-    return cov.square().mean(-1)/(q*(1-q)).clamp_min(1e-10)/costs
-
-def select_evidence_batch(candidate_weights,probe_cache,pool_mask,costs,batch_size=2,
-                          budget_remaining=None,state=None,pool=None,condition=True,
-                          score_function=None,generator=None):
-    """Outcome branches include MCAR missing responses; no submodularity claim.
-    condition=False freezes acquisition beliefs only, not actual posterior updates.
-    The fixed evaluator supplies independent baseline score functions.
-    """
-    w=candidate_weights;pg=probe_cache['P_groups'];z=probe_cache['Trajectories'].float().mean(1)
-    time=torch.linspace(1.,LATE_WEIGHT,z.shape[2],device=w.device)
-    z=z*time[None,None,:,None].sqrt()
-    mask=pool_mask.clone();remaining=budget_remaining.clone()
-    branches=[(torch.ones(len(w),device=w.device),w,state)];selected=[]
-    for j in range(batch_size):
-        scores=torch.zeros_like(mask,dtype=torch.float32)
-        for mass,bw,bs in branches:
-            p=conditional_probabilities(pg,pool,bs)
-            value=(covariance_scores(bw,p,z,costs) if score_function is None else score_function(bw,p,z,costs))
-            scores+=mass[:,None]*value*pool['observed_probability']
-        eligible=mask&(costs<=remaining[:,None]+1e-6)
-        no_signal=scores.abs().amax(1)<1e-12
-        tie=torch.rand(scores.shape,generator=generator,device=w.device)*1e-13
-        scores=torch.where(no_signal[:,None],tie,scores)
-        ix=scores.masked_fill(~eligible,-torch.inf).argmax(1)
-        ix=torch.where(eligible.any(1),ix,torch.full_like(ix,-1));selected.append(ix)
-        valid=ix>=0;safe=ix.clamp_min(0);world=torch.arange(len(w),device=w.device)
-        mask[world[valid],safe[valid]]=False;remaining-=costs[safe]*valid
-        if condition and j+1<batch_size:
-            expanded=[]
-            for mass,bw,bs in branches:
-                p=conditional_probabilities(pg,pool,bs)[world,:,safe]
-                q=(bw*p).sum(1);rho=pool['observed_probability'][safe]*valid
-                for y,prob in [(0.,1-q),(1.,q)]:
-                    nw,ns=update_one(bw,bs,pg,pool,ix,torch.full_like(q,y),valid)
-                    expanded.append((mass*rho*prob,nw,ns))
-                expanded.append((mass*(1-rho),bw,bs))
-            branches=expanded
-    return torch.stack(selected,1)
-
-def update_and_predict(candidate_weights,revealed_records,target_cache):
-    w=candidate_weights;state=revealed_records['state'];pool=revealed_records['pool']
-    for j in range(revealed_records['indices'].shape[1]):
-        w,state=update_one(w,state,target_cache['P_groups'],pool,
-            revealed_records['indices'][:,j],revealed_records['labels'][:,j],revealed_records['observed'][:,j])
-    samples=target_cache['Trajectories'].float();z=samples.mean(1)
-    mu=(w@z.flatten(1)).reshape(len(w),*z.shape[1:])
-    epistemic=(torch.einsum('wm,metc->wetc',w,z.square())-mu.square()).clamp_min(0)
-    aleatoric=torch.einsum('wm,metc->wetc',w,samples.var(1,unbiased=False))
-    return {'weights':w,'state':state,'mean':mu,'epistemic':epistemic,'aleatoric':aleatoric}
+def forecast(case,reveal,config=None,policy=None,budget=None):
+    cfg=dict(CONFIG if config is None else config)
+    if policy is not None:cfg["selector"]=policy
+    if budget is not None:cfg["budget"]=budget
+    m=np.asarray(case["means"]);s=np.asarray(case["sds"]);w=prior(cfg)
+    pool=case["pool"];chosen=[];trace=[];spent=0.
+    rng=np.random.default_rng(case["seed"])
+    while len(chosen)<cfg["budget"]:
+        ids=[i for i,r in enumerate(pool) if i not in chosen and spent+r["cost"]<=cfg["budget"]]
+        if not ids:break
+        scores=[]
+        for i in ids:
+            r=pool[i];p=1-ndtr((r["threshold"]-np.asarray(r["means"]))/np.asarray(r["sds"]))
+            if cfg["selector"]=="recent":v=1/(1+r["age"])
+            elif cfg["selector"]=="random":v=float(rng.random())
+            elif cfg["selector"]=="mean":v=mean_value(w,m,s,p)
+            elif cfg["selector"]=="entropy":
+                q=float(w@p);v=-q*np.log(max(q,1e-12))-(1-q)*np.log(max(1-q,1e-12))
+            else:v=cdf_value(w,m,s,p)
+            v*=np.exp(-cfg["decay"]*r["age"])/r["cost"]
+            scores.append(v)
+        j=int(np.argmax(scores));i=ids[j]
+        if scores[j]<=cfg["stop"]:break
+        r=pool[i];y=float(reveal(i));chosen.append(i);spent+=r["cost"]
+        em=np.asarray(r["means"]);es=np.asarray(r["sds"])
+        if cfg["update"]=="binary":
+            p=1-ndtr((r["threshold"]-em)/es)
+            ll=np.log(np.maximum(p if y>r["threshold"] else 1-p,1e-8))
+        else:
+            loss=crps(em,es,y)/max(.25,float(np.median(es)))
+            # Bounded score influence limits damage from historical outliers.
+            if cfg["robust"]>0:loss=np.minimum(loss,cfg["robust"])
+            ll=-loss
+        ll*=cfg["eta"]*np.exp(-cfg["decay"]*r["age"])
+        lw=np.log(np.maximum(w,1e-300))+ll
+        w=np.exp(lw-logsumexp(lw))
+        trace.append({"index":i,"utility":float(scores[j]),"spent":spent})
+    # Projection is scored as normal; CDF acquisition is a surrogate after projection.
+    mean=float(w@m);var=float(w@(s*s+m*m)-mean*mean)
+    base=case["persistence"];a=cfg["shrink"]
+    mean_out=(1-a)*base["mean"]+a*mean
+    second=(1-a)*(base["sd"]**2+base["mean"]**2)+a*(var+mean*mean)
+    sd_out=max(.05,float(np.sqrt(max(0.,second-mean_out**2))))
+    return {"mean":float(mean_out),"sd":sd_out,"cost":spent,"selected":chosen,"trace":trace,"ess":float(1/(w@w))}

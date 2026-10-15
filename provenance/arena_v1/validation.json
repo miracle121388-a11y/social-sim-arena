@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "trials": 24,
+  "kept": 7,
+  "official_score_rows_verified": 1936,
+  "locked_files_verified": 74,
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "limitations": [
+    "Only 4 calendar-week blocks per split; intervals exploratory.",
+    "Dev and test include adjacent days in week 38; no temporal embargo was preregistered.",
+    "No prospective Arena submissions; normalized-loss gain does not imply positive mean skill.",
+    "Expert bank has no social mechanism simulator; selection is historical validation compute."
+  ]
+}

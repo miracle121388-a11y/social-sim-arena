@@ -1,0 +1,41 @@
+{
+  "trial": 15,
+  "stage": "acquisition",
+  "hypothesis": "Mean utility with eight validations",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "mean",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "24f186c7e44c1a4b238d2d81e5394c203eaef59cd3f81b4a88995505f3b0e26d",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1184127802871617,
+    "mean_crps": 2.3867447024080235,
+    "mean_skill": -0.27098529093775625,
+    "mae": 3.2846578543287466,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.1310214104103204,
+      "public-opinion": 0.5645909512909238
+    },
+    "week_losses": {
+      "2026-W35": 0.8354116975430936,
+      "2026-W36": 1.1256890959420622,
+      "2026-W37": 1.4572828366561776,
+      "2026-W38": 5.055267491007314
+    }
+  },
+  "guard": true
+}

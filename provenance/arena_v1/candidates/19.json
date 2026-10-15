@@ -1,0 +1,41 @@
+{
+  "trial": 19,
+  "stage": "robustness",
+  "hypothesis": "Fast proper-score learning",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 2.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "status": "KEEP",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.0806659323873404,
+    "mean_crps": 2.3377555363322235,
+    "mean_skill": -0.2507882477345526,
+    "mae": 3.1665665855803957,
+    "coverage80": 0.9,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.054605213145009,
+      "public-opinion": 0.5611026760502421
+    },
+    "week_losses": {
+      "2026-W35": 0.8010915270170115,
+      "2026-W36": 1.0857491233171783,
+      "2026-W37": 1.441832018348835,
+      "2026-W38": 4.993991060866337
+    }
+  },
+  "guard": true
+}

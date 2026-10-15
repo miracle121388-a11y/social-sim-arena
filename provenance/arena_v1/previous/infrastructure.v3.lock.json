@@ -1,0 +1,13 @@
+{
+  "campaign": "standard-v3-v0",
+  "files": {
+    "prepare_and_cache.py": "145ed43dbd30b8668e9eb026b626a1dfb9606ccf99fcecc4b6f4e87432d02661",
+    "evaluate.py": "d3bfa523059984f62f860810552621db406835e9bba4756e92fa13cb9c2da1a9",
+    "workspace.py": "822f035131538d8977fdc9299989c531fbc580f1d8b128c6dc3b9645b86101e0",
+    "program.md": "037b411b34b189abaf7838bc24df18d09701bd91d05cc3f4c77131c20073541b",
+    "configs/standard_v3.json": "d3beca397dc8982fc9d209109500d3042bece5a4bbe105408d9d8a6bb404a343",
+    "tests/test_standard_v3.py": "5a5df3b024684f6bdaa24adab75644571b5521bb8bbf95948fe6205d7ba47d79",
+    "provenance/v3/protocol.md": "3a7162aea98c430cc0b482955f6cc4847ba3d84e86982f2b6f2ddf7b8c7a87a5"
+  },
+  "revision": "user-authorized-25-round-protocol-only"
+}

@@ -1,0 +1,41 @@
+{
+  "trial": 8,
+  "stage": "forecast",
+  "hypothesis": "Conservative empirical forecast",
+  "config": {
+    "scale_prior": 1,
+    "location": "persistence",
+    "selector": "recent",
+    "budget": 0,
+    "eta": 1.0,
+    "shrink": 0.25,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "a0c57d516c94f932db210c22416be44b5e334657a83a8ee5f4d7634e61e18092",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.4222356437949966,
+    "mean_crps": 2.5398128547241434,
+    "mean_skill": -0.021456207159320284,
+    "mae": 3.3908835082823123,
+    "coverage80": 0.65,
+    "coverage95": 0.95,
+    "mean_cost": 0.0,
+    "domain_loss": {
+      "consumer": 3.408324386104474,
+      "public-opinion": 0.5497980256238432
+    },
+    "week_losses": {
+      "2026-W35": 0.679501038969298,
+      "2026-W36": 1.2692793635253876,
+      "2026-W37": 1.2382218051680636,
+      "2026-W38": 6.501940367517237
+    }
+  },
+  "guard": true
+}

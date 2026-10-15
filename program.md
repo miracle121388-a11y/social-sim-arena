@@ -1,24 +1,52 @@
-# Standard V3 V0 research entry
+# Arena v1 bounded AutoResearch protocol
 
-This task initializes one prespecified V0; it does not start a search loop.
-Read provenance/v3/protocol.md and configs/standard_v3.json before evaluation.
-The only future evolvable algorithm is method.py. prepare_and_cache.py,
-evaluate.py, workspace.py, tests and protocol are fixed by infrastructure.v3.lock.json.
+Authorized by the user's 2026-10-15 request to execute the proposed optimization.
+This protocol replaces the old synthetic five-gate search for this campaign only.
+Previous sources and protocol are archived under provenance/arena_v1/previous.
 
-Run the default prepare_and_cache.py once to replace the archived V1 root cache.
-A second generation refuses to overwrite V3. The default evaluate.py runs five
-matched-prior selectors with cost budgets [0,2,4,8,12,16]. Invalid calibration
-or ESS<15 returns auc_error=999 before loading target outcomes. Full development
-ablations additionally include NoBatch, NoProbes, evaluator-created MAP, and a
-separate independently parameterized activity bank. MAP is diagnostic only;
-NoSharing necessarily changes prior dependence and has a finite-particle limit.
+## Frozen data and scope
+Pinned public repository: e8d14d24f0bca7f05425afdbfd719eb38e17bed3.
+Website snapshot: provenance/arena-data-20261015.json, generated 2026-10-14.
+Only resolved scalar public-opinion and consumer rounds. Exclude missing locks,
+flagged corrections, snapshot observations after lock, fewer than six history
+points, history dates on/after lock, history/persistence mismatch, absent labels.
+Exclusions depend on metadata/integrity, never forecast errors.
+Train lock < 2026-08-25; dev < 2026-09-16; test >= 2026-09-16.
+Already public outcomes and previously viewed leaderboard aggregates mean the
+last split is a retrospective holdout, NOT a virgin/prospective test.
 
-Test is sealed. It requires explicit final-test authorization and an immutable
-provenance/v3/test_release.json matching the method hash. Do not create that
-release automatically, tune on test, or require a predetermined ranking. V0
-performance and all negative or indistinguishable ablations must be reported.
+## Scientific objective and cost
+Official normal CRPS, normalized by each round's pre-outcome persistence sd.
+Primary: mean normalized CRPS, averaging within lock calendar week first.
+Secondary: raw CRPS, mean official per-round skill, MAE, 80/95% interval coverage.
+Maintain raw losses and denominators; never pool unrelated raw units as a claim.
+Cost: number of rolling historical validation records evaluated over 24 fixed
+experts. This is a cached computation budget, not paid information/web retrieval.
+Forecast states exclude held-out outcomes. Only past historical calibration
+targets can be revealed. CDF value assumes an expert-mixture binary model; after
+proper-score updates and normal projection it is a heuristic, not exact VOI.
+No claimed novel identity, first-vintage history or synthetic-to-real transfer.
 
-V1/V2 history and old loop controllers are historical. Their infrastructure locks
-must not be applied to the V3 branch. Their exact working release is available
-from branch exp/v2-non-collapsed / commit dac68e8 and dist/v2-before-v3.zip.
-No registration, upload, real student data, external APIs or paid model calls.
+## Finite search and decisions
+24 method-only trials: 8 forecast/calibration priors, 8 acquisition policies,
+8 robust updates/shrinkage/stopping candidates. All candidates are predeclared.
+Stages 2 and 3 inherit the best dev configuration from the previous stage.
+Incumbent starts with official persistence. KEEP iff primary dev loss improves
+by > 1e-6, all outputs finite/positive sd, budgets respected, deterministic replay,
+and no domain's normalized dev loss exceeds its persistence control by >50%.
+No forced ablation ranking and no post-hoc selection thresholds.
+No .git hard reset, no commits of unrelated user work. Each candidate source,
+configuration, metrics and decision is append-only and hashed. Rejected sources
+are retained for scientific reproducibility; only active method.py is restored.
+Only method.py may change between infrastructure freeze and final evaluation.
+
+## Freeze and verification
+Lock adapter, evaluator, controller, tests, protocol, raw files and cache hashes.
+After 24 trials freeze method and dev-selected baseline; evaluate test once,
+including fixed strong baselines, ablations and 0/2/4/8/12 cost curves.
+Seed 20261015; bootstrap 4000 whole calendar-week blocks; no individual
+subgroup independence claim; few time blocks limit inference.
+Post-freeze bug fixes must be disclosed; no test-guided method tuning.
+Do not call paid models, register, deploy, publish or submit predictions.
+Do not remove legacy, raw traces, failures, or provenance. Clean only audited
+redundant generated outputs after a verified reproducibility archive exists.

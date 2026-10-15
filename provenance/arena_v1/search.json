@@ -1,0 +1,986 @@
+[
+  {
+    "trial": 1,
+    "stage": "forecast",
+    "hypothesis": "Uniform statistical experts",
+    "config": {
+      "scale_prior": -1,
+      "location": "uniform",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "ca73d19cf7dd9a353770a996809bec576fb7de3f5e09e5488813412a5deeb59a",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1769566708675185,
+      "mean_crps": 2.4533722707566823,
+      "mean_skill": -0.26923948012387006,
+      "mae": 3.39765707178005,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.217651024541576,
+        "public-opinion": 0.5808685067019297
+      },
+      "week_losses": {
+        "2026-W35": 0.794620149200426,
+        "2026-W36": 1.1653036387616202,
+        "2026-W37": 1.5019069856090934,
+        "2026-W38": 5.2459959098989355
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 2,
+    "stage": "forecast",
+    "hypothesis": "Persistence-focused narrow uncertainty",
+    "config": {
+      "scale_prior": 0,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "ec77052ca977a77f161e0cff7acfbf7e0e6a02bb42c5507eb483cb8fb541879f",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.241335107655546,
+      "mean_crps": 2.4323750833678455,
+      "mean_skill": -0.10705565908481465,
+      "mae": 3.393534033129252,
+      "coverage80": 0.65,
+      "coverage95": 1.0,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.1890206087077164,
+        "public-opinion": 0.5766252423813506
+      },
+      "week_losses": {
+        "2026-W35": 0.7387739577875,
+        "2026-W36": 1.1927838569297444,
+        "2026-W37": 1.3211019635255212,
+        "2026-W38": 5.712680652379418
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 3,
+    "stage": "forecast",
+    "hypothesis": "Persistence-focused empirical uncertainty",
+    "config": {
+      "scale_prior": 1,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "305c6b35cecac686d9998e26989d25c1a25fe8833357bec60cfaa838a004cb91",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.185592810256638,
+      "mean_crps": 2.409950537880563,
+      "mean_skill": -0.17248998084590628,
+      "mae": 3.3935340331292516,
+      "coverage80": 0.75,
+      "coverage95": 1.0,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.159400016883941,
+        "public-opinion": 0.5714561419446648
+      },
+      "week_losses": {
+        "2026-W35": 0.7818714822747325,
+        "2026-W36": 1.1669981236897,
+        "2026-W37": 1.3728142263882943,
+        "2026-W38": 5.420687408673825
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 4,
+    "stage": "forecast",
+    "hypothesis": "Persistence-focused wider uncertainty",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "73fedc46b49ec27d5b4cba7a7e836ad93240754ec2950c9d4c81bdde8e102ca3",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1555002686920384,
+      "mean_crps": 2.434064466521064,
+      "mean_skill": -0.28025746244691946,
+      "mae": 3.3935340331292507,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.1917002156876064,
+        "public-opinion": 0.5767159301205548
+      },
+      "week_losses": {
+        "2026-W35": 0.8509297281206857,
+        "2026-W36": 1.165815093452704,
+        "2026-W37": 1.4728740897148584,
+        "2026-W38": 5.132382163479906
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 5,
+    "stage": "forecast",
+    "hypothesis": "Smoothed forecasts with baseline shrinkage",
+    "config": {
+      "scale_prior": 1,
+      "location": "smooth",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 0.5,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "4934b8b35ad3ca106113267673b4296a921707a3120434fb429808dffbd02db3",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.2724364860236657,
+      "mean_crps": 2.4364635393499805,
+      "mean_skill": -0.08340297552819834,
+      "mae": 3.3463164694067173,
+      "coverage80": 0.8,
+      "coverage95": 0.95,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.2168529171363858,
+        "public-opinion": 0.5626130989646104
+      },
+      "week_losses": {
+        "2026-W35": 0.6663421691584623,
+        "2026-W36": 1.163458633143285,
+        "2026-W37": 1.331918933691782,
+        "2026-W38": 5.928026208101133
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 6,
+    "stage": "forecast",
+    "hypothesis": "Damped trends with baseline shrinkage",
+    "config": {
+      "scale_prior": 1,
+      "location": "trend",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 0.5,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "e1c7cd851a56b2f0c241dd44baeb4171e5210a98cc49d59ecbdbc420f0143405",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.3433003399492813,
+      "mean_crps": 2.4911930060929373,
+      "mean_skill": -0.0909722449929801,
+      "mae": 3.4663638215164396,
+      "coverage80": 0.8,
+      "coverage95": 0.95,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.316456669066669,
+        "public-opinion": 0.55702111628104
+      },
+      "week_losses": {
+        "2026-W35": 0.7246029823299494,
+        "2026-W36": 1.2299429544982985,
+        "2026-W37": 1.2730486637983682,
+        "2026-W38": 6.1456067591705095
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 7,
+    "stage": "forecast",
+    "hypothesis": "Narrow forecast with half baseline weight",
+    "config": {
+      "scale_prior": 0,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 0.5,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "6d61716c16e495c3e9cf6fa9190337014239354d33813df983cd27795b2f471d",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.362269770701547,
+      "mean_crps": 2.4935049996840344,
+      "mean_skill": -0.03331006407209529,
+      "mae": 3.391767016564626,
+      "coverage80": 0.65,
+      "coverage95": 0.95,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.3232700726099993,
+        "public-opinion": 0.5550477290200386
+      },
+      "week_losses": {
+        "2026-W35": 0.6921624900779992,
+        "2026-W36": 1.233215820016935,
+        "2026-W37": 1.2514235506656946,
+        "2026-W38": 6.27227722204556
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 8,
+    "stage": "forecast",
+    "hypothesis": "Conservative empirical forecast",
+    "config": {
+      "scale_prior": 1,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 0,
+      "eta": 1.0,
+      "shrink": 0.25,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "a0c57d516c94f932db210c22416be44b5e334657a83a8ee5f4d7634e61e18092",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.4222356437949966,
+      "mean_crps": 2.5398128547241434,
+      "mean_skill": -0.021456207159320284,
+      "mae": 3.3908835082823123,
+      "coverage80": 0.65,
+      "coverage95": 0.95,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.408324386104474,
+        "public-opinion": 0.5497980256238432
+      },
+      "week_losses": {
+        "2026-W35": 0.679501038969298,
+        "2026-W36": 1.2692793635253876,
+        "2026-W37": 1.2382218051680636,
+        "2026-W38": 6.501940367517237
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 9,
+    "stage": "acquisition",
+    "hypothesis": "Four recent historical validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 4,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "5540dbed301e388a29a8563bacb0300ea751d52954573cb627c7ca99dcecf042",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.152963226722017,
+      "mean_crps": 2.4154560555154396,
+      "mean_skill": -0.2761275187862387,
+      "mae": 3.365666966990459,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 4.0,
+      "domain_loss": {
+        "consumer": 3.170402405975943,
+        "public-opinion": 0.5702384576998599
+      },
+      "week_losses": {
+        "2026-W35": 0.8460795790278697,
+        "2026-W36": 1.1517559779777173,
+        "2026-W37": 1.4451518959071101,
+        "2026-W38": 5.168865453975371
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 10,
+    "stage": "acquisition",
+    "hypothesis": "Eight recent historical validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "07e16cd40d113b2719165379f726ee2dc0e304b8f05632bfd79eda6290cba356",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1438466682836177,
+      "mean_crps": 2.4041001222838596,
+      "mean_skill": -0.2650897922329161,
+      "mae": 3.335482731838623,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.157296075346369,
+        "public-opinion": 0.5663583078622645
+      },
+      "week_losses": {
+        "2026-W35": 0.8296777450961402,
+        "2026-W36": 1.1402724120153587,
+        "2026-W37": 1.4465165467321792,
+        "2026-W38": 5.158919969290792
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 11,
+    "stage": "acquisition",
+    "hypothesis": "All twelve historical validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "recent",
+      "budget": 12,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "54822897ab8f6904583b621e64b74ad9829750a300b736ac8f076a643736f96d",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1228538918028788,
+      "mean_crps": 2.3824322310249757,
+      "mean_skill": -0.2553465693144891,
+      "mae": 3.2923720461790182,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 12.0,
+      "domain_loss": {
+        "consumer": 3.1240350958485186,
+        "public-opinion": 0.5644568594620716
+      },
+      "week_losses": {
+        "2026-W35": 0.8258933920203412,
+        "2026-W36": 1.122405342151942,
+        "2026-W37": 1.4445213001955979,
+        "2026-W38": 5.098595532843634
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 12,
+    "stage": "acquisition",
+    "hypothesis": "Random eight validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "random",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "7c59a16eaf52c3bdc26e5f3ff08e4f1e37f0d92a11b175853acac0790acaf4e8",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1334726713326084,
+      "mean_crps": 2.3986947643865726,
+      "mean_skill": -0.2562226732200007,
+      "mae": 3.3330072722948527,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1510252939720784,
+        "public-opinion": 0.5645328755592501
+      },
+      "week_losses": {
+        "2026-W35": 0.8136553052678691,
+        "2026-W36": 1.1361340142707554,
+        "2026-W37": 1.456871219386872,
+        "2026-W38": 5.127230146404938
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 13,
+    "stage": "acquisition",
+    "hypothesis": "CDF utility with four validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 4,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "a7043f094af9e8fda8d3cf2b701d9d0c5fbf2f8f8ea6d86b96931185708c70ad",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1253613460254503,
+      "mean_crps": 2.4002573706586308,
+      "mean_skill": -0.27672132450839826,
+      "mae": 3.3116251723938177,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 4.0,
+      "domain_loss": {
+        "consumer": 3.1413519123541382,
+        "public-opinion": 0.5727180258290524
+      },
+      "week_losses": {
+        "2026-W35": 0.8387325202920187,
+        "2026-W36": 1.1359645427982692,
+        "2026-W37": 1.4692042126993,
+        "2026-W38": 5.0575441083122135
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 14,
+    "stage": "acquisition",
+    "hypothesis": "CDF utility with eight validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "a1e2c90f04336d1f814ed91dfc14313fb71603f4a960d1018cb231a113539b59",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.116435396519042,
+      "mean_crps": 2.385490666958654,
+      "mean_skill": -0.2671055227166141,
+      "mae": 3.2883538246509034,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.128529198295925,
+        "public-opinion": 0.5648590533123322
+      },
+      "week_losses": {
+        "2026-W35": 0.8257337747630191,
+        "2026-W36": 1.1256236776708528,
+        "2026-W37": 1.4591166426349829,
+        "2026-W38": 5.055267491007314
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 15,
+    "stage": "acquisition",
+    "hypothesis": "Mean utility with eight validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "mean",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "24f186c7e44c1a4b238d2d81e5394c203eaef59cd3f81b4a88995505f3b0e26d",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1184127802871617,
+      "mean_crps": 2.3867447024080235,
+      "mean_skill": -0.27098529093775625,
+      "mae": 3.2846578543287466,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1310214104103204,
+        "public-opinion": 0.5645909512909238
+      },
+      "week_losses": {
+        "2026-W35": 0.8354116975430936,
+        "2026-W36": 1.1256890959420622,
+        "2026-W37": 1.4572828366561776,
+        "2026-W38": 5.055267491007314
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 16,
+    "stage": "acquisition",
+    "hypothesis": "Response entropy with eight validations",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "entropy",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "af3b769b3c3be74538dd0f360971ed20b810f5b56422edd3796d653b05b71f30",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1605319704534547,
+      "mean_crps": 2.428186793713999,
+      "mean_skill": -0.2690849851876495,
+      "mae": 3.3739633959924418,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1901271281903174,
+        "public-opinion": 0.571233907555343
+      },
+      "week_losses": {
+        "2026-W35": 0.8433082719795126,
+        "2026-W36": 1.1455326328962498,
+        "2026-W37": 1.475012816640401,
+        "2026-W38": 5.178274160297655
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 17,
+    "stage": "robustness",
+    "hypothesis": "Slow proper-score learning",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 0.25,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "3c0a8b9eec56c5105bcd701ef674a88133dfea7c172da57e35fae41fb084f5c7",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1458261598088235,
+      "mean_crps": 2.421754673354242,
+      "mean_skill": -0.2774351183662933,
+      "mae": 3.366067576414558,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1773426219942014,
+        "public-opinion": 0.5726101112863565
+      },
+      "week_losses": {
+        "2026-W35": 0.8479284461416997,
+        "2026-W36": 1.15482236293089,
+        "2026-W37": 1.4693180818384524,
+        "2026-W38": 5.111235748324252
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 18,
+    "stage": "robustness",
+    "hypothesis": "Moderate proper-score learning",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 0.5,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "3845e33625fd3adbbbb9b597e481517589757dd5c57f342c1c1610863e6e08d9",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1358222171258467,
+      "mean_crps": 2.4100258755303408,
+      "mean_skill": -0.27373936772983576,
+      "mae": 3.3394728920968477,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.161474595924009,
+        "public-opinion": 0.570156797751039
+      },
+      "week_losses": {
+        "2026-W35": 0.83935963123794,
+        "2026-W36": 1.1455612568888984,
+        "2026-W37": 1.4668746861652875,
+        "2026-W38": 5.0914932942112605
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 19,
+    "stage": "robustness",
+    "hypothesis": "Fast proper-score learning",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 2.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+    "status": "KEEP",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.0806659323873404,
+      "mean_crps": 2.3377555363322235,
+      "mean_skill": -0.2507882477345526,
+      "mae": 3.1665665855803957,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.054605213145009,
+        "public-opinion": 0.5611026760502421
+      },
+      "week_losses": {
+        "2026-W35": 0.8010915270170115,
+        "2026-W36": 1.0857491233171783,
+        "2026-W37": 1.441832018348835,
+        "2026-W38": 4.993991060866337
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 20,
+    "stage": "robustness",
+    "hypothesis": "Bounded influence of old forecast errors",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 1.0
+    },
+    "method_sha256": "ffa1853e8e5c8f5171d3016009341a0ef8a656ef047f420b8d69841f828aaae0",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.124154609404954,
+      "mean_crps": 2.386483577708981,
+      "mean_skill": -0.2498645291377361,
+      "mae": 3.2995900808303587,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1266670874219766,
+        "public-opinion": 0.5672036947286606
+      },
+      "week_losses": {
+        "2026-W35": 0.8335124769783304,
+        "2026-W36": 1.132231059010968,
+        "2026-W37": 1.439929065967194,
+        "2026-W38": 5.090945835663322
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 21,
+    "stage": "robustness",
+    "hypothesis": "Binary posterior update consistent with binary utility",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "binary",
+      "robust": 0.0
+    },
+    "method_sha256": "8e2aabfa090d4de32b7a9fbe4dac08ef670f5406464170767997625469e16e65",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.101951788046106,
+      "mean_crps": 2.3441719312264238,
+      "mean_skill": -0.22696050366246215,
+      "mae": 3.2137312522992003,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.095220635702227,
+        "public-opinion": 0.5411550553389863
+      },
+      "week_losses": {
+        "2026-W35": 0.7962941281082897,
+        "2026-W36": 1.0698207124532728,
+        "2026-W37": 1.4449586084977764,
+        "2026-W38": 5.096733703125085
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 22,
+    "stage": "robustness",
+    "hypothesis": "Recency decay for regime changes",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.15,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "74e4cb497262c22d73f1ede409532afeff0027fa1c72fc30d00560afe187e1db",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1431387261507844,
+      "mean_crps": 2.4125783650431667,
+      "mean_skill": -0.27454847818340944,
+      "mae": 3.3455409841761976,
+      "coverage80": 0.95,
+      "coverage95": 1.0,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.1679294609422017,
+        "public-opinion": 0.5686896538642731
+      },
+      "week_losses": {
+        "2026-W35": 0.8407446135822007,
+        "2026-W36": 1.14956221433038,
+        "2026-W37": 1.4568967650276274,
+        "2026-W38": 5.125351311662929
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 23,
+    "stage": "robustness",
+    "hypothesis": "Stop if distribution value is small",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 1.0,
+      "decay": 0.0,
+      "stop": 0.005,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "2cf842a1d546d9178c44fdfe3a896b668691910e033c539bc1578b4aaa982ce3",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.1555002686920384,
+      "mean_crps": 2.434064466521064,
+      "mean_skill": -0.28025746244691946,
+      "mae": 3.3935340331292507,
+      "coverage80": 0.9,
+      "coverage95": 1.0,
+      "mean_cost": 0.0,
+      "domain_loss": {
+        "consumer": 3.1917002156876064,
+        "public-opinion": 0.5767159301205548
+      },
+      "week_losses": {
+        "2026-W35": 0.8509297281206857,
+        "2026-W36": 1.165815093452704,
+        "2026-W37": 1.4728740897148584,
+        "2026-W38": 5.132382163479906
+      }
+    },
+    "guard": true
+  },
+  {
+    "trial": 24,
+    "stage": "robustness",
+    "hypothesis": "Stronger baseline shrinkage",
+    "config": {
+      "scale_prior": 2,
+      "location": "persistence",
+      "selector": "cdf",
+      "budget": 8,
+      "eta": 1.0,
+      "shrink": 0.35,
+      "decay": 0.0,
+      "stop": 0.0,
+      "update": "crps",
+      "robust": 0.0
+    },
+    "method_sha256": "b8abcabd806ef0cb172b181be99684add770b88b22f78d7f94294957c9597ef7",
+    "status": "REVERT",
+    "metrics": {
+      "n": 20,
+      "n_weeks": 4,
+      "primary": 2.2668341292358956,
+      "mean_crps": 2.4117085934393727,
+      "mean_skill": -0.08247247529935811,
+      "mae": 3.354423838627816,
+      "coverage80": 0.9,
+      "coverage95": 0.95,
+      "mean_cost": 8.0,
+      "domain_loss": {
+        "consumer": 3.193925591162046,
+        "public-opinion": 0.550392487491272
+      },
+      "week_losses": {
+        "2026-W35": 0.7183952417891509,
+        "2026-W36": 1.1693628488241141,
+        "2026-W37": 1.2573738421141258,
+        "2026-W38": 5.922204584216192
+      }
+    },
+    "guard": true
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "archive": "dist/arena-v1-frozen.zip",
+  "sha256": "ea313894f55f5afd9dd632f4384e610e4da6dc0e2ef1b5ccd9686e5d04424e3d",
+  "files": 190,
+  "fresh_extraction": "D:\\Users\\Lenovo\\Desktop\\njusim-contest\\.tmp\\arena-v1-release-check",
+  "checks": [
+    {
+      "args": [
+        "tests/test_arena_v1.py"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.115s\n\nOK\n"
+    },
+    {
+      "args": [
+        "scripts/validate_arena_v1.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"status\": \"passed\", \"trials\": 24, \"kept\": 7, \"official_score_rows_verified\": 1936, \"locked_files_verified\": 74, \"method_sha256\": \"c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81\", \"limitations\": [\"Only 4 calendar-week blocks per split; intervals exploratory.\", \"Dev and test include adjacent days in week 38; no temporal embargo was preregistered.\", \"No prospective Arena submissions; normalized-loss gain does not imply positive mean skill.\", \"Expert bank has no social mechanism simulator; selection is historical validation compute.\"]}\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "forecast.py",
+        "--request",
+        "data/arena_v1/example-request.json",
+        "--output",
+        "results/arena_v1/package-response.json",
+        "--replay"
+      ],
+      "returncode": 0,
+      "stdout": "{\"schema_version\": \"ssa-agent-api-v2\", \"forecast\": {\"mean\": -31.57976548797709, \"sd\": 2.2602166140086757}}\n",
+      "stderr": ""
+    }
+  ],
+  "example_response_exact": true,
+  "status": "passed"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "waiting_for_user_github_login_or_fork",
+  "registration_submitted": false,
+  "forecasts_prepared": 9,
+  "forecasts_submitted": 0,
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "signing_validation": "provenance/live/signing-validation.json",
+  "paid_model_calls": 0
+}

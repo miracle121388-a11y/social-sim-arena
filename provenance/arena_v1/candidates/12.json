@@ -1,0 +1,41 @@
+{
+  "trial": 12,
+  "stage": "acquisition",
+  "hypothesis": "Random eight validations",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "random",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "7c59a16eaf52c3bdc26e5f3ff08e4f1e37f0d92a11b175853acac0790acaf4e8",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1334726713326084,
+    "mean_crps": 2.3986947643865726,
+    "mean_skill": -0.2562226732200007,
+    "mae": 3.3330072722948527,
+    "coverage80": 0.9,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.1510252939720784,
+      "public-opinion": 0.5645328755592501
+    },
+    "week_losses": {
+      "2026-W35": 0.8136553052678691,
+      "2026-W36": 1.1361340142707554,
+      "2026-W37": 1.456871219386872,
+      "2026-W38": 5.127230146404938
+    }
+  },
+  "guard": true
+}

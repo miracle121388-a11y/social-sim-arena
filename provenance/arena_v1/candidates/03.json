@@ -1,0 +1,41 @@
+{
+  "trial": 3,
+  "stage": "forecast",
+  "hypothesis": "Persistence-focused empirical uncertainty",
+  "config": {
+    "scale_prior": 1,
+    "location": "persistence",
+    "selector": "recent",
+    "budget": 0,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "305c6b35cecac686d9998e26989d25c1a25fe8833357bec60cfaa838a004cb91",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.185592810256638,
+    "mean_crps": 2.409950537880563,
+    "mean_skill": -0.17248998084590628,
+    "mae": 3.3935340331292516,
+    "coverage80": 0.75,
+    "coverage95": 1.0,
+    "mean_cost": 0.0,
+    "domain_loss": {
+      "consumer": 3.159400016883941,
+      "public-opinion": 0.5714561419446648
+    },
+    "week_losses": {
+      "2026-W35": 0.7818714822747325,
+      "2026-W36": 1.1669981236897,
+      "2026-W37": 1.3728142263882943,
+      "2026-W38": 5.420687408673825
+    }
+  },
+  "guard": true
+}

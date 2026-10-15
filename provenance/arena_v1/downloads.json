@@ -1,0 +1,1068 @@
+{
+  "pin": "e8d14d24f0bca7f05425afdbfd719eb38e17bed3",
+  "records": [
+    {
+      "id": "umich-2026-08-prelim",
+      "path": "locks/umich-2026-08-prelim.json",
+      "sha256": "c8539931686f8f17ef009be3ea9d77c215cf2f17619db2afe2b7fc3838dc406c",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history",
+        "corrected"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-12T14:00:00Z",
+      "observed_at": "2026-08-12T13:59:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w33-approval",
+      "path": "locks/civiqs-2026-w33-approval.json",
+      "sha256": "a090d5ed3cabe3e8fe008c054c78aaf319267ff41e779d856a90f9ea54e83783",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-12T22:00:00Z",
+      "observed_at": "2026-08-12T19:37:43Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w34-approval",
+      "path": "locks/mc-2026-w34-approval.json",
+      "sha256": "f70083fb1d9ec2fa07c22caa70fc97d07b0013d7dd9181961d2639af0c3eb97a",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-15T14:00:00Z",
+      "observed_at": "2026-08-15T12:59:48Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w34-approval",
+      "path": "locks/yougov-2026-w34-approval.json",
+      "sha256": "6348994537cf75cff2f09dc96cf7d75d01da4adc367ee348ea90fc181a8959ac",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-16T14:00:00Z",
+      "observed_at": "2026-08-16T13:01:56Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w34-approval",
+      "path": "locks/civiqs-2026-w34-approval.json",
+      "sha256": "d5ba671f7040979b48217fe0c4134c42233010e6c8aeb6a3f179dd116342397d",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-19T22:00:00Z",
+      "observed_at": "2026-08-19T19:04:48Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w35-approval",
+      "path": "locks/mc-2026-w35-approval.json",
+      "sha256": "24eaaca5dc84dfdafddc728cb180294b7404e53b1c3c90d831d2ff486cbd309d",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-22T14:00:00Z",
+      "observed_at": "2026-08-22T13:09:48Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-ind-2026-w35",
+      "path": "locks/civiqs-ind-2026-w35.json",
+      "sha256": "ba06c6c3a0b77d6facf82c9b6889bfcdc08588ae451b5c021e5bcb51cb314a08",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-26T14:00:00Z",
+      "observed_at": "2026-08-26T13:27:19Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-2026-08-final",
+      "path": "locks/umich-2026-08-final.json",
+      "sha256": "11fcb489e4689d70f0f5ee8b3c9186c514a28d581071bf705f84a1b7a99d7c2d",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-26T14:00:00Z",
+      "observed_at": "2026-08-26T13:27:19Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w36-approval",
+      "path": "locks/yougov-2026-w36-approval.json",
+      "sha256": "2733969df04c2488ef14b80e50c9cfe898112c3ceb3f3a2088dc831f85279040",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-30T14:00:00Z",
+      "observed_at": "2026-08-30T11:54:08Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w36-approval",
+      "path": "locks/mc-2026-w36-approval.json",
+      "sha256": "e8a3ac5fafdfacbde01ab905d439ddbb56fcbbe393df963df34857cbafac6733",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-08-31T14:00:00Z",
+      "observed_at": "2026-08-31T13:45:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "aaii-2026-09-03",
+      "path": "locks/aaii-2026-09-03.json",
+      "sha256": "ff5335bdad307fb9dfcf07d05fa24121a7ce10c93b6e77ae23e7e336f7630ab5",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 21,
+      "lock_at": "2026-09-01T14:00:00Z",
+      "observed_at": "2026-09-01T11:38:16Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w36-approval",
+      "path": "locks/civiqs-2026-w36-approval.json",
+      "sha256": "8e583f3adacd0424519e8565fa7e3585e5e88c663c7423d629ad0ac07395ed77",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-age3549-2026-w36",
+      "path": "locks/civiqs-age3549-2026-w36.json",
+      "sha256": "ffbc2d9f4b0ef822fe723a273e5dcd21e3c6da04939b877ffaf58cb03a921d0c",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-age5064-2026-w36",
+      "path": "locks/civiqs-age5064-2026-w36.json",
+      "sha256": "cbe5063e57dd05e60f2686fd6958969651e2a687c1b95ac020aef0fd8e0156ca",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-hisp-2026-w36",
+      "path": "locks/civiqs-hisp-2026-w36.json",
+      "sha256": "9bef304f0be8df640b5774e7327c6dd04c7db2f8c02a0329c1263cae9aa7ef2f",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-ind-2026-w36",
+      "path": "locks/civiqs-ind-2026-w36.json",
+      "sha256": "e42afd68c5a2df7f4139fbfe2e848f86d5f520ac6786c45a427357beaf48958e",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-male-2026-w36",
+      "path": "locks/civiqs-male-2026-w36.json",
+      "sha256": "d741afa3b9f15a37518bd15795d87aae384acba8f064ac1c47fd10abad143184",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-rep-2026-w36",
+      "path": "locks/civiqs-rep-2026-w36.json",
+      "sha256": "a3fc2f44f9baa0c74583b1c30af3667cee4840c3790e45625d1cb31b4475f43e",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-02T14:00:00Z",
+      "observed_at": "2026-09-02T11:17:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "sce-2026-08-infl1y",
+      "path": "locks/sce-2026-08-infl1y.json",
+      "sha256": "6837c3c10227db7390ed01472a8053bf8852cc5010625d5f322448feda1a72ed",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-06T15:00:00Z",
+      "observed_at": "2026-09-06T10:54:32Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "sce-2026-08-infl3y",
+      "path": "locks/sce-2026-08-infl3y.json",
+      "sha256": "c4c3773c83a8f39ef50284ed9378fd18b87e79c29e5aa7a6ea45d91beb805356",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-06T15:00:00Z",
+      "observed_at": "2026-09-06T10:54:32Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w37-approval",
+      "path": "locks/mc-2026-w37-approval.json",
+      "sha256": "22720f22eb802f418ceed7c31633f5aa3f51a457aceabd1d1d02a00052d812fb",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-07T14:00:00Z",
+      "observed_at": "2026-09-07T12:31:24Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "aaii-2026-09-10",
+      "path": "locks/aaii-2026-09-10.json",
+      "sha256": "4dda7858c0789d493897cbae76659b15a583941e8e2eaa3137497c80ffebbbe7",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 21,
+      "lock_at": "2026-09-08T14:00:00Z",
+      "observed_at": "2026-09-08T11:16:16Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w37-approval",
+      "path": "locks/civiqs-2026-w37-approval.json",
+      "sha256": "f0265fc225caaad3647855f25faaaa74955dd697b90d16b627858f8b7c774d67",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-09T14:00:00Z",
+      "observed_at": "2026-09-09T11:20:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-2026-09-prelim",
+      "path": "locks/umich-2026-09-prelim.json",
+      "sha256": "a9216ee8ec388c5d25a9f6a09a5f6ef8c231c469ff5352d1f0c3c6b0eaaf99d1",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-09T14:00:00Z",
+      "observed_at": "2026-09-09T11:20:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-party-2026-09-dem",
+      "path": "locks/umich-party-2026-09-dem.json",
+      "sha256": "9f1e873f905ea4b6c40d0db1d2cbcd18415e2fd5f2cedb7bad5b41e0cb4f9a91",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-09T14:00:00Z",
+      "observed_at": "2026-09-09T11:20:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-party-2026-09-ind",
+      "path": "locks/umich-party-2026-09-ind.json",
+      "sha256": "1f7e59bc7592686b4287783f2027b13e4b9bfccd59b633cda5a4fd1abe553bcf",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-09T14:00:00Z",
+      "observed_at": "2026-09-09T11:20:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-party-2026-09-rep",
+      "path": "locks/umich-party-2026-09-rep.json",
+      "sha256": "6b065809d549df0c6da5711c58d46aabecb6acc8534b8844e0383a1509598e72",
+      "keys": [
+        "round_id",
+        "series",
+        "lock_at",
+        "observed_at",
+        "history"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-09T14:00:00Z",
+      "observed_at": "2026-09-09T11:20:14Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w38-approval",
+      "path": "locks/mc-2026-w38-approval.json",
+      "sha256": "8aec1c153587d26829656c5bd14a33332419c93002cb62439bb38f1ca4177acd",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-14T14:00:00Z",
+      "observed_at": "2026-09-14T12:45:19Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "aaii-2026-09-17",
+      "path": "locks/aaii-2026-09-17.json",
+      "sha256": "b68b949a9f2b107cc34355bd9a0f1c77a37804d9e923d1002d9f7de5bbadb0d8",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 21,
+      "lock_at": "2026-09-15T14:00:00Z",
+      "observed_at": "2026-09-15T11:46:50Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-angry-share",
+      "path": "locks/civiqs-2026-w38-angry-share.json",
+      "sha256": "863f1384511819eeca4525e14ea470edccdd2c79fb8126d50bf2947ff4c5a5ad",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-approval",
+      "path": "locks/civiqs-2026-w38-approval.json",
+      "sha256": "d448fb321fc35d3c846f4fbbc5bf5075f64d0e7c3128e6c3fcbc351227f00607",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-econ-direction",
+      "path": "locks/civiqs-2026-w38-econ-direction.json",
+      "sha256": "3ae47b1e21d05c20d03b5a553257263b86714fc8d5c1faf51b9cd5a2731c177f",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-family-finances",
+      "path": "locks/civiqs-2026-w38-family-finances.json",
+      "sha256": "c2e1e5af2fa226c3ca9b12019cec0ce536eddd7cb0ad2a6bbc1c9f437515c895",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "mc-2026-w39-approval",
+      "path": "locks/mc-2026-w39-approval.json",
+      "sha256": "9e4e3309be79a11fedf97b17d9bfc940ca7d118dd88692d78f6a63a95a37b9ce",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-21T14:00:00Z",
+      "observed_at": "2026-09-21T12:45:50Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "aaii-2026-09-24",
+      "path": "locks/aaii-2026-09-24.json",
+      "sha256": "8437bd095856ac81b9230d3e9d7287b2993aaae6b65cdaa95e549a7b5404b282",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 21,
+      "lock_at": "2026-09-22T14:00:00Z",
+      "observed_at": "2026-09-22T11:36:06Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-angry-share",
+      "path": "locks/civiqs-2026-w39-angry-share.json",
+      "sha256": "06b6668d5d83fea6d8332349cb18821fab146d27a6269e886cabb568e5cb2abe",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-approval",
+      "path": "locks/civiqs-2026-w39-approval.json",
+      "sha256": "d37f9a59e906f194984fe6307a8fd88568b8dd7cacb4723993c946493916fe6d",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-econ-now",
+      "path": "locks/civiqs-2026-w39-econ-now.json",
+      "sha256": "7c5eed734f1e4c495979d6f50fd591501aac5b954dc4bf7d0ac1866b01a670fe",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-inflation-concern",
+      "path": "locks/civiqs-2026-w39-inflation-concern.json",
+      "sha256": "a35791d3305b579107855441cf879b2714401f9e986e7d49af8248aeeda7a989",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "umich-2026-09-final",
+      "path": "locks/umich-2026-09-final.json",
+      "sha256": "3f9e5f175536b8e8ca4ad8671e884d66b265ce585aafd4e37e4f66e3a5f2e256",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-angry-share",
+      "path": "locks/civiqs-2026-w40-angry-share.json",
+      "sha256": "7de5871a5fa8a6faa29f30ff0f88149ce9e45fb7d56cdcde0286659031542f82",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-econ-direction",
+      "path": "locks/civiqs-2026-w40-econ-direction.json",
+      "sha256": "d9d0d8dc2641b80de506c3c9bbaa2b0c7e60ce85c05bb65a3b25ff4694835d8f",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-inflation-concern",
+      "path": "locks/civiqs-2026-w40-inflation-concern.json",
+      "sha256": "9e0429c5c6c349897f2de67893ea5b096acb513708c73ec2f4d69b93f64c394f",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "sce-2026-09-infl1y",
+      "path": "locks/sce-2026-09-infl1y.json",
+      "sha256": "a43e48836bee7c4577d77d2f958ca2fc050dfaafb58e587b9e060ae18b4920ec",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-05T15:00:00Z",
+      "observed_at": "2026-10-05T14:34:27Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "sce-2026-09-infl3y",
+      "path": "locks/sce-2026-09-infl3y.json",
+      "sha256": "25f224729bd7811cbb989cdfe9823df2e47dda763ebf04e614be88c53f5ca6d4",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-05T15:00:00Z",
+      "observed_at": "2026-10-05T14:34:27Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-angry-share",
+      "path": "locks/civiqs-2026-w41-angry-share.json",
+      "sha256": "b2e25d401a8d34f78318efde3855c337373b96aae8901e4ddf85ba2528488bdf",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-econ-now",
+      "path": "locks/civiqs-2026-w41-econ-now.json",
+      "sha256": "a3e79958e44b382cd6d8b68c2098561b7504a090429f193ae01a6a8620650dd4",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-family-finances",
+      "path": "locks/civiqs-2026-w41-family-finances.json",
+      "sha256": "770ad84b85cbb73ae878f3d03b0319c920b8fb1511af694ca828b5c12f8a4e98",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-econ-now",
+      "path": "locks/civiqs-2026-w38-econ-now.json",
+      "sha256": "54269e4826485da478cfd044572fcb94239355b6c30be1ec16db1e8d2e76b16d",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w38-inflation-concern",
+      "path": "locks/civiqs-2026-w38-inflation-concern.json",
+      "sha256": "1fbd899696e7da0c8e1d75ba4c7df7cd9dbf82d9fcb6429da075c72d59f6d17a",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-16T14:00:00Z",
+      "observed_at": "2026-09-16T11:39:53Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-econ-direction",
+      "path": "locks/civiqs-2026-w39-econ-direction.json",
+      "sha256": "190ec60e8c5a185a30be767b3e9468936094abe533f9cc5a6cc10316017bd878",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w39-family-finances",
+      "path": "locks/civiqs-2026-w39-family-finances.json",
+      "sha256": "713a98681d6686444947eb62c95ef2b11f701de2c75a58998345de6e83da2580",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-23T14:00:00Z",
+      "observed_at": "2026-09-23T11:37:26Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-approval",
+      "path": "locks/civiqs-2026-w40-approval.json",
+      "sha256": "3875d28f8c9fa77cf1a6c313006251c023d2beb29267cee4fe97a9073f7f56dd",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-econ-now",
+      "path": "locks/civiqs-2026-w40-econ-now.json",
+      "sha256": "e241deb3bc7e41fa59bda024ad8e0746c2631d7b34cfc8293c353368bbe48ced",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w40-family-finances",
+      "path": "locks/civiqs-2026-w40-family-finances.json",
+      "sha256": "8edd74f6857f928d07b457e074838fe910373c2907c217a35b0487840e0bcf7a",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-30T14:00:00Z",
+      "observed_at": "2026-09-30T12:33:03Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-approval",
+      "path": "locks/civiqs-2026-w41-approval.json",
+      "sha256": "26c88f1823d9dc3c8a4e276fb4e10d911807158468f64bbb5389c2917f321c9e",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-econ-direction",
+      "path": "locks/civiqs-2026-w41-econ-direction.json",
+      "sha256": "6c7cf0c20530767672e1edd3bc4b07598b89c5c497454d8fd6e381be6408f815",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "civiqs-2026-w41-inflation-concern",
+      "path": "locks/civiqs-2026-w41-inflation-concern.json",
+      "sha256": "7132ed71b85420135be91a9d9524948e7ecf178d93854f2886b39f796adada8c",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-07T14:00:00Z",
+      "observed_at": "2026-10-07T13:21:30Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w40-rv-approval",
+      "path": "locks/yougov-2026-w40-rv-approval.json",
+      "sha256": "5bd617786342495b47b787343498d6414641c59119c45120bece0743bbb9015b",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-09-27T14:00:00Z",
+      "observed_at": "2026-09-27T12:00:48Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w40-strong-approval",
+      "path": "locks/yougov-2026-w40-strong-approval.json",
+      "sha256": "d720794b98f7d9e9e564c35a5e945d070df7bf44d2535fd64713336b7d65ae46",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 3,
+      "lock_at": "2026-09-27T14:00:00Z",
+      "observed_at": "2026-09-27T12:00:48Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w41-rv-approval",
+      "path": "locks/yougov-2026-w41-rv-approval.json",
+      "sha256": "a6b7fbaf2d6f5d8f95ca7b76b3f7ea1f583be442e356d0ade8528a712efd3a2f",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 60,
+      "lock_at": "2026-10-04T14:00:00Z",
+      "observed_at": "2026-10-04T12:18:37Z",
+      "status": "downloaded"
+    },
+    {
+      "id": "yougov-2026-w41-strong-approval",
+      "path": "locks/yougov-2026-w41-strong-approval.json",
+      "sha256": "f221c4891ec6cf0243e4961febaf0fd19ad3a67bc5a33a78092ae7492f1efdc4",
+      "keys": [
+        "answer_frozen_at",
+        "answer_history",
+        "history",
+        "lock_at",
+        "observed_at",
+        "round_id",
+        "series"
+      ],
+      "history_n": 4,
+      "lock_at": "2026-10-04T14:00:00Z",
+      "observed_at": "2026-10-04T12:18:37Z",
+      "status": "downloaded"
+    }
+  ]
+}

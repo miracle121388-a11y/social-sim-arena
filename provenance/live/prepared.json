@@ -1,0 +1,134 @@
+{
+  "created_at": "2026-10-14T17:42:53.375234+00:00",
+  "commit": "e8d14d24f0bca7f05425afdbfd719eb38e17bed3",
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "snapshot_sha256": "e77402c0a64069c4521f3bdcadd8886751cae2b417aa06226f09d2fc92e89571",
+  "rounds": [
+    {
+      "round_id": "hh-2026-10-approval",
+      "lock_at": "2026-10-18T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/hh-2026-10-approval-answer.json",
+      "answer_sha256": "e384e0d7177fe835817fc9a51bb96816b1d5adccc77c4282729d1cbcbd159aa4",
+      "history_points": 6,
+      "domain": "public-opinion",
+      "persistence": {
+        "mean": 44.0,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "yougov-2026-w43-rv-approval",
+      "lock_at": "2026-10-18T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/yougov-2026-w43-rv-approval-answer.json",
+      "answer_sha256": "2a82c8fc55cf3a1b9f05deeb7531f612d35dcde337aa3c024b6c12556e67f26a",
+      "history_points": 24,
+      "domain": "public-opinion",
+      "persistence": {
+        "mean": 38.0,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "yougov-2026-w43-strong-approval",
+      "lock_at": "2026-10-18T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/yougov-2026-w43-strong-approval-answer.json",
+      "answer_sha256": "89e8c2cd9999a48e790671f3a4647cc7948fb99a6d9ab7a05869e62f1cb35a95",
+      "history_points": 6,
+      "domain": "public-opinion",
+      "persistence": {
+        "mean": 20.0,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-angry-share",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-angry-share-answer.json",
+      "answer_sha256": "9b1009e476767d59d0ac4d9061cb710765d30382da7790369e88e1ab4b296711",
+      "history_points": 24,
+      "domain": "public-opinion",
+      "persistence": {
+        "mean": 29.2,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-approval",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-approval-answer.json",
+      "answer_sha256": "5ee3aa84ad16601696bf3ca5876808598d1b09536cc9f0a9b49a6fbac114f06a",
+      "history_points": 24,
+      "domain": "public-opinion",
+      "persistence": {
+        "mean": -26.8,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-econ-direction",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-econ-direction-answer.json",
+      "answer_sha256": "54faeaada7be70ef3fd7b13e46f808ed4cdd8dd321e24c4dbe1bab45536a911f",
+      "history_points": 24,
+      "domain": "consumer",
+      "persistence": {
+        "mean": -42.4,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-econ-now",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-econ-now-answer.json",
+      "answer_sha256": "405f7c9937688beed4077483158d9483d887b2810444d79c025a16ec00b48032",
+      "history_points": 24,
+      "domain": "consumer",
+      "persistence": {
+        "mean": -39.1,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-family-finances",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-family-finances-answer.json",
+      "answer_sha256": "32ca11ba14a01d6e51b45640f82f0a1804e7c7839f52f22e29c9af68708ba9da",
+      "history_points": 24,
+      "domain": "consumer",
+      "persistence": {
+        "mean": -35.0,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    },
+    {
+      "round_id": "civiqs-2026-w43-inflation-concern",
+      "lock_at": "2026-10-21T14:00:00Z",
+      "status": "prepared",
+      "answer_file": ".private/civiqs-2026-w43-inflation-concern-answer.json",
+      "answer_sha256": "845d66240f1461a19539e45ab2882c915de3b02f120849e120832b4efc067795",
+      "history_points": 24,
+      "domain": "consumer",
+      "persistence": {
+        "mean": 62.6,
+        "sd": 1.5,
+        "method": "persistence"
+      }
+    }
+  ]
+}

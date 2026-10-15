@@ -1,0 +1,41 @@
+{
+  "trial": 18,
+  "stage": "robustness",
+  "hypothesis": "Moderate proper-score learning",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 0.5,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "3845e33625fd3adbbbb9b597e481517589757dd5c57f342c1c1610863e6e08d9",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1358222171258467,
+    "mean_crps": 2.4100258755303408,
+    "mean_skill": -0.27373936772983576,
+    "mae": 3.3394728920968477,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.161474595924009,
+      "public-opinion": 0.570156797751039
+    },
+    "week_losses": {
+      "2026-W35": 0.83935963123794,
+      "2026-W36": 1.1455612568888984,
+      "2026-W37": 1.4668746861652875,
+      "2026-W38": 5.0914932942112605
+    }
+  },
+  "guard": true
+}

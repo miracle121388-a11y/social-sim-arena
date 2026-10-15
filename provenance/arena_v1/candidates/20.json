@@ -1,0 +1,41 @@
+{
+  "trial": 20,
+  "stage": "robustness",
+  "hypothesis": "Bounded influence of old forecast errors",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 1.0
+  },
+  "method_sha256": "ffa1853e8e5c8f5171d3016009341a0ef8a656ef047f420b8d69841f828aaae0",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.124154609404954,
+    "mean_crps": 2.386483577708981,
+    "mean_skill": -0.2498645291377361,
+    "mae": 3.2995900808303587,
+    "coverage80": 0.9,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.1266670874219766,
+      "public-opinion": 0.5672036947286606
+    },
+    "week_losses": {
+      "2026-W35": 0.8335124769783304,
+      "2026-W36": 1.132231059010968,
+      "2026-W37": 1.439929065967194,
+      "2026-W38": 5.090945835663322
+    }
+  },
+  "guard": true
+}

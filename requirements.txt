@@ -1,6 +1,3 @@
-# Python 3.13; GPU wheel installed separately from official cu126 index.
-torch==2.7.1
-numpy
-scipy
-pandas
-matplotlib
+# Current runtime dependencies only.
+-r requirements-arena.txt
+-r requirements-live.txt

@@ -1,0 +1,41 @@
+{
+  "trial": 7,
+  "stage": "forecast",
+  "hypothesis": "Narrow forecast with half baseline weight",
+  "config": {
+    "scale_prior": 0,
+    "location": "persistence",
+    "selector": "recent",
+    "budget": 0,
+    "eta": 1.0,
+    "shrink": 0.5,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "6d61716c16e495c3e9cf6fa9190337014239354d33813df983cd27795b2f471d",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.362269770701547,
+    "mean_crps": 2.4935049996840344,
+    "mean_skill": -0.03331006407209529,
+    "mae": 3.391767016564626,
+    "coverage80": 0.65,
+    "coverage95": 0.95,
+    "mean_cost": 0.0,
+    "domain_loss": {
+      "consumer": 3.3232700726099993,
+      "public-opinion": 0.5550477290200386
+    },
+    "week_losses": {
+      "2026-W35": 0.6921624900779992,
+      "2026-W36": 1.233215820016935,
+      "2026-W37": 1.2514235506656946,
+      "2026-W38": 6.27227722204556
+    }
+  },
+  "guard": true
+}

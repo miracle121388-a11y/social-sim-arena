@@ -1,0 +1,13 @@
+{
+  "legacy_manifest_entries_verified": 3,
+  "source_controlled_files_unchanged": 374,
+  "source_existing_git_ref_differences": [
+    ".git/refs/codex/turn-diffs/checkpoints/aa44f3202969c41d3ff8bc5d51dd4590/808d40839f1fb6ac346e932d14343107/1791561989959/440503b5-6da7-4489-aba6-eaf10d8a8301",
+    ".git/refs/codex/turn-diffs/captures/1791541674107/da79f27c-955b-4bab-831c-47b8ffcda715/base"
+  ],
+  "fresh_package_extraction_removed_files": 193,
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "package_validation": "passed",
+  "official_status": "NOT_EVALUATED",
+  "winner_selection": "dev only; no post-test tuning"
+}

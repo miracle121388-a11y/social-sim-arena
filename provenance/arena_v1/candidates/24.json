@@ -1,0 +1,41 @@
+{
+  "trial": 24,
+  "stage": "robustness",
+  "hypothesis": "Stronger baseline shrinkage",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 0.35,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "b8abcabd806ef0cb172b181be99684add770b88b22f78d7f94294957c9597ef7",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.2668341292358956,
+    "mean_crps": 2.4117085934393727,
+    "mean_skill": -0.08247247529935811,
+    "mae": 3.354423838627816,
+    "coverage80": 0.9,
+    "coverage95": 0.95,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.193925591162046,
+      "public-opinion": 0.550392487491272
+    },
+    "week_losses": {
+      "2026-W35": 0.7183952417891509,
+      "2026-W36": 1.1693628488241141,
+      "2026-W37": 1.2573738421141258,
+      "2026-W38": 5.922204584216192
+    }
+  },
+  "guard": true
+}

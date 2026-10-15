@@ -28,3 +28,9 @@ artifacts/
 /provenance/closure/socialsim-docs.html
 
 /data/v3/*.pt
+
+# Private signing material and unreleased prospective answers.
+/.private/
+
+# Local historical evidence archive; never part of entrant registration.
+/archive/

@@ -1,0 +1,41 @@
+{
+  "trial": 21,
+  "stage": "robustness",
+  "hypothesis": "Binary posterior update consistent with binary utility",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "binary",
+    "robust": 0.0
+  },
+  "method_sha256": "8e2aabfa090d4de32b7a9fbe4dac08ef670f5406464170767997625469e16e65",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.101951788046106,
+    "mean_crps": 2.3441719312264238,
+    "mean_skill": -0.22696050366246215,
+    "mae": 3.2137312522992003,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.095220635702227,
+      "public-opinion": 0.5411550553389863
+    },
+    "week_losses": {
+      "2026-W35": 0.7962941281082897,
+      "2026-W36": 1.0698207124532728,
+      "2026-W37": 1.4449586084977764,
+      "2026-W38": 5.096733703125085
+    }
+  },
+  "guard": true
+}

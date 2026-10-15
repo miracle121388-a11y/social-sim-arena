@@ -1,0 +1,41 @@
+{
+  "trial": 22,
+  "stage": "robustness",
+  "hypothesis": "Recency decay for regime changes",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.15,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "74e4cb497262c22d73f1ede409532afeff0027fa1c72fc30d00560afe187e1db",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1431387261507844,
+    "mean_crps": 2.4125783650431667,
+    "mean_skill": -0.27454847818340944,
+    "mae": 3.3455409841761976,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.1679294609422017,
+      "public-opinion": 0.5686896538642731
+    },
+    "week_losses": {
+      "2026-W35": 0.8407446135822007,
+      "2026-W36": 1.14956221433038,
+      "2026-W37": 1.4568967650276274,
+      "2026-W38": 5.125351311662929
+    }
+  },
+  "guard": true
+}

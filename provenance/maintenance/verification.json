@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "contract_tests": 10,
+  "frozen_infrastructure_verified": 74,
+  "method_bytes_unchanged": true,
+  "nine_live_answers_unchanged": true,
+  "private_files_unchanged": true,
+  "legacy_snapshot_unchanged": true,
+  "legacy_original_manifest_entries_verified": 3,
+  "local_forecast_matches_original_response": true,
+  "submission_cli_help_passed": true,
+  "network_submission_performed": false,
+  "context_lines_before": 742,
+  "context_lines_after": 52,
+  "isolation": "374 original controlled source files unchanged; two pre-existing internal Git refs differences remain",
+  "archive_sha256": "bf87b0c0f893cd5d95ccb9678dbbf09c6503a925fb5582b4bc9ee7c85a5c07d3"
+}

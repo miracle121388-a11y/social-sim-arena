@@ -1,0 +1,195 @@
+[
+  [
+    "forecast",
+    "Uniform statistical experts",
+    {
+      "location": "uniform",
+      "scale_prior": -1,
+      "shrink": 1.0
+    }
+  ],
+  [
+    "forecast",
+    "Persistence-focused narrow uncertainty",
+    {
+      "location": "persistence",
+      "scale_prior": 0,
+      "shrink": 1.0
+    }
+  ],
+  [
+    "forecast",
+    "Persistence-focused empirical uncertainty",
+    {
+      "location": "persistence",
+      "scale_prior": 1,
+      "shrink": 1.0
+    }
+  ],
+  [
+    "forecast",
+    "Persistence-focused wider uncertainty",
+    {
+      "location": "persistence",
+      "scale_prior": 2,
+      "shrink": 1.0
+    }
+  ],
+  [
+    "forecast",
+    "Smoothed forecasts with baseline shrinkage",
+    {
+      "location": "smooth",
+      "scale_prior": 1,
+      "shrink": 0.5
+    }
+  ],
+  [
+    "forecast",
+    "Damped trends with baseline shrinkage",
+    {
+      "location": "trend",
+      "scale_prior": 1,
+      "shrink": 0.5
+    }
+  ],
+  [
+    "forecast",
+    "Narrow forecast with half baseline weight",
+    {
+      "location": "persistence",
+      "scale_prior": 0,
+      "shrink": 0.5
+    }
+  ],
+  [
+    "forecast",
+    "Conservative empirical forecast",
+    {
+      "location": "persistence",
+      "scale_prior": 1,
+      "shrink": 0.25
+    }
+  ],
+  [
+    "acquisition",
+    "Four recent historical validations",
+    {
+      "selector": "recent",
+      "budget": 4
+    }
+  ],
+  [
+    "acquisition",
+    "Eight recent historical validations",
+    {
+      "selector": "recent",
+      "budget": 8
+    }
+  ],
+  [
+    "acquisition",
+    "All twelve historical validations",
+    {
+      "selector": "recent",
+      "budget": 12
+    }
+  ],
+  [
+    "acquisition",
+    "Random eight validations",
+    {
+      "selector": "random",
+      "budget": 8
+    }
+  ],
+  [
+    "acquisition",
+    "CDF utility with four validations",
+    {
+      "selector": "cdf",
+      "budget": 4
+    }
+  ],
+  [
+    "acquisition",
+    "CDF utility with eight validations",
+    {
+      "selector": "cdf",
+      "budget": 8
+    }
+  ],
+  [
+    "acquisition",
+    "Mean utility with eight validations",
+    {
+      "selector": "mean",
+      "budget": 8
+    }
+  ],
+  [
+    "acquisition",
+    "Response entropy with eight validations",
+    {
+      "selector": "entropy",
+      "budget": 8
+    }
+  ],
+  [
+    "robustness",
+    "Slow proper-score learning",
+    {
+      "eta": 0.25
+    }
+  ],
+  [
+    "robustness",
+    "Moderate proper-score learning",
+    {
+      "eta": 0.5
+    }
+  ],
+  [
+    "robustness",
+    "Fast proper-score learning",
+    {
+      "eta": 2.0
+    }
+  ],
+  [
+    "robustness",
+    "Bounded influence of old forecast errors",
+    {
+      "robust": 1.0
+    }
+  ],
+  [
+    "robustness",
+    "Binary posterior update consistent with binary utility",
+    {
+      "update": "binary"
+    }
+  ],
+  [
+    "robustness",
+    "Recency decay for regime changes",
+    {
+      "decay": 0.15
+    }
+  ],
+  [
+    "robustness",
+    "Stop if distribution value is small",
+    {
+      "selector": "cdf",
+      "stop": 0.005
+    }
+  ],
+  [
+    "robustness",
+    "Stronger baseline shrinkage",
+    {
+      "shrink": 0.35
+    }
+  ]
+]

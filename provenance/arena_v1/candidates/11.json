@@ -1,0 +1,41 @@
+{
+  "trial": 11,
+  "stage": "acquisition",
+  "hypothesis": "All twelve historical validations",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "recent",
+    "budget": 12,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "54822897ab8f6904583b621e64b74ad9829750a300b736ac8f076a643736f96d",
+  "status": "KEEP",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1228538918028788,
+    "mean_crps": 2.3824322310249757,
+    "mean_skill": -0.2553465693144891,
+    "mae": 3.2923720461790182,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 12.0,
+    "domain_loss": {
+      "consumer": 3.1240350958485186,
+      "public-opinion": 0.5644568594620716
+    },
+    "week_losses": {
+      "2026-W35": 0.8258933920203412,
+      "2026-W36": 1.122405342151942,
+      "2026-W37": 1.4445213001955979,
+      "2026-W38": 5.098595532843634
+    }
+  },
+  "guard": true
+}

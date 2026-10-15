@@ -1,0 +1,41 @@
+{
+  "trial": 16,
+  "stage": "acquisition",
+  "hypothesis": "Response entropy with eight validations",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "entropy",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "af3b769b3c3be74538dd0f360971ed20b810f5b56422edd3796d653b05b71f30",
+  "status": "REVERT",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1605319704534547,
+    "mean_crps": 2.428186793713999,
+    "mean_skill": -0.2690849851876495,
+    "mae": 3.3739633959924418,
+    "coverage80": 0.95,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.1901271281903174,
+      "public-opinion": 0.571233907555343
+    },
+    "week_losses": {
+      "2026-W35": 0.8433082719795126,
+      "2026-W36": 1.1455326328962498,
+      "2026-W37": 1.475012816640401,
+      "2026-W38": 5.178274160297655
+    }
+  },
+  "guard": true
+}

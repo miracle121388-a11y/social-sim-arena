@@ -1,126 +1,81 @@
-"""Fixed Git state machine: init -> commit candidate -> evaluate -> keep/discard.
-
-An external coding agent proposes edits to method.py, as in Karpathy's paradigm.
-This controller does not invent hypotheses or call a paid LLM. Local hashes are
-tamper evidence, not protection against malicious Python with filesystem access.
-"""
-import argparse
-import csv
-import json
-import math
-import subprocess
+"""24 bounded method-only trials; sources/decisions retained, no destructive Git reset."""
+from pathlib import Path
 import sys
-import time
-import uuid
-from workspace import ROOT, path, digest, save_json
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from workspace import path,save_json,digest,ROOT
+import json,subprocess,hashlib,re,copy,datetime
 
-
-def git(*args):
-    return subprocess.check_output(['git',*args],cwd=ROOT,text=True).strip()
-
-
-def write_state(value):
-    p=path('.autoresearch/state.json')
-    p.write_text(json.dumps(value,indent=2),encoding='utf-8')
-
-
-def check_clean(allow_method=False):
-    changes=set(git('diff','HEAD','--name-only').splitlines())
-    if changes - ({'method.py'} if allow_method else set()):
-        raise RuntimeError('Unrelated tracked changes: '+repr(changes))
-    if git('diff','--cached','--name-only'):
-        raise RuntimeError('Index must be empty before starting a trial')
-    if git('ls-files','--others','--exclude-standard'):
-        raise RuntimeError('Untracked non-output files must be handled before a campaign')
-    if not git('branch','--show-current').startswith('codex/'):
-        raise RuntimeError('Use a dedicated codex/ research branch')
-
-
-def evaluate(tag):
-    log=path('.autoresearch/'+tag+'.log')
-    before=set(path('results').glob('*.json'))
-    started=time.perf_counter()
-    with log.open('x',encoding='utf-8') as output:
-        completed=subprocess.run([sys.executable,'-B','evaluate.py','--split','dev','--mode','fast_dev'],
-                                 cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,timeout=30)
-    if completed.returncode:
-        raise RuntimeError(f'Evaluation failed; inspect {log.name}')
-    new=set(path('results').glob('*.json'))-before
-    if len(new)!=1:raise RuntimeError('Expected one new evaluation record')
-    result=json.loads(new.pop().read_text(encoding='utf-8'))
-    score=result['auc_error']
-    if not math.isfinite(score):raise RuntimeError('Nonfinite metric')
-    if result['runtime_s']>15:raise RuntimeError('fast_dev exceeded frozen 15-second budget')
-    from evaluate import verify_integrity
-    verify_integrity()
-    if result['method_sha256']!=digest('method.py'):
-        raise RuntimeError('Method hash changed during evaluation')
-    return result,time.perf_counter()-started
-
-
+def plans():
+    return [
+      ("forecast","Uniform statistical experts",dict(location="uniform",scale_prior=-1,shrink=1.)),
+      ("forecast","Persistence-focused narrow uncertainty",dict(location="persistence",scale_prior=0,shrink=1.)),
+      ("forecast","Persistence-focused empirical uncertainty",dict(location="persistence",scale_prior=1,shrink=1.)),
+      ("forecast","Persistence-focused wider uncertainty",dict(location="persistence",scale_prior=2,shrink=1.)),
+      ("forecast","Smoothed forecasts with baseline shrinkage",dict(location="smooth",scale_prior=1,shrink=.5)),
+      ("forecast","Damped trends with baseline shrinkage",dict(location="trend",scale_prior=1,shrink=.5)),
+      ("forecast","Narrow forecast with half baseline weight",dict(location="persistence",scale_prior=0,shrink=.5)),
+      ("forecast","Conservative empirical forecast",dict(location="persistence",scale_prior=1,shrink=.25)),
+      ("acquisition","Four recent historical validations",dict(selector="recent",budget=4)),
+      ("acquisition","Eight recent historical validations",dict(selector="recent",budget=8)),
+      ("acquisition","All twelve historical validations",dict(selector="recent",budget=12)),
+      ("acquisition","Random eight validations",dict(selector="random",budget=8)),
+      ("acquisition","CDF utility with four validations",dict(selector="cdf",budget=4)),
+      ("acquisition","CDF utility with eight validations",dict(selector="cdf",budget=8)),
+      ("acquisition","Mean utility with eight validations",dict(selector="mean",budget=8)),
+      ("acquisition","Response entropy with eight validations",dict(selector="entropy",budget=8)),
+      ("robustness","Slow proper-score learning",dict(eta=.25)),
+      ("robustness","Moderate proper-score learning",dict(eta=.5)),
+      ("robustness","Fast proper-score learning",dict(eta=2.)),
+      ("robustness","Bounded influence of old forecast errors",dict(robust=1.)),
+      ("robustness","Binary posterior update consistent with binary utility",dict(update="binary")),
+      ("robustness","Recency decay for regime changes",dict(decay=.15)),
+      ("robustness","Stop if distribution value is small",dict(selector="cdf",stop=.005)),
+      ("robustness","Stronger baseline shrinkage",dict(shrink=.35))]
+def evaluate(i):
+    filename=f"results/arena_v1/dev-{i:02}.json"
+    p=subprocess.run([sys.executable,"-I","-B","evaluate.py","--split","dev","--output",filename],cwd=ROOT,capture_output=True,text=True,timeout=90)
+    path(f"provenance/arena_v1/candidates/{i:02}.log").write_text(p.stdout+p.stderr,encoding="utf8")
+    if p.returncode:raise RuntimeError(p.stderr[-2000:])
+    return json.loads(path(filename).read_text(encoding="utf8"))
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('action',choices=['freeze-infrastructure','init','trial','freeze-test','status'])
-    parser.add_argument('--description',default='baseline v0')
-    args=parser.parse_args()
-    path('.autoresearch').mkdir(exist_ok=True)
-    if args.action=='freeze-infrastructure':
-        from evaluate import FIXED_FILES
-        save_json('infrastructure.lock.json',{name:digest(name) for name in FIXED_FILES})
-        print('Infrastructure frozen. Commit this lock with the baseline.');return
-    from evaluate import verify_integrity
-    verify_integrity()
-    if not path('infrastructure.lock.json').exists():raise RuntimeError('Freeze infrastructure first')
-    if args.action=='init':
-        check_clean()
-        if path('.autoresearch/state.json').exists():raise FileExistsError('Already initialized')
-        result,wall=evaluate('baseline-'+uuid.uuid4().hex[:8])
-        state={'best_commit':git('rev-parse','HEAD'),'best_score':result['auc_error'],
-               'best_method_sha256':digest('method.py'),'baseline_result':result['run_id'],
-               'trials':0,'max_trials':3,'consecutive_failures':0,'total_wall_s':wall,'max_wall_s':2700}
-        write_state(state);print(json.dumps(state,indent=2));return
-    state=json.loads(path('.autoresearch/state.json').read_text())
-    if args.action=='status':print(json.dumps(state,indent=2));return
-    if args.action=='freeze-test':
-        check_clean()
-        if digest('method.py')!=state['best_method_sha256'] or git('rev-parse','HEAD')!=state['best_commit']:
-            raise RuntimeError('Current method is not accepted development winner')
-        save_json('frozen_method.json',{'method_sha256':digest('method.py'),'commit':state['best_commit'],
-                                     'development_score':state['best_score']})
-        print('Test method frozen; no more development edits in this campaign.');return
-    if path('frozen_method.json').exists():raise RuntimeError('Campaign frozen for test')
-    check_clean(allow_method=True)
-    if git('rev-parse','HEAD')!=state['best_commit']:raise RuntimeError('HEAD differs from accepted state')
-    if state['trials']>=state['max_trials'] or state['consecutive_failures']>=2 or state['total_wall_s']>=state['max_wall_s']:
-        raise RuntimeError('Campaign stop condition reached')
-    if git('diff','HEAD','--name-only')!='method.py':raise RuntimeError('Edit only method.py before trial')
-    base=state['best_commit'];tag='trial-'+uuid.uuid4().hex[:12]
-    git('add','--','method.py');git('commit','-m',args.description)
-    candidate=git('rev-parse','HEAD');score=None;error='';started=time.perf_counter()
-    # Write recoverable intent before evaluation. A killed controller never loses
-    # the base/candidate identity, and rejected commits remain reachable by refs.
-    save_json('.autoresearch/'+tag+'-pending.json',{'base':base,'candidate':candidate})
-    try:
-        result,_=evaluate(tag);score=result['auc_error']
-        status='keep' if score<state['best_score']-1e-8 else 'discard'
-        state['consecutive_failures']=0
-    except Exception as exc:
-        status='crash';error=str(exc);state['consecutive_failures']+=1
-    wall=time.perf_counter()-started
-    row={'trial':tag,'commit':candidate,'base':base,'score':score,'status':status,'error':error,'wall_s':wall}
-    save_json('.autoresearch/'+tag+'.json',row)
-    if status=='keep':
-        state.update(best_commit=candidate,best_score=score,best_method_sha256=digest('method.py'))
-    else:
-        git('update-ref','refs/autoresearch/rejected/'+tag,candidate)
-        # Restore ONLY the permitted algorithm file, then rewind our own commit.
-        # Refuse broad reset --hard, which could erase unrelated user edits.
-        if set(git('diff','HEAD','--name-only').splitlines())-{'method.py'}:
-            raise RuntimeError('Unexpected concurrent changes; leave pending record for recovery')
-        git('restore','--source',base,'--staged','--worktree','--','method.py')
-        git('reset','--soft',base)
-    state['trials']+=1;state['total_wall_s']+=wall;write_state(state)
-    print(json.dumps(row,indent=2))
-
-
-if __name__=='__main__':main()
+    import evaluate as ev
+    ev.verify_integrity()
+    plan=plans();assert len(plan)==24
+    save_json("provenance/arena_v1/plans.json",plan)
+    base=path("method.py").read_text(encoding="utf8")
+    initial=copy.deepcopy(ev.method.CONFIG);best_config=initial.copy()
+    controls=ev.baselines("dev")
+    save_json("results/arena_v1/dev-controls.json",controls)
+    strong=min(controls,key=lambda n:controls[n]["summary"]["primary"])
+    init=ev.run("dev",initial);best=init["summary"]["primary"]
+    save_json("results/arena_v1/initial.json",init)
+    guard=controls["official_persistence"]["summary"]["domain_loss"]
+    log=[];stage=None;anchor=None
+    for i,(st,h,changes) in enumerate(plan,1):
+        if st!=stage:
+            stage=st;anchor=best_config.copy()
+            if st in ("acquisition","robustness"):anchor["shrink"]=max(.5,anchor["shrink"])
+            if st=="robustness" and not anchor["budget"]:anchor.update(budget=8,selector="cdf")
+        cfg=(initial.copy() if st=="forecast" else anchor.copy());cfg.update(changes)
+        source=re.sub(r"^CONFIG = .*?$","CONFIG = "+repr(cfg),base,flags=re.M)
+        path("method.py").write_text(source,encoding="utf8")
+        path(f"provenance/arena_v1/candidates/{i:02}.py").write_text(source,encoding="utf8")
+        row={"trial":i,"stage":st,"hypothesis":h,"config":cfg,"method_sha256":digest("method.py")}
+        try:
+            d=evaluate(i);s=d["Full"]["summary"]
+            safe=all(v<=1.5*guard[k]+1e-12 for k,v in s["domain_loss"].items())
+            keep=safe and s["primary"]<best-1e-6
+            row.update(status="KEEP" if keep else "REVERT",metrics=s,guard=safe)
+            if keep:best=s["primary"];best_config=cfg.copy()
+        except Exception as exc:row.update(status="FAILED",error=str(exc))
+        log.append(row);save_json(f"provenance/arena_v1/candidates/{i:02}.json",row)
+        # Restore only owned method bytes after every trial.
+        path("method.py").write_text(re.sub(r"^CONFIG = .*?$","CONFIG = "+repr(best_config),base,flags=re.M),encoding="utf8")
+        ev.verify_integrity()
+        print(json.dumps({"trial":i,"status":row["status"],"primary":row.get("metrics",{}).get("primary"),"best":best}),flush=True)
+    if any(r["status"]=="FAILED" for r in log):
+        save_json("provenance/arena_v1/search-errors.json",log)
+        raise RuntimeError("Trials failed; no silent replacement or test release")
+    save_json("provenance/arena_v1/frozen.json",{"method_sha256":digest("method.py"),"config":best_config,"dev_primary":best,"initial_primary":init["summary"]["primary"],"dev_selected_strong_control":strong,"strong_control_primary":controls[strong]["summary"]["primary"],"trials":24,"kept":sum(r["status"]=="KEEP" for r in log),"frozen_at":datetime.datetime.now(datetime.timezone.utc).isoformat()})
+    save_json("provenance/arena_v1/search.json",log)
+if __name__=="__main__":main()

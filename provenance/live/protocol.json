@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-10-14T17:42:53.375234+00:00",
+  "method_sha256": "c905e2295dfeb9cbf075bd51b5e7393a7875000cc3f9c90a23066e94a540cf81",
+  "scope": "Published, open, scoreable scalar public-opinion/consumer rounds locking within seven days; nearest round per series.",
+  "history": "Pinned official lock history, last 24 observations; observed before preparation; no corrected locks; persistence must match.",
+  "evaluation": "Retain every selected round and failure. Score all accepted resolved submissions using official CRPS and per-round skill; report coverage and domain/week summaries. No tuning on these outcomes.",
+  "max_rounds": 20,
+  "paid_calls": 0,
+  "submission": "Explicit submit command only; requires merged matching public key."
+}

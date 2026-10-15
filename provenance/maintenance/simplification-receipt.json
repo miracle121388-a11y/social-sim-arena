@@ -1,0 +1,12 @@
+{
+  "archived_files": 1314,
+  "removed_old_files": 1305,
+  "removed_old_bytes": 184709286,
+  "removed_environment_files": 7801,
+  "removed_environment_bytes": 275440460,
+  "archive": "archive/history-before-simplification-20261015.zip",
+  "archive_sha256": "bf87b0c0f893cd5d95ccb9678dbbf09c6503a925fb5582b4bc9ee7c85a5c07d3",
+  "protected_hashes_unchanged": true,
+  "private_files_unchanged": 19,
+  "legacy_snapshot_files_unchanged": 3
+}

@@ -1,0 +1,41 @@
+{
+  "trial": 1,
+  "stage": "forecast",
+  "hypothesis": "Uniform statistical experts",
+  "config": {
+    "scale_prior": -1,
+    "location": "uniform",
+    "selector": "recent",
+    "budget": 0,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "ca73d19cf7dd9a353770a996809bec576fb7de3f5e09e5488813412a5deeb59a",
+  "status": "KEEP",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.1769566708675185,
+    "mean_crps": 2.4533722707566823,
+    "mean_skill": -0.26923948012387006,
+    "mae": 3.39765707178005,
+    "coverage80": 0.9,
+    "coverage95": 1.0,
+    "mean_cost": 0.0,
+    "domain_loss": {
+      "consumer": 3.217651024541576,
+      "public-opinion": 0.5808685067019297
+    },
+    "week_losses": {
+      "2026-W35": 0.794620149200426,
+      "2026-W36": 1.1653036387616202,
+      "2026-W37": 1.5019069856090934,
+      "2026-W38": 5.2459959098989355
+    }
+  },
+  "guard": true
+}

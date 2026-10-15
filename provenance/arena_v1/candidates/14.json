@@ -1,0 +1,41 @@
+{
+  "trial": 14,
+  "stage": "acquisition",
+  "hypothesis": "CDF utility with eight validations",
+  "config": {
+    "scale_prior": 2,
+    "location": "persistence",
+    "selector": "cdf",
+    "budget": 8,
+    "eta": 1.0,
+    "shrink": 1.0,
+    "decay": 0.0,
+    "stop": 0.0,
+    "update": "crps",
+    "robust": 0.0
+  },
+  "method_sha256": "a1e2c90f04336d1f814ed91dfc14313fb71603f4a960d1018cb231a113539b59",
+  "status": "KEEP",
+  "metrics": {
+    "n": 20,
+    "n_weeks": 4,
+    "primary": 2.116435396519042,
+    "mean_crps": 2.385490666958654,
+    "mean_skill": -0.2671055227166141,
+    "mae": 3.2883538246509034,
+    "coverage80": 0.9,
+    "coverage95": 1.0,
+    "mean_cost": 8.0,
+    "domain_loss": {
+      "consumer": 3.128529198295925,
+      "public-opinion": 0.5648590533123322
+    },
+    "week_losses": {
+      "2026-W35": 0.8257337747630191,
+      "2026-W36": 1.1256236776708528,
+      "2026-W37": 1.4591166426349829,
+      "2026-W38": 5.055267491007314
+    }
+  },
+  "guard": true
+}

@@ -1,0 +1,13 @@
+{
+  "pin": "e8d14d24f0bca7f05425afdbfd719eb38e17bed3",
+  "git_status": " M AUTORESEARCH.md\n M CLAIMS.md\n M DECISIONS.md\n M PROJECT_CONTEXT.md\n M SESSION_HANDOFF.md\n M STATUS.md\n M experiments.tsv\n M experiments/registry.csv\n M infrastructure.v3.lock.json\n M paper/README.md\n M paper/main.pdf\n M paper/main.tex\n M paper/main_zh.pdf\n M paper/main_zh.tex\n M paper/paper_zh.md\n M program.md\n?? MACE_FINAL_RESULTS.md\n?? experiments_v3_25.tsv\n?? provenance/arena-data-20261015.json\n?? provenance/arena-research-directions-20261015.json\n?? provenance/arena-review-20261015.json\n?? provenance/arena_v1/\n?? provenance/isolation_checks/arena-directions-20261015.json\n?? provenance/isolation_checks/arena-review-20261015.json\n?? provenance/isolation_checks/mace-paper-final-20261014.json\n?? provenance/isolation_checks/mace-paper-start-20261014.json\n?? provenance/isolation_checks/v3-search25-preflight-20261014.json\n?? provenance/v3/search25-preflight.json\n?? provenance/v3/search25/\n?? provenance/v3/test_release.json\n?? scripts/arena_bootstrap.py\n?? scripts/mace_search25.py\n?? scripts/validate_mace25.py\n?? scripts/validate_mace_final.py\n",
+  "old": {
+    "method.py": "3551eea8b92707f76232e7b226ac93fdbecd3ff9fd52ec1614ef2ca295d16ba7",
+    "prepare_and_cache.py": "145ed43dbd30b8668e9eb026b626a1dfb9606ccf99fcecc4b6f4e87432d02661",
+    "evaluate.py": "d3bfa523059984f62f860810552621db406835e9bba4756e92fa13cb9c2da1a9",
+    "autoresearch.py": "6705d3bd71fd53bebd4d32ea722946836568fb8d78afad823ba3f0e419c50600",
+    "program.md": "037b411b34b189abaf7838bc24df18d09701bd91d05cc3f4c77131c20073541b",
+    "README.md": "4054a0096f6986756e3b6fecbd4d6820e24e9bfe25cdcdbbba9871b3fb8aded4",
+    "infrastructure.v3.lock.json": "f469f04b06b6fc9741239a57aa3d6ba3ec97ce47e06e13beb1c98d0aa99f9f44"
+  }
+}

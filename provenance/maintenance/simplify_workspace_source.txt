@@ -1,0 +1,80 @@
+import sys,os,stat,json,hashlib,zipfile
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from workspace import ROOT,path,save_json,digest
+
+def checked(p):
+    return path(Path(p).relative_to(ROOT))
+
+def walk(p):
+    checked(p)
+    if p.is_file():return [p],[]
+    files=[];dirs=[p]
+    for base,ds,fs in os.walk(p,followlinks=False):
+        for n in ds:dirs.append(checked(Path(base)/n))
+        for n in fs:files.append(checked(Path(base)/n))
+    return files,dirs
+
+oldroot=['src','configs','paper','.autoresearch','CLOSURE_PROTOCOL.md',
+ 'experiments.tsv','experiments_v2.tsv','experiments_v3_25.tsv','frozen_method.json',
+ 'infrastructure.lock.json','infrastructure.v2.lock.json','infrastructure.v3.lock.json',
+ 'MACE_FINAL_RESULTS.md','PAPER_METHOD_AND_INSIGHTS.md','PAPER_TABLES.tex',
+ 'requirements.lock.txt','requirements.txt','RESEARCH_REPORT_60.md','ROUND2_RESULTS.md',
+ 'SOCIALSIM_INTEGRATION.md','V3_BASELINE.md']
+for directory,keep in [
+ ('scripts',{'isolation.py','validate_arena_v1.py'}),
+ ('tests',{'test_arena_v1.py'}),('data',{'arena_v1'}),
+ ('results',{'arena_v1'}),
+ ('provenance',{'arena_v1','live','isolation_checks','legacy-migration.json','maintenance'}),
+ ('dist',{'arena-v1-frozen.zip'})]:
+    oldroot += [p.relative_to(ROOT).as_posix() for p in path(directory).iterdir() if p.name not in keep]
+targets=[];dirs=[]
+for name in oldroot:
+    p=path(name)
+    if p.exists():
+        fs,ds=walk(p);targets+=fs;dirs+=ds
+assert len(targets)==len(set(targets))
+protected=json.loads(path('infrastructure.arena_v1.lock.json').read_text(encoding='utf8'))['files']
+assert not {p.relative_to(ROOT).as_posix() for p in targets}.intersection(protected)
+before={n:digest(n) for n in protected}
+before['method.py']=digest('method.py')
+private={p.relative_to(ROOT).as_posix():digest(p.relative_to(ROOT)) for p in path('.private').iterdir() if p.is_file()}
+legacy={p.relative_to(ROOT).as_posix():digest(p.relative_to(ROOT)) for p in walk(path('legacy/legacy_snapshot'))[0]}
+path('archive').mkdir(exist_ok=True)
+path('provenance/maintenance').mkdir(exist_ok=True)
+mapping={p.relative_to(ROOT).as_posix():p for p in targets}
+for n in ['PROJECT_CONTEXT.md','STATUS.md','DECISIONS.md','SESSION_HANDOFF.md','CLAIMS.md','AUTORESEARCH.md','README.md','ARENA_RESULTS.md','experiments/registry.csv']:
+    mapping[n]=path(n)
+manifest={n:digest(n) for n in mapping}
+save_json('provenance/maintenance/simplification-plan.json',{'remove_after_verified_archive':oldroot,'archive_files':len(mapping),'protected_hashes':before,'private_hashes':private,'legacy_hashes':legacy})
+archive=path('archive/history-before-simplification-20261015.zip')
+with zipfile.ZipFile(archive,'x',zipfile.ZIP_DEFLATED,compresslevel=3) as z:
+    for n,p in mapping.items():z.write(checked(p),n)
+    z.writestr('ARCHIVE_MANIFEST.json',json.dumps(manifest,indent=2))
+with zipfile.ZipFile(archive) as z:
+    for n,h in manifest.items():assert hashlib.sha256(z.read(n)).hexdigest()==h,n
+print('Verified archive:',len(manifest),'files',flush=True)
+for p in targets:assert digest(p.relative_to(ROOT))==manifest[p.relative_to(ROOT).as_posix()]
+total=sum(p.stat().st_size for p in targets)
+for p in targets:
+    checked(p)
+    if p.stat().st_file_attributes & stat.FILE_ATTRIBUTE_READONLY:os.chmod(p,stat.S_IWRITE)
+    p.unlink()
+for p in sorted(set(dirs),key=lambda p:len(p.parts),reverse=True):
+    checked(p);p.rmdir()
+# An obsolete environment is reproducible dependency output, not research evidence.
+env_files,env_dirs=walk(path('.venv-socioverse'))
+env_manifest={p.relative_to(ROOT).as_posix():{'size':p.stat().st_size,'sha256':digest(p.relative_to(ROOT))} for p in env_files}
+save_json('provenance/maintenance/removed-environment.json',env_manifest)
+for p in env_files:
+    checked(p)
+    if p.stat().st_file_attributes & stat.FILE_ATTRIBUTE_READONLY:os.chmod(p,stat.S_IWRITE)
+    p.unlink()
+for p in sorted(env_dirs,key=lambda p:len(p.parts),reverse=True):checked(p);p.rmdir()
+for n,h in {**before,**private,**legacy}.items():assert digest(n)==h,n
+save_json('provenance/maintenance/simplification-receipt.json',{
+ 'archived_files':len(manifest),'removed_old_files':len(targets),'removed_old_bytes':total,
+ 'removed_environment_files':len(env_files),'removed_environment_bytes':sum(v['size'] for v in env_manifest.values()),
+ 'archive':archive.relative_to(ROOT).as_posix(),'archive_sha256':digest(archive.relative_to(ROOT)),
+ 'protected_hashes_unchanged':True,'private_files_unchanged':len(private),'legacy_snapshot_files_unchanged':len(legacy)})
+print('Cleanup complete; protected files unchanged.',flush=True)

@@ -1,0 +1,157 @@
+{
+  "counts": {
+    "train": 4,
+    "dev": 20,
+    "test": 24
+  },
+  "excluded": [
+    {
+      "id": "umich-2026-08-prelim",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "mc-2026-w35-approval",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "mc-2026-w36-approval",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "sce-2026-08-infl1y",
+      "reasons": [
+        "history/persistence mismatch"
+      ]
+    },
+    {
+      "id": "sce-2026-08-infl3y",
+      "reasons": [
+        "history/persistence mismatch"
+      ]
+    },
+    {
+      "id": "civiqs-2026-w38-angry-share",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "civiqs-2026-w38-econ-direction",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "civiqs-2026-w38-family-finances",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "sce-2026-09-infl1y",
+      "reasons": [
+        "history/persistence mismatch"
+      ]
+    },
+    {
+      "id": "sce-2026-09-infl3y",
+      "reasons": [
+        "history/persistence mismatch"
+      ]
+    },
+    {
+      "id": "civiqs-2026-w38-econ-now",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "civiqs-2026-w38-inflation-concern",
+      "reasons": [
+        "post-hoc correction flagged"
+      ]
+    },
+    {
+      "id": "yougov-2026-w40-strong-approval",
+      "reasons": [
+        "fewer than six observations"
+      ]
+    },
+    {
+      "id": "yougov-2026-w41-strong-approval",
+      "reasons": [
+        "fewer than six observations"
+      ]
+    }
+  ],
+  "accepted_ids": {
+    "train": [
+      "civiqs-2026-w33-approval",
+      "mc-2026-w34-approval",
+      "yougov-2026-w34-approval",
+      "civiqs-2026-w34-approval"
+    ],
+    "dev": [
+      "civiqs-ind-2026-w35",
+      "umich-2026-08-final",
+      "yougov-2026-w36-approval",
+      "aaii-2026-09-03",
+      "civiqs-2026-w36-approval",
+      "civiqs-age3549-2026-w36",
+      "civiqs-age5064-2026-w36",
+      "civiqs-hisp-2026-w36",
+      "civiqs-ind-2026-w36",
+      "civiqs-male-2026-w36",
+      "civiqs-rep-2026-w36",
+      "mc-2026-w37-approval",
+      "aaii-2026-09-10",
+      "civiqs-2026-w37-approval",
+      "umich-2026-09-prelim",
+      "umich-party-2026-09-dem",
+      "umich-party-2026-09-ind",
+      "umich-party-2026-09-rep",
+      "mc-2026-w38-approval",
+      "aaii-2026-09-17"
+    ],
+    "test": [
+      "civiqs-2026-w38-approval",
+      "mc-2026-w39-approval",
+      "aaii-2026-09-24",
+      "civiqs-2026-w39-angry-share",
+      "civiqs-2026-w39-approval",
+      "civiqs-2026-w39-econ-direction",
+      "civiqs-2026-w39-econ-now",
+      "civiqs-2026-w39-family-finances",
+      "civiqs-2026-w39-inflation-concern",
+      "umich-2026-09-final",
+      "yougov-2026-w40-rv-approval",
+      "civiqs-2026-w40-angry-share",
+      "civiqs-2026-w40-approval",
+      "civiqs-2026-w40-econ-direction",
+      "civiqs-2026-w40-econ-now",
+      "civiqs-2026-w40-family-finances",
+      "civiqs-2026-w40-inflation-concern",
+      "yougov-2026-w41-rv-approval",
+      "civiqs-2026-w41-angry-share",
+      "civiqs-2026-w41-approval",
+      "civiqs-2026-w41-econ-direction",
+      "civiqs-2026-w41-econ-now",
+      "civiqs-2026-w41-family-finances",
+      "civiqs-2026-w41-inflation-concern"
+    ]
+  },
+  "cache_sha256": "99e7d762da7885638330ad52814ad42ddb600719bdc4530f33ef63b28b18caf8",
+  "limitations": [
+    "Previously public outcomes; retrospective holdout only.",
+    "Lock timestamps are upstream assertions, not independently verified historical commits.",
+    "Historical validation points use the lock-time vintage; no claim those values were first-vintage at their own historic origin.",
+    "Cost is one rolling validation record over a fixed 24-expert bank; cached access is a proxy, not web/API expense.",
+    "No LLM, no private student data, no registration or submission."
+  ]
+}
